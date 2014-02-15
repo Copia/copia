@@ -8,8 +8,8 @@ exports.oauth2 = function( request, response, next) {
     var authCode = parsedUrl.query.code;   
 
     var data = {
-      "client_id": "1592",
-      "client_secret": "pxcfQF3ucRVDtpQqE88gLe9eaMVZ5rkW",
+      "client_id": "1608",
+      "client_secret": "CxVegjzgjB5UteXBqnpMCFZkbKb9dGTc",
       "code": authCode
     };
     console.log(data);
