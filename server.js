@@ -17,5 +17,7 @@ app.set('views', __dirname + '/app/views');
 
 var admins =  require('./app/routes/users')(app);
 
-app.listen(3000);
+var port = Number(process.env.PORT || 3000);
+
+app.listen(port);
 
