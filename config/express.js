@@ -9,7 +9,5 @@ module.exports = function(app) {
   app.use( express.bodyParser() );
 
   app.use( app.router );
-  console.log(rootPath);
   app.use( express.static( rootPath + '/copia/public') );
-  console.log(rootPath + '/copia/public');
 };
