@@ -8,6 +8,10 @@
     width:100%
 }
 
+body {
+  background-color: #00b2ba;
+}
+
 footer {
     position:fixed;
     left:0px;
