@@ -1,7 +1,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var users = require("./app/models/user");
-var db  = mongoose.connect('mongodb://localhost/copia');
+var db  = mongoose.connect('ds033569.mongolab.com:33569/heroku_app22242686');
 var consolidate = require('consolidate');
 var app = express();
 
