@@ -17,6 +17,10 @@ module.exports = function(app) {
     venmoUrl += '%20access_friends';
     venmoUrl += '&response_type=code';
 
+    app.get('/', function(req, res){
+        res.render('index');
+    });
+
     app.get('/login', function(request, response) {
         console.log('NEED TO REMEMBER THIS TO AVOID EVIL /auth');
         response.redirect(307, venmoUrl);
@@ -39,5 +43,4 @@ module.exports = function(app) {
         console.log('POST: ', request.body);
         users.create( request, response );
     });
-    
 };
