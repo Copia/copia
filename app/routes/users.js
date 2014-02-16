@@ -7,7 +7,7 @@ var authentication = require('./middleware/authentication');
 module.exports = function(app) {
 
     var venmoUrl = 'https://api.venmo.com/v1/oauth/authorize?';
-    venmoUrl += 'client_id=1592';
+    venmoUrl += 'client_id=1608';
     venmoUrl += '&scope=make_payments';
     venmoUrl += '%20access_feed';
     venmoUrl += '%20access_profile';
