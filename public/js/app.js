@@ -9,6 +9,10 @@ app.config(['$routeProvider',
         templateUrl: 'views/index.html',
         controller: 'IndexController'
       }).
+      when('/dashboard', {
+        templateUrl: 'views/user/dashboard.html',
+        controller: 'DashboardController'
+      })
       otherwise({
         redirectTo: '/'
       });
