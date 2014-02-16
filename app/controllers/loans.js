@@ -4,89 +4,93 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    User = mongoose.model('User'),
+    Loan = mongoose.model('Loan'),
     _ = require('lodash');
 
 /**
- * Find user by id
+ * Find loan by id
  */
-exports.user = function(req, res, id) {
-    User.findById(id, function(err, user) {
-        if (err) return next(err);
-        if (!user) return next(new Error('Failed to load user ' + id));
-        res.jsonp(user);
+exports.loan = function(req, res, id) {
+    Loan.load(id, function(err, loan) {
+        if (err) return next(err); 
+        if (!loan) return next(new Error('Failed to load loan ' + id));
+        res.jsonp(loan);
     });
 };
 
-exports.get = function(req, res, id) {
-};
 /**
- * Create a user
+ * Create a loan
  */
 exports.create = function(req, res) {
-    var user = new User(req.body);
-    //user.user = req.user;
-    user.save(function(err) {
+    var loan = new Loan(req.body);
+    loan.save(function(err) {
         if (err) {
             return res.send('./public/404.html', {
                 errors: err.errors,
-                user: user
+                loan: loan
             });
         } else {
-            res.jsonp(user);
+            res.jsonp(loan);
         }
     });
 };
 
 /**
- * Update a user
+ * Update a loan
  */
 exports.update = function(req, res) {
-    var user = req.user;
+    var loan = req.loan;
 
-    user = _.extend(user, req.body);
+    loan = _.extend(loan, req.body);
 
-    user.save(function(err) {
+    loan.save(function(err) {
         if (err) {
             return res.send('./public/404.html', {
                 errors: err.errors,
-                user: user
+                loan: loan
             });
         } else {
-            res.jsonp(user);
+            res.jsonp(loan);
         }
     });
 };
 
 /**
- * Delete an user
+ * Delete an loan
  */
 exports.destroy = function(req, res) {
-    var user = req.user;
+    var loan = req.loan;
 
-    user.remove(function(err) {
+    loan.remove(function(err) {
         if (err) {
             return res.send('./public/404.html', {
                 errors: err.errors,
-                user: user
+                loan: loan
             });
         } else {
-            res.jsonp(user);
+            res.jsonp(loan);
         }
     });
 };
 
 /**
- * List of Users
+ * Show an loan
+ */
+exports.show = function(req, res) {
+    res.jsonp(req.loan);
+};
+
+/**
+ * List of loans
  */
 exports.all = function(req, res) {
-    User.find().sort('-created').populate('user', 'username').exec(function(err, users) {
+    Loan.find().sort('-created').populate('borrow_id lender_id').exec(function(err, loans) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(users);
+            res.jsonp(loans);
         }
     });
 };
