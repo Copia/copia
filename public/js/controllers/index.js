@@ -1,4 +1,6 @@
 angular.module('app')
 .controller('IndexController', ["$scope", function($scope){
-  $scope.hello = 'hello!';
+  $scope.signIn = function(){
+    console.log('sign in');
+  }
 }]);
