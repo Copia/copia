@@ -10,9 +10,17 @@ app.config(['$routeProvider',
         controller: 'IndexController'
       }).
       when('/dashboard', {
-        templateUrl: 'views/user/dashboard.html',
+        templateUrl: 'views/users/dashboard.html',
         controller: 'DashboardController'
-      })
+      }).
+      when('/borrow', {
+        templateUrl: 'views/borrow.html',
+        controller: 'BorrowController'
+      }).
+      when('/lend', {
+        templateUrl: 'views/lend.html',
+        controller: 'LendController'
+      }).
       otherwise({
         redirectTo: '/'
       });
