@@ -11,12 +11,12 @@ var mongoose = require('mongoose'),
  * User Schema
  */
 var UserSchema = new Schema({
-    name: String,
-    email: String,
     username: {
         type: String,
         unique: true
-    }
+    },
+    karma: Number,
+    session_token: String
 });
 
 /**
