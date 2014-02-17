@@ -9,17 +9,19 @@ module.exports = function(grunt) {
       }
     },
     nodemon: {
-      options: {
-        file: 'server.js',
-        args: [],
-        ignoredFiles: ['public/*.js'],
-        watchExtensions: ['js'],
-        delayTime: 1,
-        env: {
-          PORT: 3000
-        },
-        cwd: __dirname
-      }
+      dev: {
+        script: 'server.js',
+        options: {
+          args: ['--debug-brk'],
+          ignoredFiles: ['public/*.js'],
+          watchExtensions: ['js'],
+          delayTime: 1,
+          env: {
+            PORT: 3000
+          },
+          cwd: __dirname
+        }
+    }
     },
     build: {
       src: 'src/<%= pkg.name %>.js',
