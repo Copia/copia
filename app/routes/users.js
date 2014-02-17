@@ -22,19 +22,18 @@ module.exports = function(app) {
     });
 
     app.get('/login', function(request, response) {
-        console.log('NEED TO REMEMBER THIS TO AVOID EVIL /auth');
         response.redirect(307, venmoUrl);
     });
 
     app.get('/auth', authentication.oauth2, function(request, response) {
-        console.log( 'From Venmo:', request.body );
-        console.log('God as my witness, your passage has been granted');
+        console.log('Successful access_token from Venmo! Redirecting to /dashboard');
+        response.redirect(301, '/dashboard');    
     });
 
     app.get('/dashboard', function(request, response) {
-        console.log('Thank you for using Copia');
         response.send('Welcome to Copia!!!');
     });
+
     app.get('/users/:userId', function(request, response){
         users.user(request, response, request.params.userId);
     });

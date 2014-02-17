@@ -18,12 +18,14 @@ exports.oauth2 = function( request, response, next) {
       url : venmoUrl, 
       form :  data
     }, function(err, resp, body){
-        if(err) {
-          response.send('Quit hacking us ');
+        var body = JSON.parse( body );
+        console.log(body);
+        if(err || body.error || !body.access_token) {
+          console.log('INVALID ACCESS:', body.error.message, '( Code ', body.error.code, ')');
+          response.redirect(301, '/login');
         } else {
-          response.redirect(301, '/dashboard');
+          next();
         }
-
     });
-    next();
+
 };
