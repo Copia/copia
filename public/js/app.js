@@ -21,6 +21,10 @@ app.config(['$routeProvider',
         templateUrl: 'views/lend.html',
         controller: 'LendController'
       }).
+      when('/borrow_confirmation', {
+        templateUrl: 'views/borrowConfirm.html',
+        controller: 'BorrowConfirmController'
+      }).
       otherwise({
         redirectTo: '/'
       });
