@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       dev: {
         script: 'server.js',
         options: {
-          args: ['--debug-brk'],
+          args: [],
           ignoredFiles: ['public/*.js'],
           watchExtensions: ['js'],
           delayTime: 1,
