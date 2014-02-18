@@ -20,6 +20,27 @@ textarea[name=debtReason] {
     resize: none;
 }
 
+.loanRequestForm {
+    background-color: rgba(200,200,200,0.75);
+    border: 3px solid black;
+}
+
+form[name=loanRequestForm].ng-invalid.ng-dirty {
+    border: 3px solid red;
+}
+
+form[name=loanRequestForm].ng-valid.ng-dirty {
+    border: 3px solid forestgreen;
+}
+
+form[name=loanRequestForm] input.ng-invalid.ng-dirty {
+  border: 3px solid red;
+}
+
+form[name=loanRequestForm] input.ng-valid.ng-dirty {
+  border: 3px solid forestgreen;
+}   
+
 footer {
     position:fixed;
     left:0px;
