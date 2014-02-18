@@ -22,6 +22,10 @@
         "balance",
         "friends"
       ]
+    },
+    "debug": true,
+    "debug_fields": {
+      "enable_auth": true
     }
   },
   "dependencies": {
