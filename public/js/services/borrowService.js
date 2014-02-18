@@ -15,6 +15,10 @@ angular.module('app')
         self.loanAttrs = attrs;
       },
 
+      getLoanAttrs : function() {
+        return self.loanAttrs;
+      },
+
       submitBorrowRequest : function() {
         console.log('Loan request submitted: ', self.loanAttrs);
         //TODO: loanAttrs needs to be formatted to match up with schema

@@ -6,7 +6,15 @@
 
 <h2>Loan Request Confirmation:</h2>
 <div class='loanConfText'>
-  <p>This is the text of the loan confirmation</p>
+  <p>
+    Loan amount: {{ loan.loanAmount }}
+    <br>Payback amount: {{ loan.paybackAmount }}
+    <br>Debt Due By: {{ loan.debtDueDate }}
+    <br>Debt Deadline: {{ loan.debtDeadlineDate }}
+    <br>Debt Category: {{ loan.debtCategory }}
+    <br>Debt Reason: {{ loan.debtReason }}
+  </p>
+  <p>TERMS OF SERVICE:</p>
 </div>
 
 <button class='btn btn-danger'>Cancel</button>
