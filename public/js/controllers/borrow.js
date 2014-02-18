@@ -2,12 +2,15 @@ angular.module('app')
 .controller('BorrowController',
 ["$scope", "$location", 'BorrowRequest',
 function($scope, $location, BorrowRequest){
-  $scope.loanAmount = undefined;
-  $scope.paybackAmount = undefined; 
-  $scope.debtDueDate = undefined;
-  $scope.debtDeadlineDate = undefined;
-  $scope.debtCategory = undefined;
-  $scope.debtReason = undefined;
+  
+  //load loan attrs from persistent loan service
+  var loan = BorrowRequest.getLoanAttrs();
+  $scope.loanAmount = loan.loanAmount;
+  $scope.paybackAmount = loan.paybackAmount; 
+  $scope.debtDueDate = loan.debtDueDate;
+  $scope.debtDeadlineDate = loan.debtDeadlineDate;
+  $scope.debtCategory = loan.debtCategory;
+  $scope.debtReason = loan.debtReason;
 
   $scope.borrowConfirm = function(){
     var debtAttrs = {

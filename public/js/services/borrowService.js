@@ -3,7 +3,14 @@
 angular.module('app')
 .provider('BorrowRequest', function(){
   
-  this.loanAttrs = {};
+  this.loanAttrs = {
+    loanAmount : undefined,
+    paybackAmount : undefined, 
+    debtDueDate : undefined,
+    debtDeadlineDate : undefined,
+    debtCategory : undefined,
+    debtReason : undefined
+  };
   this.validLoanAttrs = true; //record whether loan attrs are valid for posting to db
 
   this.$get = function($http, $location){
