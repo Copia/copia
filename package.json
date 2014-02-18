@@ -1,6 +1,29 @@
 {
   "name": "Copia",
   "version": "0.0.1",
+  "config": {
+    "db": "mongodb://heroku_app22242686:do2856rbauaa0nlb1epfqgj61o@ds033569.mongolab.com:33569/heroku_app22242686",
+    "port": 3002,
+    "venmo": {
+      "authUrl": "https://api.venmo.com/v1/oauth/authorize",
+      "redirectUrl": "https://www.loanfish.com/auth",
+      "client_id": 1608,
+      "client_secret": "TBD",
+      "response_type": "code",
+      "state": "TBD",
+      "scope": [
+        "make_payment"
+      ],
+      "access": [
+        "feed",
+        "profile",
+        "email",
+        "phone",
+        "balance",
+        "friends"
+      ]
+    }
+  },
   "dependencies": {
     "express": "~3.4.8",
     "mongoose": "~3.8.7",
@@ -15,12 +38,16 @@
     "swig": "~1.3.2",
     "lodash": "~2.4.1",
     "request": "~2.33.0",
-    "mongodb": "~1.3.23"
+    "mongodb": "~1.3.23",
+    "node-uuid": "~1.4.1"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.6.3",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-uglify": "~0.2.2"
+  },
+  "scripts": {
+    "postinstall": "node node_modules/bower/bin/bower install"
   }
 }
