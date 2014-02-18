@@ -4,39 +4,42 @@
   <a href="" class="glyphicon glyphicon-align-justify"></a>
 </div>
 
-<form>
+{{ loanAttrs }}
+
+<form class='loanRequestForm'>
   <!-- TODO: make sure that currency is properly formatted -->
   <div class='debtAmount'>
     Loan Amount
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' min=0 step=.01 name='debtAmount' placeholder='Amount' ng-model='loanAmount'/>
+    <input type='number' min=0 step=.01 name='debtAmount' placeholder='Amount' ng-model='loanAttrs.loanAmount' required/>
     <a href="">?</a>
   </div>
+  <span ng-show="form.debtAmount.$error.required">Enter a loan amount.</span>
 
   <div class='debtPayback'>
     Payback Amount
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' min=0 step=.01 name='debtPayback' placeholder='Payback' ng-model='paybackAmount'/>
+    <input type='number' min=0 step=.01 name='debtPayback' placeholder='Payback' ng-model='loanAttrs.paybackAmount' required/>
     <a href="">?</a>
   </div>
   
   <div class='debtDue'>
     Repayment Date
     <img class='calendarimg' src="/img/calendar.png">
-    <input type='date' name='debtDue' ng-model='debtDueDate'/>
+    <input type='date' name='debtDue' ng-model='loanAttrs.debtDueDate' required/>
     <a href="">?</a>
   </div>
 
   <div class='debtDeadline'>
     Loan Needed By
     <img class='calendarimg' src="/img/calendar.png">
-    <input type='date' name='debtDeadline' ng-model='debtDeadlineDate'/>
+    <input type='date' name='debtDeadline' ng-model='loanAttrs.debtDeadlineDate' required/>
     <a href="">?</a>
   </div>
 
   <div class='debtCategory'>
     Loan Category
-    <select ng-model='debtCategory'>
+    <select ng-model='loanAttrs.debtCategory' required>
       <option>Option A</option>
       <option>Option B</option>
       <option selected>Option C</option>
@@ -46,7 +49,7 @@
 
   <div class='debtReason'>
     Loan Reason
-    <textarea name='debtReason' placeholder='Why are you requesting this loan?' ng-model='debtReason'></textarea>
+    <textarea name='debtReason' placeholder='Why are you requesting this loan?' ng-model='loanAttrs.debtReason' required></textarea>
   </div>
   
 </form>
