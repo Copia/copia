@@ -1,19 +1,48 @@
-<a href="#/dashboard">Back</a>
-<h2>C (add logo)</h2>
+<div class='dashboardHeader'>
+  <a href="#/dashboard" class='glyphicon glyphicon-chevron-left'></a>
+  <h2>C (add logo)</h2>
+  <a href="" class="glyphicon glyphicon-align-justify"></a>
+</div>
 
 <form>
   <!-- TODO: make sure that currency is properly formatted -->
-  <input type='number' min=0 step=.01 name='debtAmount' placeholder='Amount'/>
-  <input type='number' min=0 step=.01 name='debtPayback' placeholder='Payback'/>
-  <input type='date' name='debtDue' />
-  <input type='date' name='debtDeadline'/>
-  <select>
-    <option>Option A</option>
-    <option>Option B</option>
-    <option selected>Option C</option>
-    <option>Option D</option>
-  </select>
-  <textarea name='debtReason' placeholder='reason why you need the dough'></textarea>
+  <div class='debtAmount'>
+    <img class='dollarimg' src="/img/dollarsign.png">
+    <input type='number' min=0 step=.01 name='debtAmount' placeholder='Amount'/>
+    <a href="">?</a>
+  </div>
+
+  <div class='debtPayback'>
+    <img class='dollarimg' src="/img/dollarsign.png">
+    <input type='number' min=0 step=.01 name='debtPayback' placeholder='Payback'/>
+    <a href="">?</a>
+  </div>
+  
+  <div class='debtDue'>
+    <img class='calendarimg' src="/img/calendar.png">
+    <input type='date' name='debtDue' />
+    <a href="">?</a>
+  </div>
+
+  <div class='debtDeadline'>
+    <img class='calendarimg' src="/img/calendar.png">
+    <input type='date' name='debtDeadline'/>
+    <a href="">?</a>
+  </div>
+
+  <div class='debtCategory'>
+    <select>
+      <option>Option A</option>
+      <option>Option B</option>
+      <option selected>Option C</option>
+      <option>Option D</option>
+    </select>
+  </div>
+
+  <div class='debtReason'>
+    <textarea name='debtReason' placeholder='reason why you need the dough'></textarea>
+  </div>
+  
 
   <button class='btn btn-danger'>Cancel</button>
   <button class='btn btn-success'>Next</button>
