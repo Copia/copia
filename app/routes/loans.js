@@ -1,25 +1,16 @@
 'use strict';
 
-// Loan routes use loans controller
-var loans = require('../controllers/loans');
+// Loan routes use loan service
+var loan_service = require('../services/loan_service');
 
 module.exports = function(app) {
 
-  app.post('/users/:userId/loans', function(request, response) {
-    console.log("POST to: ",request.body.url, "-->Create Loan" );
-    loans.create(request,response);
-  });
+  app.post('/users/:userId/loans', loan_service.create);
 
-  app.get('/users/:userId/loans/:loanId', function(request, response) {
-    console.log("GET to: ",request.body.url, "-->Get Loan" );
-    loans.loan(request,response, request.params.loanId);
-  });
+  app.get('/users/:userId/loans/:loanId', loan_service.get);
 
-  app.put('/users/:userId/loans/:loanId', function(request, response) {
-    console.log("PUT to: ",request.body.url, "-->Modify Loan" );
-  });
+  app.put('/users/:userId/loans/:loanId', loan_service.update);
+  
+  app.delete('/users/:userId/loans/:loanId', loan_service.delete);
 
-  app.delete('/users/:userId/loans/:loanId', function(request, response) {
-    console.log("DELETE to: ",request.body.url, "-->Delete Loan" );
-  });
 };

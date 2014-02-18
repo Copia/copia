@@ -1,18 +1,12 @@
 'use strict';
 
-// Transaction routes use transactions controller
-var transactions = require('../controllers/transactions');
+// Transaction routes use transactions service
+var transaction_service = require('../services/transaction_service');
 
 module.exports = function(app) {
 
-  app.post('/users/:userId/transactions', function(request, response) {
-    console.log("POST to: ",request.body.url, "-->Create Transaction" );
-    transactions.create(request,response);
-  });
-
-  app.get('/users/:userId/transactions/:transactionId', function(request, response) {
-    console.log("GET to: ",request.body.url, "-->Get transaction" );
-    transactions.transaction(request,response, request.params.transactionId);
-  });
+  app.post('/users/:userId/transactions', transaction_service.create);
+  
+  app.get('/users/:userId/transactions/:transactionId', transaction_service.get);
 
 };
