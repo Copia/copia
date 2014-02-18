@@ -2,18 +2,19 @@
 <h2>C (add logo)</h2>
 
 <form>
-  <input type='currency' name='amount' placeholder='Amount'/>
-  <input type='currency' name='payback' placeholder='Payback'/>
-  <input type='date' name='due'/ placeholder='Info...' />
-  <input type='date' name='deadline'/ placeholder='Info...' />
+  <!-- TODO: make sure that currency is properly formatted -->
+  <input type='number' min=0 step=.01 name='debtAmount' placeholder='Amount'/>
+  <input type='number' min=0 step=.01 name='debtPayback' placeholder='Payback'/>
+  <input type='date' name='debtDue' />
+  <input type='date' name='debtDeadline'/>
   <select>
-    <option>gambling</option>
-    <option>drugs</option>
-    <option selected>hookers</option>
-    <option>education</option>
+    <option>Option A</option>
+    <option>Option B</option>
+    <option selected>Option C</option>
+    <option>Option D</option>
   </select>
-  <textarea placeholder='reason why you need the dough'></textarea>
+  <textarea name='debtReason' placeholder='reason why you need the dough'></textarea>
 
   <button class='btn btn-danger'>Cancel</button>
-  <button class='btn btn-success'>Submit</button>
+  <button class='btn btn-success'>Next</button>
 </form>
