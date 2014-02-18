@@ -1,3 +1,6 @@
 angular.module('app')
-.controller('BorrowConfirmController', ["$scope", function($scope){
+.controller('BorrowConfirmController', 
+["$scope", 
+function($scope){
+  
 }]);
