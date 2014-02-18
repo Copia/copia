@@ -8,30 +8,30 @@
   <!-- TODO: make sure that currency is properly formatted -->
   <div class='debtAmount'>
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' min=0 step=.01 name='debtAmount' placeholder='Amount'/>
+    <input type='number' min=0 step=.01 name='debtAmount' placeholder='Amount' ng-model='loanAmount'/>
     <a href="">?</a>
   </div>
 
   <div class='debtPayback'>
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' min=0 step=.01 name='debtPayback' placeholder='Payback'/>
+    <input type='number' min=0 step=.01 name='debtPayback' placeholder='Payback' ng-model='paybackAmount'/>
     <a href="">?</a>
   </div>
   
   <div class='debtDue'>
     <img class='calendarimg' src="/img/calendar.png">
-    <input type='date' name='debtDue' />
+    <input type='date' name='debtDue' ng-model='debtDueDate'/>
     <a href="">?</a>
   </div>
 
   <div class='debtDeadline'>
     <img class='calendarimg' src="/img/calendar.png">
-    <input type='date' name='debtDeadline'/>
+    <input type='date' name='debtDeadline' ng-model='debtDeadlineDate'/>
     <a href="">?</a>
   </div>
 
   <div class='debtCategory'>
-    <select>
+    <select ng-model='debtCategory'>
       <option>Option A</option>
       <option>Option B</option>
       <option selected>Option C</option>
@@ -40,10 +40,10 @@
   </div>
 
   <div class='debtReason'>
-    <textarea name='debtReason' placeholder='reason why you need the dough'></textarea>
+    <textarea name='debtReason' placeholder='reason why you need the dough' ng-model='debtReason'></textarea>
   </div>
   
-
-  <button class='btn btn-danger'>Cancel</button>
-  <button class='btn btn-success'>Next</button>
 </form>
+
+<button class='btn btn-danger'>Cancel</button>
+<button class='btn btn-success'>Next</button>
