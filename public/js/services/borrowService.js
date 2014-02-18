@@ -4,12 +4,14 @@ angular.module('app')
 .provider('BorrowRequest', function(){
   
   this.loanAttrs = {};
+  this.validLoanAttrs = true; //record whether loan attrs are valid for posting to db
 
-  this.$get = function($http){
+  this.$get = function($http, $location){
     var self = this;
-    
+
     var service = {
-      saveDebtAttrs : function(attrs) {
+      //update loanAttrs from borrow.js
+      saveLoanAttrs : function(attrs) {
         self.loanAttrs = attrs;
       },
 
@@ -25,6 +27,12 @@ angular.module('app')
         .error(function(data, status, headers, config) {
           
         });
+      },
+
+      redirectInvalidLoan : function(){
+        if(!self.validLoanAttrs) {
+          $location.path( "/borrow" );
+        } 
       }
 
     };

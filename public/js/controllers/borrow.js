@@ -18,7 +18,7 @@ function($scope, $location, BorrowRequest){
       debtCategory : $scope.debtCategory,
       debtReason : $scope.debtReason
     }
-    BorrowRequest.saveDebtAttrs(debtAttrs);
+    BorrowRequest.saveLoanAttrs(debtAttrs);
     $location.path( "/borrow_confirmation" );
   };
 }]);
