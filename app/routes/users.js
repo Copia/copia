@@ -11,29 +11,23 @@ module.exports = function(app) {
         res.render('index');
     });
 
-    app.post('/venmo_login', user_service.venmo_login);
+    app.post('/venmo_login', authentication.router_auth, user_service.venmo_login);
 
-    app.get('/login', //authMW//
-     user_service.login);
+    app.get('/login', user_service.login);
 
-    app.post('/logout', //authMW//
-     user_service.logout);
+    app.post('/logout', authentication.router_auth, user_service.logout);
 
     //redirect from venmo
     app.get('/auth', authentication.oauth2, user_service.create);
 
-    // TODO - don't remember what this route was for
-    // app.post('/auth' //authMW//
-    //   );
-
     app.post('/auth_test', user_service.create);
 
-    app.get('/dashboard', function(request, response) {
+    app.get('/dashboard', authentication.router_auth, function(request, response) {
         response.send('Welcome to Copia!!!');
     });
 
-    app.get('/users/:userId', user_service.get);
+    app.get('/users/:userId', authentication.router_auth, user_service.get);
 
-    app.post('/users/:userId/:update', user_service.get);
+    app.post('/users/:userId/:update', authentication.router_auth, user_service.get);
 
 };
