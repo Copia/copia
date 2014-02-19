@@ -1,21 +1,34 @@
-var express = require("express");
-var mongoose = require("mongoose");
-var users = require("./app/models/user");
-var loans = require("./app/models/loan");
-var db  = mongoose.connect('mongodb://heroku_app22242686:do2856rbauaa0nlb1epfqgj61o@ds033569.mongolab.com:33569/heroku_app22242686');
+var express     = require("express");
+var mongoose    = require("mongoose");
+var config      = require('./package.json').config;
+var users       = require("./app/models/user");
+var loans       = require("./app/models/loan");
 var consolidate = require('consolidate');
+var path        = require('path');
+
+// instantiate expressjs app
 var app = express();
 
-require('./config/express')(app);
-
+// Set up serving up of static resources and server side dynamic views
+var rootPath = path.normalize(__dirname );
+app.use( express.static( rootPath + '/public') );
 app.engine('html', consolidate.swig);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/app/views');
+
+// Set up some standard express middleware
+app.use( express.bodyParser() );
+app.use( app.router );
+
+// Connect to database
+var db  = mongoose.connect(config.db);
+
+// Get routes and models
 require('./app/routes/users')(app);
 require('./app/routes/loans')(app);
 
+// Use command line port, if no the one in package.json/config
+var port = Number(process.env.PORT || config.port);
 
-var port = Number(process.env.PORT || 3000);
-
+// Start server
 app.listen(port);
-
