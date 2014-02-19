@@ -15,8 +15,10 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+    password_hash: String,
+    password_salt: String,
+    session_token: String,
     karma: Number,
-    session_token: String
 });
 
 /**
