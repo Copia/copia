@@ -21,20 +21,3 @@ app.directive('paybackValidation', function(){
     }
   }
 });
-
-app.directive('repaymentDateValidation', function(){
-  return {
-    require: 'ngModel',
-    link : function($scope, elm, attrs, ngModel) {
-      
-      $scope.$watch('loan.date', function(dates){
-        var payback = dates.payback;
-        var neededBy = dates.neededBy;
-
-        console.log(payback);
-        console.log(typeof(payback));
-        
-      }, true);
-    }
-  }
-});
