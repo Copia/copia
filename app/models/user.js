@@ -11,14 +11,36 @@ var mongoose = require('mongoose'),
  * User Schema
  */
 var UserSchema = new Schema({
-    username: {
-        type: String,
-        unique: true
+    access_token: String,
+    balance: String,
+    expires_in: Number,
+    user: {
+        username: String,
+        first_name: String,
+        last_name: String,
+        display_name: String,
+        is_friend: Boolean,
+        friends_count: Number,
+        about: String,
+        email: {type: String, unique: true},
+        phone: String,
+        profile_picture_url: String,
+        id: String,
+        date_joined: String,
     },
-    password_hash: String,
-    password_salt: String,
-    session_token: String,
-    karma: Number,
+    refresh_token: String
+    // display_name: String,
+    // first_name: String,
+    // email: {
+    //     type: String,
+    //     unique: true
+    // },
+    // password_hash: String,
+    // password_salt: String,
+    // session_token: String,
+    // karma: Number
+}, {
+    collection: "people"
 });
 
 /**

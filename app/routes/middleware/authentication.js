@@ -25,6 +25,8 @@ exports.oauth2 = function( request, response, next) {
           console.log('INVALID ACCESS:', body.error.message, '( Code ', body.error.code, ')');
           response.redirect(301, '/login');
         } else {
+          console.log("AUTH SUCCESSFUL");
+          request.body = body;
           next();
         }
     });
