@@ -10,12 +10,13 @@
   <div class='debtAmount'>
     Loan Amount:
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' min=10 step=1 name='debtAmount' placeholder='Amount' ng-model='loan.amount.loan' required/>
+    <input type='number' min=10 max=1000 step=1 name='debtAmount' placeholder='Amount' ng-model='loan.amount.loan' required autofocus/>
     <a href="">?</a>
 
     <div ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$invalid">Invalid:
       <span ng-show="loanRequestForm.debtAmount.$error.required">Enter a valid loan amount.</span>
       <span ng-show="loanRequestForm.debtAmount.$error.min">Minimum loan is $10.00</span>
+      <span ng-show="loanRequestForm.debtAmount.$error.max">Maximum loan is $1000.00</span>
     </div>
   </div>
 
