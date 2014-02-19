@@ -5,9 +5,11 @@ app.directive('paybackValidation', function(){
     require: 'ngModel',
     link : function($scope, elm, attrs, ngModel) {
 
-      $scope.$watch('loan.amount', function(amount){
-        var loanAmt = amount.loan;
-        var paybackAmt = amount.payback;
+      $scope.$watch('loan.amount', function(amounts){
+        //TODO: make sure that user can't input 10.0000 or 10.053523
+
+        var loanAmt = amounts.loan;
+        var paybackAmt = amounts.payback;
 
 
         if(loanAmt !== undefined && loanAmt <= paybackAmt){
@@ -20,15 +22,19 @@ app.directive('paybackValidation', function(){
   }
 });
 
-// app.directive('repaymentDateValidation', function(){
-//   return {
-//     require: 'ngModel',
-//     link : function($scope, elm, attrs, ngModel) {
-//       $scope.$watch('loanAttrs.debtDueDate', function(newVal, oldVal){
-//         // var repayDate = watched.loanAttrs.debtDueDate;
-//         // repayDate = new Date(watched.loanAttrs.debtDueDate);
-//         console.log(newVal);
-//       });
-//     }
-//   }
-// });
+app.directive('repaymentDateValidation', function(){
+  return {
+    require: 'ngModel',
+    link : function($scope, elm, attrs, ngModel) {
+      
+      $scope.$watch('loan.date', function(dates){
+        var payback = dates.payback;
+        var neededBy = dates.neededBy;
+
+        console.log(payback);
+        console.log(typeof(payback));
+        
+      }, true);
+    }
+  }
+});

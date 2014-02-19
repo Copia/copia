@@ -7,16 +7,18 @@ function($scope, $location, BorrowRequest){
   $scope.loan = BorrowRequest.getLoan();
 
   $scope.borrowConfirm = function(){
-    // var debtAttrs = {
-    //   loanAmount : $scope.loanAttrs.loanAmount,
-    //   paybackAmount : $scope.loanAttrs.paybackAmount,
-    //   debtDueDate : $scope.loanAttrs.debtDueDate,
-    //   debtDeadlineDate : $scope.loanAttrs.debtDeadlineDate,
-    //   debtCategory : $scope.loanAttrs.debtCategory,
-    //   debtReason : $scope.loanAttrs.debtReason
-    // }
-
     BorrowRequest.saveLoan($scope.loan);
     $location.path( "/borrow_confirmation" );
+  };
+
+  $scope.debtDueOpened = false;
+  var min = new Date();
+  $scope.debtDueMin = min.setDate(min.getDate() + 7); //earliest payback is one week from today
+  $scope.debtDueMax = min.setDate(min.getDate() + 365); //latest payback is one year from one week away
+  
+  $scope.openDebtDue = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.debtDueOpened = true;
   };
 }]);
