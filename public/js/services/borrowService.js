@@ -3,14 +3,19 @@
 angular.module('app')
 .provider('BorrowRequest', function(){
   
-  this.loanAttrs = {
-    loanAmount : undefined,
-    paybackAmount : undefined, 
-    debtDueDate : undefined,
-    debtDeadlineDate : undefined,
-    debtCategory : undefined,
-    debtReason : undefined
+  this.loan = {
+    amount : {
+      loan : undefined,
+      payback : undefined
+    },
+    date : {
+      payback : undefined,
+      neededBy : undefined,
+    },
+    category : undefined,
+    reason : undefined
   };
+
   this.validLoanAttrs = true; //record whether loan attrs are valid for posting to db
 
   this.$get = function($http, $location){
@@ -18,12 +23,12 @@ angular.module('app')
 
     var service = {
       //update loanAttrs from borrow.js
-      saveLoanAttrs : function(attrs) {
-        self.loanAttrs = attrs;
+      saveLoan : function(attrs) {
+        self.loan = attrs;
       },
 
-      getLoanAttrs : function() {
-        return self.loanAttrs;
+      getLoan : function() {
+        return self.loan;
       },
 
       submitBorrowRequest : function() {

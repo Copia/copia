@@ -4,26 +4,19 @@ angular.module('app')
 function($scope, $location, BorrowRequest){
   
   //load loan attrs from persistent loan service
-  var loan = BorrowRequest.getLoanAttrs();
-  $scope.loanAttrs = {
-    loanAmount : loan.loanAmount,
-    paybackAmount : loan.paybackAmount, 
-    debtDueDate : loan.debtDueDate,
-    debtDeadlineDate : loan.debtDeadlineDate,
-    debtCategory : loan.debtCategory,
-    debtReason : loan.debtReason
-  }
+  $scope.loan = BorrowRequest.getLoan();
 
   $scope.borrowConfirm = function(){
-    var debtAttrs = {
-      loanAmount : $scope.loanAttrs.loanAmount,
-      paybackAmount : $scope.loanAttrs.paybackAmount,
-      debtDueDate : $scope.loanAttrs.debtDueDate,
-      debtDeadlineDate : $scope.loanAttrs.debtDeadlineDate,
-      debtCategory : $scope.loanAttrs.debtCategory,
-      debtReason : $scope.loanAttrs.debtReason
-    }
-    BorrowRequest.saveLoanAttrs(debtAttrs);
+    // var debtAttrs = {
+    //   loanAmount : $scope.loanAttrs.loanAmount,
+    //   paybackAmount : $scope.loanAttrs.paybackAmount,
+    //   debtDueDate : $scope.loanAttrs.debtDueDate,
+    //   debtDeadlineDate : $scope.loanAttrs.debtDeadlineDate,
+    //   debtCategory : $scope.loanAttrs.debtCategory,
+    //   debtReason : $scope.loanAttrs.debtReason
+    // }
+
+    BorrowRequest.saveLoan($scope.loan);
     $location.path( "/borrow_confirmation" );
   };
 }]);

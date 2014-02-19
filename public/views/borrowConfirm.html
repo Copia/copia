@@ -7,12 +7,12 @@
 <h2>Loan Request Confirmation:</h2>
 <div class='loanConfText'>
   <p>
-    Loan amount: {{ loan.loanAmount }}
-    <br>Payback amount: {{ loan.paybackAmount }}
-    <br>Debt Due By: {{ loan.debtDueDate }}
-    <br>Debt Deadline: {{ loan.debtDeadlineDate }}
-    <br>Debt Category: {{ loan.debtCategory }}
-    <br>Debt Reason: {{ loan.debtReason }}
+    Loan amount: {{ loan.amount.loan }}
+    <br>Payback amount: {{ loan.amount.payback }}
+    <br>Debt Due By: {{ loan.date.packback }}
+    <br>Debt Deadline: {{ loan.date.neededBy }}
+    <br>Debt Category: {{ loan.category }}
+    <br>Debt Reason: {{ loan.reason }}
   </p>
   <p>TERMS OF SERVICE:</p>
 </div>
