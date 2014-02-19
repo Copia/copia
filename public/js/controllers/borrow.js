@@ -50,14 +50,28 @@ function($scope, $location, BorrowRequest){
     'Three Months' : 84
   };
 
+  var daysToOptions = {
+    7 : 'One Week',
+    14 : 'Two Weeks',
+    21 : 'Three Weeks',
+    28 : 'One Month',
+    56 : 'Two Months',
+    84 : 'Three Months'
+  }
+
   //functionality for DEBT PAYBACK drop down menu
-  $scope.debtDueSelection = undefined; //drop down list selection
-  $scope.otherDebtDueSelected = false; //"is Other" option on drop down list selected?
-  
+  if($scope.loan.paybackDays === undefined) {
+    $scope.debtDueSelection = undefined; //drop down list selection
+    $scope.otherDebtDueSelected = false; //"is Other" option on drop down list selected?
+  } else if($scope.loan.paybackDays in daysToOptions) {
+    $scope.debtDueSelection = daysToOptions[$scope.loan.paybackDays];
+  } else {
+    $scope.debtDueSelection = 'Other (Enter # of days)';
+  }
+
   $scope.$watch('debtDueSelection', function(selection){
     if(selection === 'Other (Enter # of days)') {
       $scope.otherDebtDueSelected = true; //'Other' option selected, display manual input box for # of days
-      $scope.loan.paybackDays = undefined; //reset # of days for payback
     } else {
       $scope.otherDebtDueSelected = false;
       $scope.loan.paybackDays = optionsToDays[selection]; 
