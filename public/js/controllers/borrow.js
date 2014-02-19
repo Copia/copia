@@ -13,12 +13,12 @@ function($scope, $location, BorrowRequest){
 
 
   //functionality for DEBT NEEDED-BY pop-out calendar
-  $scope.debtNeededOpened = false;
+  $scope.debtNeededOpened = false; //status of pop-out calendar
   $scope.debtNeededMin = new Date(); //earliest debt request is today
   var max = new Date();
   $scope.debtNeededMax = max.setDate(max.getDate() + 7*4); //latest debt request is 1 months from now
   
-  $scope.debtNeededBySelected = false;
+  $scope.debtNeededBySelected = false; //
   $scope.$watch('loan.date.neededBy', function(neededBy){
     //if neededBy is cleared, reset payback date
     if(neededBy === undefined) {
@@ -29,16 +29,37 @@ function($scope, $location, BorrowRequest){
     }
   }, true)
   
+  //pop-out on glyphicon-calendar
   $scope.openDebtNeeded = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
     $scope.debtNeededOpened = true;
   };
 
-  //functionality for DEBT PAYBACK drop down menu
-  $scope.debtDueSelection = undefined;
-  $scope.$watch('debtDueSelection', function(selection){
-    console.log(selection);
-  }, true);
+  //map drop down list selection to number of days
+  var optionsToDays = {
+    'One Week' : 7,
+    'Two Weeks' : 14,
+    'Three Weeks' : 21,
+    'One Month' : 28,
+    'Two Months' : 56,
+    'Three Months' : 84
+  };
 
+  //functionality for DEBT PAYBACK drop down menu
+  $scope.debtDueSelection = undefined; //drop down list selection
+  $scope.otherDebtDueSelected = false; //"is Other" option on drop down list selected?
+  
+  $scope.$watch('debtDueSelection', function(selection){
+    if(selection === 'Other (Enter # of days)') {
+      $scope.otherDebtDueSelected = true; //'Other' option selected, display manual input box for # of days
+      $scope.loan.paybackDays = undefined; //reset # of days for payback
+    } else {
+      $scope.otherDebtDueSelected = false;
+      $scope.loan.paybackDays = optionsToDays[selection]; 
+    }
+  }, true);
 }]);
+
+
+

@@ -14,21 +14,26 @@
     <img class='dollarimg' src="/img/dollarsign.png">
     <input type='number' min=10 step=1 name='debtAmount' placeholder='Amount' ng-model='loan.amount.loan' required/>
     <a href="">?</a>
-  </div>
-  <div ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$invalid">Invalid:
-    <span ng-show="loanRequestForm.debtAmount.$error.required">Enter a valid loan amount.</span>
-    <span ng-show="loanRequestForm.debtAmount.$error.min">Minimum loan is $10.00</span>
+
+    <div ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$invalid">Invalid:
+      <span ng-show="loanRequestForm.debtAmount.$error.required">Enter a valid loan amount.</span>
+      <span ng-show="loanRequestForm.debtAmount.$error.min">Minimum loan is $10.00</span>
+    </div>
   </div>
 
   <div class='debtDeadline'>
     Loan Needed By:
     <p class='input-group'>
-      <input type="text" class="form-control" datepicker-popup="MMMM dd, yyyy" ng-model="loan.date.neededBy" is-open="debtNeededOpened" min="debtNeededMin" max="debtNeededMax" ng-required="true" close-text="Close" />
+      <input name='debtDeadline' type="text" class="form-control" datepicker-popup="MMMM dd, yyyy" ng-model="loan.date.neededBy" is-open="debtNeededOpened" min="debtNeededMin" max="debtNeededMax" ng-required="true" close-text="Close" />
       <span class="input-group-btn">
         <button class="btn btn-default" ng-click="openDebtNeeded($event)"><i class="glyphicon glyphicon-calendar"></i></button>
       </span>
       <a href="">?</a>
     </p>
+
+    <div ng-show="loanRequestForm.debtDeadline.$dirty && loanRequestForm.debtDeadline.$invalid">Invalid:
+      <span ng-show="loanRequestForm.debtDeadline.$error.required">Select a date by which you need the loan.</span>
+    </div>
   </div>
 
   <div class='debtPayback'>
@@ -36,14 +41,16 @@
     <img class='dollarimg' src="/img/dollarsign.png">
     <input type='number' step=.01 name='debtPayback' placeholder='Payback' ng-model='loan.amount.payback' payback-validation required/>
     <a href="">?</a>
-  </div>
-  <div ng-show="loanRequestForm.debtPayback.$dirty && loanRequestForm.debtPayback.$invalid">Invalid:
-    <span ng-show="loanRequestForm.debtPayback.$error.required">Enter a valid payback amount.</span>
-    <span ng-show="loanRequestForm.debtPayback.$error.min">Minimum loan is $10.00.</span>
-    <span ng-show="loanRequestForm.debtPayback.$error.paybackThreshold">Payback amount must be greater than or equal to loan amount.</span>
-  </div>
 
-  <div class='debtDue'>
+    <div ng-show="loanRequestForm.debtPayback.$dirty && loanRequestForm.debtPayback.$invalid">Invalid:
+      <span ng-show="loanRequestForm.debtPayback.$error.required">Enter a valid payback amount.</span>
+      <span ng-show="loanRequestForm.debtPayback.$error.min">Minimum loan is $10.00.</span>
+      <span ng-show="loanRequestForm.debtPayback.$error.paybackThreshold">Payback amount must be greater than or equal to loan amount.</span>
+    </div>
+  </div>
+  
+
+  <div class='debtDueDropdown'>
     Length of Loan:
     <select ng-model='debtDueSelection' required ng-disabled="!debtNeededBySelected">
       <option>One Week</option>
@@ -55,6 +62,17 @@
       <option>Other (Enter # of days)</option>
     </select>
     <a href="">?</a>
+  </div>
+
+  <div class='manualDueDate' ng-show='otherDebtDueSelected'>
+    Enter length of loan in days:
+    <input name='daysForRepayment' type='number' step=1 min=7 max=84 ng-model='loan.paybackDays' required/> <!-- loan payback between 1 week and 3 months -->
+
+    <div ng-show="loanRequestForm.daysForRepayment.$dirty && loanRequestForm.daysForRepayment.$invalid">Invalid:
+      <span ng-show="loanRequestForm.daysForRepayment.$error.required">Enter a valid number of days (7 to 84) by which to repay loan.</span>
+      <span ng-show="loanRequestForm.daysForRepayment.$error.min">Minimum number of days to repay loan in 7</span>
+      <span ng-show="loanRequestForm.daysForRepayment.$error.max">Maximum number of days to repay loan in 84</span>
+    </div>
   </div>
 
   <div class='debtCategory'>
