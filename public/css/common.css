@@ -26,7 +26,7 @@ textarea[name=debtReason] {
 }
 
 form[name=loanRequestForm].ng-invalid.ng-dirty {
-    border: 3px solid red;
+    border: 3px solid yellow;
 }
 
 form[name=loanRequestForm].ng-valid.ng-dirty {
@@ -34,11 +34,11 @@ form[name=loanRequestForm].ng-valid.ng-dirty {
 }
 
 form[name=loanRequestForm] input.ng-invalid.ng-dirty {
-  border: 3px solid red;
+    border: 3px solid red;
 }
 
 form[name=loanRequestForm] input.ng-valid.ng-dirty {
-  border: 3px solid forestgreen;
+    border: 3px solid forestgreen;
 }   
 
 footer {

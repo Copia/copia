@@ -6,23 +6,33 @@
 
 {{ loanAttrs }}
 
-<form class='loanRequestForm'>
+<form name='loanRequestForm' class='loanRequestForm'>
   <!-- TODO: make sure that currency is properly formatted -->
   <div class='debtAmount'>
     Loan Amount
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' min=0 step=.01 name='debtAmount' placeholder='Amount' ng-model='loanAttrs.loanAmount' required/>
+    <input type='number' min=10 step=1 name='debtAmount' placeholder='Amount' ng-model='loanAttrs.loanAmount' required/>
     <a href="">?</a>
   </div>
-  <span ng-show="form.debtAmount.$error.required">Enter a loan amount.</span>
+  <div ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$invalid">Invalid:
+    <span ng-show="loanRequestForm.debtAmount.$error.required">Enter a valid loan amount.</span>
+    <span ng-show="loanRequestForm.debtAmount.$error.min">Minimum loan is $10.00</span>
+  </div>
 
   <div class='debtPayback'>
     Payback Amount
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' min=0 step=.01 name='debtPayback' placeholder='Payback' ng-model='loanAttrs.paybackAmount' required/>
+    <input type='number' step=.01 name='debtPayback' pnglaceholder='Payback' ng-model='loanAttrs.paybackAmount' payback-validation required/>
     <a href="">?</a>
   </div>
+  <div ng-show="loanRequestForm.debtPayback.$dirty && loanRequestForm.debtPayback.$invalid">Invalid:
+    <span ng-show="loanRequestForm.debtPayback.$error.required">Enter a valid payback amount.</span>
+    <span ng-show="loanRequestForm.debtPayback.$error.min">Minimum loan is $10.00.</span>
+    <span ng-show="loanRequestForm.debtPayback.$error.paybackThreshold">Payback amount must be greater than or equal to loan amount.</span>
+  </div>
   
+
+
   <div class='debtDue'>
     Repayment Date
     <img class='calendarimg' src="/img/calendar.png">
@@ -56,6 +66,6 @@
 
 <button class='btn btn-danger'>Cancel</button>
 <!-- TODO: disable this button until the form is valid -->
-<button class='btn btn-success' ng-click='borrowConfirm()'>Next</button>
+<button class='btn btn-success' ng-click='borrowConfirm()' ng-disabled="loanRequestForm.$invalid">Next</button>
 
 
