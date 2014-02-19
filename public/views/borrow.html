@@ -7,9 +7,10 @@
 {{ loan }}
 
 <form name='loanRequestForm' class='loanRequestForm'>
+
   <!-- TODO: make sure that currency is properly formatted -->
   <div class='debtAmount'>
-    Loan Amount
+    Loan Amount:
     <img class='dollarimg' src="/img/dollarsign.png">
     <input type='number' min=10 step=1 name='debtAmount' placeholder='Amount' ng-model='loan.amount.loan' required/>
     <a href="">?</a>
@@ -19,8 +20,19 @@
     <span ng-show="loanRequestForm.debtAmount.$error.min">Minimum loan is $10.00</span>
   </div>
 
+  <div class='debtDeadline'>
+    Loan Needed By:
+    <p class='input-group'>
+      <input type="text" class="form-control" datepicker-popup="MMMM dd, yyyy" ng-model="loan.date.neededBy" is-open="debtNeededOpened" min="debtNeededMin" max="debtNeededMax" ng-required="true" close-text="Close" />
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="openDebtNeeded($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+      <a href="">?</a>
+    </p>
+  </div>
+
   <div class='debtPayback'>
-    Payback Amount
+    Payback Amount:
     <img class='dollarimg' src="/img/dollarsign.png">
     <input type='number' step=.01 name='debtPayback' placeholder='Payback' ng-model='loan.amount.payback' payback-validation required/>
     <a href="">?</a>
@@ -32,27 +44,18 @@
   </div>
 
   <div class='debtDue'>
-    Repayment Date
-    <p class='input-group'>
-      <input type="text" class="form-control" datepicker-popup="MMMM dd, yyyy" ng-model="loan.date.payback" is-open="debtDueOpened" min="debtDueMin" max="debtDueMax"  ng-required="true" close-text="Close" />
-      <span class="input-group-btn">
-        <button class="btn btn-default" ng-click="openDebtDue($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-    </p>
-  </div>
-  <!-- <div class='debtDue'>
-    Repayment Date
-    <img class='calendarimg' src="/img/calendar.png">
-    <input type='date' name='debtDue' ng-model='loan.date.payback' repayment-date-validation required/>
+    Length of Loan:
+    <select ng-model='debtDueSelection' required ng-disabled="!debtNeededBySelected">
+      <option>One Week</option>
+      <option>Two Weeks</option>
+      <option>Three Weeks</option>
+      <option>One Month</option>
+      <option>Two Months</option>
+      <option>Three Months</option>
+      <option>Other (Enter # of days)</option>
+    </select>
     <a href="">?</a>
   </div>
-
-  <div class='debtDeadline'>
-    Loan Needed By
-    <img class='calendarimg' src="/img/calendar.png">
-    <input type='date' name='debtDeadline' ng-model='loan.date.neededBy' required/>
-    <a href="">?</a>
-  </div> -->
 
   <div class='debtCategory'>
     Loan Category
@@ -62,11 +65,13 @@
       <option selected>Option C</option>
       <option>Option D</option>
     </select>
+    <a href="">?</a>
   </div>
 
   <div class='debtReason'>
     Loan Reason
     <textarea name='debtReason' placeholder='Why are you requesting this loan?' ng-model='loan.reason' required></textarea>
+    <a href="">?</a>
   </div>
   
 </form>
