@@ -21,7 +21,6 @@ exports.create = function(request, response, body) {
   // request.body.session_token = "This_will_be_a_session_token";
   console.log("USER_SERVICE: create user: ",request.body);
   users.create(request, response);
-  response.redirect('/#dashboard');
 };
 
 exports.login = function(request, response) {
