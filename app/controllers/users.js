@@ -24,7 +24,9 @@ exports.get = function(req, res, id) {
  * Create a user
  */
 exports.create = function(req, res) {
+    console.log("MONGO-->CREATE: ",req.body)
     var user = new User(req.body);
+    console.log("USER: ",user);
     //user.user = req.user;
     user.save(function(err) {
         if (err) {
@@ -33,7 +35,7 @@ exports.create = function(req, res) {
                 user: user
             });
         } else {
-            res.jsonp(user);
+            console.log("SUPPOSEDLy created user");
         }
     });
 };

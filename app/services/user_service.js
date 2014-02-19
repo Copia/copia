@@ -14,19 +14,22 @@ var venmoUrl = 'https://api.venmo.com/v1/oauth/authorize?';
     venmoUrl += '%20access_friends';
     venmoUrl += '&response_type=code';
 
-exports.create = function(request, response) {
+exports.create = function(request, response, body) {
   //check if user exists?
-  request.body.karma = 0;
-  request.body.session_token = "This_will_be_a_session_token";
-  console.log("user_service: create user: ",request.body);
+
+  // request.body.karma = 0;
+  // request.body.session_token = "This_will_be_a_session_token";
+  console.log("USER_SERVICE: create user: ",request.body);
   users.create(request, response);
-  response.redirect('/dashboard');
+  response.redirect('/#dashboard');
 };
 
 exports.login = function(request, response) {
   //expect a user session token from auth MW
   //for now redirect to venmo login page
   response.redirect(307, venmoUrl);
+  
+
 };
 
 exports.logout = function(request, response) {
