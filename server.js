@@ -11,7 +11,6 @@ var app = express();
 
 // Set up serving up of static resources and server side dynamic views
 var rootPath = path.normalize(__dirname );
-app.use( express.static( rootPath + '/public') );
 app.engine('html', consolidate.swig);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/app/views');
@@ -19,6 +18,7 @@ app.set('views', __dirname + '/app/views');
 // Set up some standard express middleware
 app.use( express.bodyParser() );
 app.use( app.router );
+app.use( express.static( rootPath + '/public') );
 
 // Connect to database
 var db  = mongoose.connect(config.db);
