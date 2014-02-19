@@ -11,6 +11,10 @@ function($scope, $location, BorrowRequest){
     $location.path( "/borrow_confirmation" );
   };
 
+  $scope.cancel = function(){
+    $location.path( "/dashboard" );
+  };
+
   //monitor form for validity; alert BorrowRequest service to allow /borrow_confirmation route
   $scope.$watch('loanRequestForm.$invalid', function(invalid){
     BorrowRequest.validateLoan(!invalid);

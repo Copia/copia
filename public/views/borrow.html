@@ -93,7 +93,8 @@
   
 </form>
 
-<button class='btn btn-danger'>Cancel</button>
+<button class='btn btn-danger' ng-click='cancel()'>Cancel</button>
+<button class='btn btn-warning' ng-click='clearForm()'>Clear Form</button>
 <button class='btn btn-success' ng-click='borrowConfirm()' ng-disabled="loanRequestForm.$invalid">Next</button>
 
 
