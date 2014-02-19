@@ -31,4 +31,4 @@ require('./app/routes/loans')(app);
 var port = Number(process.env.PORT || config.port);
 
 // Start server
-app.listen(3000);
+app.listen(port);
