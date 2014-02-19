@@ -6,11 +6,15 @@ function($scope, $location, BorrowRequest){
   //load loan attrs from persistent loan service
   $scope.loan = BorrowRequest.getLoan();
 
-  $scope.borrowConfirm = function(){
+  $scope.borrowConfirm = function(){ //this function can only be called when form is valid
     BorrowRequest.saveLoan($scope.loan);
     $location.path( "/borrow_confirmation" );
   };
 
+  //monitor form for validity; alert BorrowRequest service to allow /borrow_confirmation route
+  $scope.$watch('loanRequestForm.$invalid', function(invalid){
+    BorrowRequest.validateLoan(!invalid);
+  }, true);
 
   //functionality for DEBT NEEDED-BY pop-out calendar
   $scope.debtNeededOpened = false; //status of pop-out calendar
