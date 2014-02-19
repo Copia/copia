@@ -12,12 +12,8 @@ function($scope, $location, BorrowRequest){
   };
 
   $scope.clearForm= function(){
-    $scope.loan.amount.loan = undefined;
-    $scope.loan.amount.payback = undefined;
-    $scope.loan.date.neededBy = undefined;
-    $scope.loan.paybackDays = undefined;
-    $scope.loan.category = undefined;
-    $scope.loan.reason = undefined;
+    BorrowRequest.clearLoan();
+    $scope.loan = BorrowRequest.getLoan();
   };
 
   $scope.cancel = function(){

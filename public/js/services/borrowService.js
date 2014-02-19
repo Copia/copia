@@ -22,6 +22,15 @@ angular.module('app')
     var self = this;
 
     var service = {
+      clearLoan : function(){
+        self.loan.amount.loan = undefined;
+        self.loan.amount.payback = undefined;
+        self.loan.date.neededBy = undefined;
+        self.loan.paybackDays = undefined;
+        self.loan.category = undefined;
+        self.loan.reason = undefined;
+      },
+
       //update loanAttrs status from borrow.js
       validateLoan : function(status) {
         self.validLoanAttrs = status;
