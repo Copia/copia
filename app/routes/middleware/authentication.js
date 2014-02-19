@@ -1,6 +1,7 @@
 'use strict';
 var https_service = require('request');
 var url = require('url');
+var config = require('../../../package.json').config;
 
 exports.oauth2 = function( request, response, next) {
     var venmoUrl = 'https://api.venmo.com/v1/oauth/access_token';
@@ -27,5 +28,15 @@ exports.oauth2 = function( request, response, next) {
           next();
         }
     });
+
+};
+
+exports.router_auth = function(request, response, next) {
+  console.log('In middleware. Config: ', config);
+  console.log('config.debug: ', config.debug, 'config.db: ', config.db);
+  if (config.debug) {
+    console.log('Authentication Middlware', request.body);
+  }
+  next();
 
 };
