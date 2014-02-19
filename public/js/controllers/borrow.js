@@ -23,7 +23,7 @@ function($scope, $location, BorrowRequest){
     //if neededBy is cleared, reset payback date
     if(neededBy === undefined) {
       $scope.debtNeededBySelected = false;
-      $scope.loan.date.payback = undefined;
+      $scope.debtDueSelection = undefined;
     } else {
       $scope.debtNeededBySelected = true;
     }

@@ -45,7 +45,7 @@
 
   <div class='debtDue'>
     Length of Loan:
-    <select ng-model='debtDueSelection' required>
+    <select ng-model='debtDueSelection' required ng-disabled="!debtNeededBySelected">
       <option>One Week</option>
       <option>Two Weeks</option>
       <option>Three Weeks</option>
