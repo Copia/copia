@@ -1,19 +1,78 @@
-<a href="#/dashboard">Back</a>
-<h2>C (add logo)</h2>
+<div class='dashboardHeader'>
+  <a href="#/dashboard" class='glyphicon glyphicon-chevron-left'></a>
+  <h2>C (add logo)</h2>
+  <a href="" class="glyphicon glyphicon-align-justify"></a>
+</div>
 
-<form>
-  <input type='currency' name='amount' placeholder='Amount'/>
-  <input type='currency' name='payback' placeholder='Payback'/>
-  <input type='date' name='due'/ placeholder='Info...' />
-  <input type='date' name='deadline'/ placeholder='Info...' />
-  <select>
-    <option>gambling</option>
-    <option>drugs</option>
-    <option selected>hookers</option>
-    <option>education</option>
-  </select>
-  <textarea placeholder='reason why you need the dough'></textarea>
+{{ loan }}
 
-  <button class='btn btn-danger'>Cancel</button>
-  <button class='btn btn-success'>Submit</button>
+<form name='loanRequestForm' class='loanRequestForm'>
+  <!-- TODO: make sure that currency is properly formatted -->
+  <div class='debtAmount'>
+    Loan Amount
+    <img class='dollarimg' src="/img/dollarsign.png">
+    <input type='number' min=10 step=1 name='debtAmount' placeholder='Amount' ng-model='loan.amount.loan' required/>
+    <a href="">?</a>
+  </div>
+  <div ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$invalid">Invalid:
+    <span ng-show="loanRequestForm.debtAmount.$error.required">Enter a valid loan amount.</span>
+    <span ng-show="loanRequestForm.debtAmount.$error.min">Minimum loan is $10.00</span>
+  </div>
+
+  <div class='debtPayback'>
+    Payback Amount
+    <img class='dollarimg' src="/img/dollarsign.png">
+    <input type='number' step=.01 name='debtPayback' placeholder='Payback' ng-model='loan.amount.payback' payback-validation required/>
+    <a href="">?</a>
+  </div>
+  <div ng-show="loanRequestForm.debtPayback.$dirty && loanRequestForm.debtPayback.$invalid">Invalid:
+    <span ng-show="loanRequestForm.debtPayback.$error.required">Enter a valid payback amount.</span>
+    <span ng-show="loanRequestForm.debtPayback.$error.min">Minimum loan is $10.00.</span>
+    <span ng-show="loanRequestForm.debtPayback.$error.paybackThreshold">Payback amount must be greater than or equal to loan amount.</span>
+  </div>
+
+  <div class='debtDue'>
+    Repayment Date
+    <p class='input-group'>
+      <input type="text" class="form-control" datepicker-popup="MMMM dd, yyyy" ng-model="loan.date.payback" is-open="debtDueOpened" min="debtDueMin" max="debtDueMax"  ng-required="true" close-text="Close" />
+      <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="openDebtDue($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+  </div>
+  <!-- <div class='debtDue'>
+    Repayment Date
+    <img class='calendarimg' src="/img/calendar.png">
+    <input type='date' name='debtDue' ng-model='loan.date.payback' repayment-date-validation required/>
+    <a href="">?</a>
+  </div>
+
+  <div class='debtDeadline'>
+    Loan Needed By
+    <img class='calendarimg' src="/img/calendar.png">
+    <input type='date' name='debtDeadline' ng-model='loan.date.neededBy' required/>
+    <a href="">?</a>
+  </div> -->
+
+  <div class='debtCategory'>
+    Loan Category
+    <select ng-model='loan.category' required>
+      <option>Option A</option>
+      <option>Option B</option>
+      <option selected>Option C</option>
+      <option>Option D</option>
+    </select>
+  </div>
+
+  <div class='debtReason'>
+    Loan Reason
+    <textarea name='debtReason' placeholder='Why are you requesting this loan?' ng-model='loan.reason' required></textarea>
+  </div>
+  
 </form>
+
+<button class='btn btn-danger'>Cancel</button>
+<!-- TODO: disable this button until the form is valid -->
+<button class='btn btn-success' ng-click='borrowConfirm()' ng-disabled="loanRequestForm.$invalid">Next</button>
+
+

@@ -1,5 +1,6 @@
 var app = angular.module('app', [
-  'ngRoute'
+  'ngRoute',
+  "ui.bootstrap"
 ]);
 
 app.config(['$routeProvider',
@@ -16,6 +17,10 @@ app.config(['$routeProvider',
       when('/borrow', {
         templateUrl: 'views/borrow.html',
         controller: 'BorrowController'
+      }).
+      when('/borrow_confirmation', {
+        templateUrl: 'views/borrowConfirm.html',
+        controller: 'BorrowConfirmController'
       }).
       when('/lend', {
         templateUrl: 'views/lend.html',
