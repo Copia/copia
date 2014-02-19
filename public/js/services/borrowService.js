@@ -9,9 +9,9 @@ angular.module('app')
       payback : undefined
     },
     date : {
-      payback : undefined,
-      neededBy : undefined,
+      neededBy : undefined
     },
+    paybackDays : undefined,
     category : undefined,
     reason : undefined
   };
