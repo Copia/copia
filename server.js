@@ -13,7 +13,7 @@ var app = express();
 var rootPath = path.normalize(__dirname );
 app.engine('html', consolidate.swig);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/app/views');
+app.set('views', __dirname + '/public');
 
 // Set up some standard express middleware
 app.use( express.bodyParser() );
