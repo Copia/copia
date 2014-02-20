@@ -3,6 +3,17 @@ angular.module('app')
 ["$scope", 'LendRequest',
 function($scope, LendRequest){
 
-  $scope.loans = LendRequest.getLoans();
+  //load loans from db
+  LendRequest.getLoans()
+  //success
+  .then(function(loans){
+    $scope.loans = loans;
+  },
+  //error 
+  function(error){
+    console.log(error);
+  });
+  
+  
 
 }]);
