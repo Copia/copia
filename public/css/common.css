@@ -40,6 +40,19 @@ body {
   border-color: #fff;
 }
 
+/* views/index.html */
+
+.index-button-group {
+  position: absolute;
+  bottom: 0px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.index-button-group p {
+  position: relative;
+}
+
 .dollarimg {
     height: 25px;
 }
