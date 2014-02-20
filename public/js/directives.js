@@ -1,5 +1,6 @@
 'use strict';
 
+//custom validation to ensure that payback amount is >= loan amount
 app.directive('paybackValidation', function(){
   return {
     require: 'ngModel',
@@ -20,4 +21,16 @@ app.directive('paybackValidation', function(){
       }, true);
     }
   }
+});
+
+//custom element to display loan snippets
+app.directive('loanSnippet', function(){
+  return {
+    require: 'ngModel',
+    restrict: 'A',
+    templateUrl: '/views/loanSnippet.html',
+    // template: '<div>shit</div>',
+    link: function($scope, iElm, iAttrs, controller) {
+    }
+  };
 });
