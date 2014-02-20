@@ -1,15 +1,15 @@
 'use strict';
 
 /**
- * Module dependencies.
- */
+* Module dependencies.
+*/
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    crypto = require('crypto');
+   Schema = mongoose.Schema,
+   crypto = require('crypto');
 
 /**
- * User Schema
- */
+* User Schema
+*/
 var UserSchema = new Schema({
     access_token: String,
     balance: String,
@@ -28,24 +28,25 @@ var UserSchema = new Schema({
         id: String,
         date_joined: String,
     },
-    refresh_token: String
-    // display_name: String,
-    // first_name: String,
-    // email: {
-    //     type: String,
-    //     unique: true
-    // },
-    // password_hash: String,
-    // password_salt: String,
-    // session_token: String,
-    // karma: Number
-}, {
+    refresh_token: String,
+    username: {
+    type: String,
+    unique: true
+  },
+  password_hash: String,
+  password_salt: String,
+  session_token: String,
+  karma: Number
+  }, 
+  {
     collection: "people"
-});
+  }
+);
+
 
 /**
- * Virtuals
- */
+* Virtuals
+*/
 // UserSchema.virtual('password').set(function(password) {
 //     this._password = password;
 //     this.salt = this.makeSalt();
@@ -55,17 +56,16 @@ var UserSchema = new Schema({
 // });
 
 /**
- * Validations
- */
+* Validations
+*/
 var validatePresenceOf = function(value) {
-    return value && value.length;
+   return value && value.length;
 };
 
 /**
- * Methods
- */
+* Methods
+*/
 UserSchema.methods = {
 };
 
 mongoose.model('User', UserSchema);
-

@@ -11,9 +11,11 @@ module.exports = function(app) {
         res.render('index');
     });
 
-    app.post('/venmo_login', authentication.router_auth, user_service.venmo_login);
-
     app.get('/login', user_service.login);
+
+    app.post('/signup', user_service.signup);
+
+    app.post('/account', authentication.router_auth, user_service.account);
 
     app.post('/logout', authentication.router_auth, user_service.logout);
 
