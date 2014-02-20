@@ -12,7 +12,7 @@ app.directive('paybackValidation', function(){
         var paybackAmt = amounts.payback;
 
 
-        if(loanAmt !== undefined && loanAmt <= paybackAmt){
+        if(loanAmt !== null && loanAmt <= paybackAmt){
           ngModel.$setValidity('paybackThreshold', true);
         } else {
           ngModel.$setValidity('paybackThreshold', false);

@@ -5,23 +5,37 @@ angular.module('app')
   
   this.loan = {
     amount : {
-      loan : undefined,
-      payback : undefined
+      loan : null,
+      payback : null
     },
     date : {
-      payback : undefined,
-      neededBy : undefined,
+      neededBy : null
     },
-    category : undefined,
-    reason : undefined
+    paybackDays : null,
+    category : null,
+    reason : null
   };
 
-  this.validLoanAttrs = true; //record whether loan attrs are valid for posting to db
+  this.validLoanAttrs = false; //record whether loan attrs are valid for posting to db
 
   this.$get = function($http, $location){
     var self = this;
 
     var service = {
+      clearLoan : function(){
+        self.loan.amount.loan = null;
+        self.loan.amount.payback = null;
+        self.loan.date.neededBy = null;
+        self.loan.paybackDays = null;
+        self.loan.category = null;
+        self.loan.reason = null;
+      },
+
+      //update loanAttrs status from borrow.js
+      validateLoan : function(status) {
+        self.validLoanAttrs = status;
+      },
+
       //update loanAttrs from borrow.js
       saveLoan : function(attrs) {
         self.loan = attrs;
@@ -29,6 +43,12 @@ angular.module('app')
 
       getLoan : function() {
         return self.loan;
+      },
+
+      redirectInvalidLoan : function(){
+        if(!self.validLoanAttrs) {
+          $location.path( "/borrow" );
+        } 
       },
 
       submitBorrowRequest : function() {
@@ -43,14 +63,7 @@ angular.module('app')
         .error(function(data, status, headers, config) {
           
         });
-      },
-
-      redirectInvalidLoan : function(){
-        if(!self.validLoanAttrs) {
-          $location.path( "/borrow" );
-        } 
       }
-
     };
     return service;
   }
