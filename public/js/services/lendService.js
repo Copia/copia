@@ -7,8 +7,15 @@ angular.module('app')
     var self = this;
 
     var service = {
-      test : function(){
-        console.log('test');
+      getLoans : function(){
+        $http.get('/users/id/loans')
+        .success(function(data, status, headers, config) {
+          console.log(data);
+          return data;
+        })
+        .error(function(data, status, headers, config) {
+          console.log('Error requesting loans');
+        });
       }
     };
     return service;

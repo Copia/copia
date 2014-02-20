@@ -3,6 +3,6 @@ angular.module('app')
 ["$scope", 'LendRequest',
 function($scope, LendRequest){
 
-  LendRequest.test();
+  $scope.loans = LendRequest.getLoans();
 
 }]);

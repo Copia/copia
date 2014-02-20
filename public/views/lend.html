@@ -1,11 +1,8 @@
 <a href="#/dashboard">Back</a>
 <h2>C (add logo)</h2>
 
-<!-- this needs to make a get request and implement ng-repeat -->
-<ul>
-  <li>
-    <div>
-      <div>individual entry</div>
-    </div>
+<ol class='loanSnippets'>
+  <li ng-repeat='loan in loans'>
+    {{ loan }}
   </li>
-</ul>
+</ol>
