@@ -43,14 +43,7 @@ body {
 /* views/index.html */
 
 .index-button-group {
-  position: absolute;
-  bottom: 0px;
-  margin-bottom: 60px;
-  width: 100%;
-}
-
-.index-button-group p {
-  position: relative;
+  margin-top: 60px;
 }
 
 .dollarimg {
