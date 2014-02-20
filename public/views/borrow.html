@@ -10,7 +10,7 @@
   <div class='debtAmount'>
     Loan Amount:
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' min=10 max=1000 step=1 name='debtAmount' placeholder='Amount' ng-model='loan.amount.loan' required autofocus/>
+    <input type='number' min=10 max=1000 name='debtAmount' placeholder='Amount' ng-model='loan.amount.loan' ng-blur='roundDebtAmt()' required autofocus/>
     <a href="">?</a>
 
     <div ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$invalid">Invalid:
@@ -38,7 +38,7 @@
   <div class='debtPayback'>
     Payback Amount:
     <img class='dollarimg' src="/img/dollarsign.png">
-    <input type='number' step=.01 name='debtPayback' placeholder='Payback' ng-model='loan.amount.payback' payback-validation required/>
+    <input type='number' name='debtPayback' placeholder='Payback' ng-model='loan.amount.payback' ng-blur='roundPaybackAmt()' payback-validation required/>
     <a href="">?</a>
 
     <div ng-show="loanRequestForm.debtPayback.$dirty && loanRequestForm.debtPayback.$invalid">Invalid:

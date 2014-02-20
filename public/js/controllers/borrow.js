@@ -3,6 +3,7 @@ angular.module('app')
 ["$scope", "$location", 'BorrowRequest',
 function($scope, $location, BorrowRequest){
   
+  
   //load loan attrs from persistent loan service
   $scope.loan = BorrowRequest.getLoan();
 
@@ -19,6 +20,18 @@ function($scope, $location, BorrowRequest){
   $scope.cancel = function(){
     $scope.clearForm();
     $location.path( "/dashboard" );
+  };
+
+  $scope.roundDebtAmt = function(){
+    if(!isNaN($scope.loan.amount.loan)){
+      $scope.loan.amount.loan = Number($scope.loan.amount.loan.toFixed(2));
+    }
+  };
+
+  $scope.roundPaybackAmt = function(){
+    if(!isNaN($scope.loan.amount.payback)){
+      $scope.loan.amount.payback = Number($scope.loan.amount.payback.toFixed(2));
+    }
   };
 
   //monitor form for validity; alert BorrowRequest service to allow /borrow_confirmation route
