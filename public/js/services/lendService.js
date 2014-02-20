@@ -2,6 +2,8 @@
 
 angular.module('app')
 .provider('LendRequest', function(){
+  this.selectedLoan = null;
+
   this.$get = function($http, $location, $q){
     var self = this;
 
@@ -16,6 +18,14 @@ angular.module('app')
           d.reject(data);
         });
         return d.promise;
+      },
+
+      setLoan : function(loan) {
+        self.loan = loan;
+      },
+
+      getLoan : function() {
+        return self.loan;
       }
     };
     return service;

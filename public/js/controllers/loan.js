@@ -1,6 +1,6 @@
 angular.module('app')
 .controller('LoanController', 
-["$scope",
+["$scope", 'LendRequest',
 function($scope, LendRequest){
-  console.log('Loan Controller initialized');
+  $scope.loan = LendRequest.getLoan();
 }]);

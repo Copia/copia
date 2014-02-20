@@ -1,7 +1,7 @@
 angular.module('app')
 .controller('LendController', 
-["$scope", 'LendRequest',
-function($scope, LendRequest){
+["$scope", '$location', 'LendRequest',
+function($scope, $location, LendRequest){
 
   //load loans from db
   LendRequest.getLoans()
@@ -13,7 +13,11 @@ function($scope, LendRequest){
   function(error){
     console.log(error);
   });
-  
-  
+
+  $scope.viewDetails = function(loan, loanId) {
+    console.log(loan);
+    LendRequest.setLoan(loan);
+    $location.path( "/lend/"+loanId );
+  }
 
 }]);
