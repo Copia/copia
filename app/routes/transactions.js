@@ -6,8 +6,8 @@ var authentication = require('./middleware/authentication');
 
 module.exports = function(app) {
 
-  app.post('/users/:userId/transactions', authentication.router_auth, transaction_service.create);
-  
   app.get('/users/:userId/transactions/:transactionId', authentication.router_auth, transaction_service.get);
+
+  app.post('/users/:userId/transactions', authentication.router_auth, transaction_service.create);
 
 };

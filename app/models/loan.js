@@ -11,11 +11,13 @@ var mongoose = require('mongoose'),
  * Loan Schema
  */
 var LoanSchema = new Schema({
-    principle: Number,
-    term_amount: Number,
-    term_data: String,
-    term_status: String,
-    term_purpose: String,
+    principal: Number,
+    payback_amount: Number,
+    match_deadline: String, //last day for loan to be matched
+    payback_days: Number, //# of days to payback loan after it's accepted
+    category: String,
+    purpose: String,
+    matched: Boolean, //true is loan is matched with lender
     borrower_id: {type: Schema.Types.ObjectId, ref: 'User'},
     lender_id: {type: Schema.Types.ObjectId, ref: 'User'}
 });

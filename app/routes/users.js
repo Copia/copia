@@ -22,14 +22,12 @@ module.exports = function(app) {
     //redirect from venmo
     app.get('/auth', authentication.oauth2, user_service.create);
 
-    app.post('/auth_test', user_service.create);
-
     app.get('/dashboard', authentication.router_auth, function(request, response) {
         response.send('Welcome to Copia!!!');
     });
 
-    app.get('/users/:userId', authentication.router_auth, user_service.get);
-
     app.post('/users/:userId/:update', authentication.router_auth, user_service.get);
+
+    app.get('/users/:userId', authentication.router_auth, user_service.get);
 
 };

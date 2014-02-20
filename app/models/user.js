@@ -28,7 +28,6 @@ var UserSchema = new Schema({
         id: String,
         date_joined: String,
     },
-    refresh_token: String,
     username: {
       type: String,
       unique: true

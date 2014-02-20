@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Transaction = mongoose.model('transaction'),
+    Transaction = mongoose.model('Transaction'),
     _ = require('lodash');
 
 /**

@@ -22,8 +22,7 @@ exports.loan = function(req, res, id) {
  * Create a loan
  */
 exports.create = function(req, res) {
-    var loan = new Loan(req.body.loan);
-    console.log("CREATE LOAN: ", loan);
+    var loan = new Loan(req.body);
     loan.save(function(err) {
         if (err) {
             return res.send('./public/404.html', {
@@ -40,11 +39,11 @@ exports.create = function(req, res) {
 /**
  * Update a loan
  */
-exports.update = function(req, res) {
+exports.update = function(req, res, id) {
     var loan = req.loan;
-
+    console.log("PUT: ", loan);
     loan = _.extend(loan, req.body);
-
+    console.log("PUT: ", loan);
     loan.save(function(err) {
         if (err) {
             return res.send('./public/404.html', {
