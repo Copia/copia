@@ -52,8 +52,8 @@ angular.module('app')
       },
 
       submitBorrowRequest : function() {
-        console.log('Loan request submitted: ', self.loanAttrs);
-        //TODO: loanAttrs needs to be formatted to match up with schema
+        console.log('Loan request submitted: ', self.loan);
+        //TODO: self.loan needs to be editted to match up with schema
         //TODO: need a way to access the user_id
         ///users/:userId/loans
         $http.post('/users/500/loans', self.loan)
