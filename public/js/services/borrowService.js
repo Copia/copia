@@ -53,18 +53,36 @@ angular.module('app')
 
       submitBorrowRequest : function() {
         console.log('Loan request submitted: ', self.loan);
-        //TODO: self.loan needs to be editted to match up with schema
-        //TODO: need a way to access the user_id
-        ///users/:userId/loans
-        $http.post('/users/500/loans', self.loan)
+
+        //format loan attributes to match up with database;
+        var loan = {};
+        loan.principal = self.loan.amount.loan;
+        loan.payback_amount = self.loan.amount.payback;
+        loan.match_deadline = self.loan.date.neededBy;
+        loan.payback_days = self.loan.paybackDays;
+        loan.category = self.loan.category;
+        loan.purpose = self.loan.reason;
+        loan.matched = false;
+        //TODO: update this field with the actual organization
+        loan.organization = 'Organization Placeholder';
+
+        //TODO: need a way to access the actual user_id
+        //Route to post new loans:  /users/:userId/loans
+        $http.post('/users/500/loans', loan)
         .success(function(data, status, headers, config) {
-          console.log(self.loan);
+          console.log('Loan posted to db: ',loan);
         })
         .error(function(data, status, headers, config) {
-          
+          console.log('Error: ', data);
         });
       }
     };
     return service;
   }
 });
+
+
+
+
+
+
