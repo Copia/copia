@@ -1,42 +1,80 @@
-module.exports = function(grunt) {
+'use strict';
 
-  // Project configuration.
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    uglify: {
+module.exports = function(grunt) {
+// Project Configuration
+grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
+  watch: {
+    js: {
+      files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**'],
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        livereload: true,
+      },
+    },
+    html: {
+      files: ['public/views/**'],
+      options: {
+        livereload: true,
+      },
+    },
+    css: {
+      files: ['public/css/**'],
+      options: {
+        livereload: true
+      }
+    }
+  },
+  jshint: {
+    all: {
+      src: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**'],
+      options: {
+        jshintrc: true
       }
     },
-    nodemon: {
-      dev: {
-        script: 'server.js',
-        options: {
-          args: [],
-          ignoredFiles: ['public/*.js'],
-          watchExtensions: ['js'],
-          delayTime: 1,
-          env: {
-            PORT: 3000
-          },
-          cwd: __dirname
-        }
-    }
+    client: {
+      src: ['public/js/**'],
+      options: {
+        jshintrc: true
+      }
     },
-    build: {
-      src: 'src/<%= pkg.name %>.js',
-      dest: 'build/<%= pkg.name %>.min.js'
+    server: {
+      src: ['server.js', 'app/**/*.js'],
+      options: {
+        jshintrc: true
+      }
     }
-  });
+  },
+  nodemon: {
+    dev: {
+      script: 'server.js',
+      options: {
+        args: [],
+        ignore: ['public/**'],
+        ext: 'js',
+        nodeArgs: ['--debug'],
+        delayTime: 1,
+        env: {
+          PORT: 3000
+        },
+        cwd: __dirname
+      }
+    }
+  },
+  concurrent: {
+    tasks: ['nodemon', 'watch'],
+    options: {
+      logConcurrentOutput: true
+    }
+  }
+});
 
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-nodemon');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+    //Load NPM tasks
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-env');
 
-  // Default task(s).
-  grunt.registerTask('default', ['nodemon']);
-  grunt.registerTask('uglify', ['uglify']);
-
+  //Default task(s).
+  grunt.registerTask('default', ['concurrent']);
 };
