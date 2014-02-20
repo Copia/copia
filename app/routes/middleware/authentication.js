@@ -33,8 +33,6 @@ exports.oauth2 = function( request, response, next) {
 };
 
 exports.router_auth = function(request, response, next) {
-  console.log('In middleware. Config: ', config);
-  console.log('config.debug: ', config.debug, 'config.db: ', config.db);
   if (config.debug) {
     console.log('Authentication Middlware', request.body);
   }

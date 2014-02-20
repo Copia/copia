@@ -22,7 +22,8 @@ exports.loan = function(req, res, id) {
  * Create a loan
  */
 exports.create = function(req, res) {
-    var loan = new Loan(req.body);
+    var loan = new Loan(req.body.loan);
+    console.log("CREATE LOAN: ", loan);
     loan.save(function(err) {
         if (err) {
             return res.send('./public/404.html', {
@@ -30,6 +31,7 @@ exports.create = function(req, res) {
                 loan: loan
             });
         } else {
+            console.log("loan created");
             res.jsonp(loan);
         }
     });

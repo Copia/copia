@@ -30,13 +30,14 @@ var UserSchema = new Schema({
     },
     refresh_token: String,
     username: {
-    type: String,
-    unique: true
-  },
-  password_hash: String,
-  password_salt: String,
-  session_token: String,
-  karma: Number
+      type: String,
+      unique: true
+    },
+    password_hash: String,
+    password_salt: String,
+    session_token: String,
+    karma: Number,
+    refresh_token: String
   }, 
   {
     collection: "people"
