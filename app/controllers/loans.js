@@ -40,20 +40,10 @@ exports.create = function(req, res) {
  * Update a loan
  */
 exports.update = function(req, res, id) {
-    var loan = req.loan;
-    console.log("PUT: ", loan);
-    loan = _.extend(loan, req.body);
-    console.log("PUT: ", loan);
-    loan.save(function(err) {
-        if (err) {
-            return res.send('./public/404.html', {
-                errors: err.errors,
-                loan: loan
-            });
-        } else {
-            res.jsonp(loan);
-        }
-    });
+  var lender = req.body.lender_id;
+  Loan.findByIdAndUpdate(id,{ matched: true, lender_id: lender },null,function(err, query){
+    res.jsonp(query);
+  });
 };
 
 /**
