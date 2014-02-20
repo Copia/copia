@@ -8,7 +8,6 @@ angular.module('app')
         access_token: null,
         balance: null,
         expires_in: null,
-        user: null,
         username: $scope.email,
         organization: null,
         password_hash: $scope.password,
