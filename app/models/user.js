@@ -32,6 +32,7 @@ var UserSchema = new Schema({
       type: String,
       unique: true
     },
+    organization: String,
     password_hash: String,
     password_salt: String,
     session_token: String,
