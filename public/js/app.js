@@ -10,6 +10,14 @@ app.config(['$routeProvider',
         templateUrl: 'views/index.html',
         controller: 'IndexController'
       }).
+      when('/signin', {
+        templateUrl: 'views/signin.html',
+        controller: 'SignInController'
+      }).
+      when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignUpController'
+      }).
       when('/dashboard', {
         templateUrl: 'views/users/dashboard.html',
         controller: 'DashboardController'
