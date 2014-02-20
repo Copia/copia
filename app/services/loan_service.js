@@ -14,6 +14,10 @@ exports.get = function(request, response) {
   loans.loan(request, response, request.body.loanId);
 };
 
+exports.all = function(request, response) {
+  loans.all(request, response);
+}
+
 exports.update = function(request, response) {
   console.log("PUT to: ",request.body.url, "-->Add lender to Loan" );
   //attach lender_id to the loan object
