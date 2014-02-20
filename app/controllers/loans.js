@@ -41,7 +41,7 @@ exports.create = function(req, res) {
  */
 exports.update = function(req, res, id) {
   var lender = req.body.lender_id;
-  Loan.findByIdAndUpdate(id,{ matched: true, lender_id: lender },null,function(err, query){
+  Loan.findByIdAndUpdate(id,{ matched: true, lender_id: lender },function(err, query){
     res.jsonp(query);
   });
 };
@@ -49,19 +49,10 @@ exports.update = function(req, res, id) {
 /**
  * Delete an loan
  */
-exports.destroy = function(req, res) {
-    var loan = req.loan;
-
-    loan.remove(function(err) {
-        if (err) {
-            return res.send('./public/404.html', {
-                errors: err.errors,
-                loan: loan
-            });
-        } else {
-            res.jsonp(loan);
-        }
-    });
+exports.destroy = function(req, res, id) { 
+  Loan.findByIdAndRemove(id, function(err, query){
+    res.jsonp(query);
+  });
 };
 
 /**
