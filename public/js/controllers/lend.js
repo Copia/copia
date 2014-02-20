@@ -1,4 +1,8 @@
 angular.module('app')
-.controller('LendController', ["$scope", function($scope){
+.controller('LendController', 
+["$scope", 'LendRequest',
+function($scope, LendRequest){
+
+  LendRequest.test();
 
 }]);
