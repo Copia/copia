@@ -9,19 +9,33 @@ angular.module('app')
       payback : undefined
     },
     date : {
-      payback : undefined,
-      neededBy : undefined,
+      neededBy : undefined
     },
+    paybackDays : undefined,
     category : undefined,
     reason : undefined
   };
 
-  this.validLoanAttrs = true; //record whether loan attrs are valid for posting to db
+  this.validLoanAttrs = false; //record whether loan attrs are valid for posting to db
 
   this.$get = function($http, $location){
     var self = this;
 
     var service = {
+      clearLoan : function(){
+        self.loan.amount.loan = undefined;
+        self.loan.amount.payback = undefined;
+        self.loan.date.neededBy = undefined;
+        self.loan.paybackDays = undefined;
+        self.loan.category = undefined;
+        self.loan.reason = undefined;
+      },
+
+      //update loanAttrs status from borrow.js
+      validateLoan : function(status) {
+        self.validLoanAttrs = status;
+      },
+
       //update loanAttrs from borrow.js
       saveLoan : function(attrs) {
         self.loan = attrs;
@@ -29,6 +43,12 @@ angular.module('app')
 
       getLoan : function() {
         return self.loan;
+      },
+
+      redirectInvalidLoan : function(){
+        if(!self.validLoanAttrs) {
+          $location.path( "/borrow" );
+        } 
       },
 
       submitBorrowRequest : function() {
@@ -43,14 +63,7 @@ angular.module('app')
         .error(function(data, status, headers, config) {
           
         });
-      },
-
-      redirectInvalidLoan : function(){
-        if(!self.validLoanAttrs) {
-          $location.path( "/borrow" );
-        } 
       }
-
     };
     return service;
   }
