@@ -39,6 +39,10 @@ body {
   border-color: #fff;
 }
 
+.input-group-addon.glaphycon {
+  padding: 10px 12px;
+}
+
 /* views/index.html */
 
 .index-button-group {
