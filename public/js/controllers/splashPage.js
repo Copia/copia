@@ -1,12 +1,14 @@
 angular.module('app')
-.controller('SplashPageController', ["$scope", function($scope){
+.controller('SplashPageController', ["$scope", '$location',
   
-  $scope.signUp = function(){
-
-  };
+  function($scope, $location){
   
-  $scope.signIn = function(){
+      $scope.signUp = function(){
+        $location.path( "/signup" );
+      };
 
-  };
+      $scope.signIn = function(){
+        $location.path( "/signin" );
+      };
 
 }]);

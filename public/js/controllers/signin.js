@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('SignUpController', ["$scope", '$location',
+.controller('SigInController', ["$scope", '$location',
   
   function($scope, $location){
   
