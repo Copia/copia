@@ -18,6 +18,7 @@ var LoanSchema = new Schema({
     category: String,
     purpose: String,
     matched: Boolean, //true is loan is matched with lender
+    organization: String,
     borrower_id: {type: Schema.Types.ObjectId, ref: 'User'},
     lender_id: {type: Schema.Types.ObjectId, ref: 'User'}
 });
