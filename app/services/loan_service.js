@@ -26,5 +26,5 @@ exports.update = function(request, response) {
 
 exports.delete = function(request, response) {
   console.log("DELETE to: ",request.body.url, "-->Delete Loan" );
-  loans.destroy(request, response);
+  loans.destroy(request, response, request.params.loanId);
 };
