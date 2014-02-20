@@ -4,14 +4,14 @@
 var loans = require('../controllers/loans');
 
 exports.create = function(request, response) {
-  console.log("POST to: ",request.body.url, "-->Create Loan" );
+  console.log("POST to: ",request.url, "-->Create Loan" );
   //check if user already has loan
   loans.create(request, response);
 };
 
 exports.get = function(request, response) {
-  console.log("GET to: ",request.body.url, "-->Get Loan" );
-  loans.loan(request, response, request.body.loanId);
+  console.log("GET to: ",request.url, "-->Get Loan" );
+  loans.loan(request, response, request.params.loanId);
 };
 
 exports.all = function(request, response) {
@@ -25,6 +25,6 @@ exports.update = function(request, response) {
 };
 
 exports.delete = function(request, response) {
-  console.log("DELETE to: ",request.body.url, "-->Delete Loan" );
+  console.log("DELETE to: ",request.url, "-->Delete Loan" );
   loans.destroy(request, response, request.params.loanId);
 };
