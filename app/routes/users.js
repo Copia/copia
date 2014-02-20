@@ -32,6 +32,9 @@ module.exports = function(app) {
 
     app.get('/users', authentication.router_auth, user_service.listAll)
 
+    app.delete('/users/:userId', user_service.delete);
+    app.put('/users/:userId', user_service.update);
+
     // TEST ROUTES TO VERIFY CRUD 
     // app.post('/_users', user_service.create);
     // app.get('/_users/:userId', user_service.get);
