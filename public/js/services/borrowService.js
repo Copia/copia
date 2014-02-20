@@ -56,9 +56,9 @@ angular.module('app')
         //TODO: loanAttrs needs to be formatted to match up with schema
         //TODO: need a way to access the user_id
         ///users/:userId/loans
-        $http.post('/users/500/loans', self.loanAttrs)
+        $http.post('/users/500/loans', self.loan)
         .success(function(data, status, headers, config) {
-          
+          console.log(self.loan);
         })
         .error(function(data, status, headers, config) {
           
