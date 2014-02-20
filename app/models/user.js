@@ -11,26 +11,25 @@ var mongoose = require('mongoose'),
 * User Schema
 */
 var UserSchema = new Schema({
-  access_token: String,
-  balance: String,
-  expires_in: Number,
-  user: {
-    username: String,
-    first_name: String,
-    last_name: String,
-    display_name: String,
-    is_friend: Boolean,
-    friends_count: Number,
-    about: String,
-    email: {type: String, unique: true},
-    phone: String,
-    profile_picture_url: String,
-    id: String,
-    date_joined: String,
-  },
-  refresh_token: String,
-  collection: "people",
-  username: {
+    access_token: String,
+    balance: String,
+    expires_in: Number,
+    user: {
+        username: String,
+        first_name: String,
+        last_name: String,
+        display_name: String,
+        is_friend: Boolean,
+        friends_count: Number,
+        about: String,
+        email: {type: String, unique: true},
+        phone: String,
+        profile_picture_url: String,
+        id: String,
+        date_joined: String,
+    },
+    refresh_token: String,
+    username: {
     type: String,
     unique: true
   },
@@ -38,7 +37,12 @@ var UserSchema = new Schema({
   password_salt: String,
   session_token: String,
   karma: Number
-});
+  }, 
+  {
+    collection: "people"
+  }
+);
+
 
 /**
 * Virtuals
