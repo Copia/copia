@@ -26,9 +26,15 @@ exports.create = function(request, response, body) {
 exports.login = function(request, response) {
   //expect a user session token from auth MW
   //for now redirect to venmo login page
+  // TODO: remove this redirect, verify user auth by
+  // looking up email/username + password and generating
+  // token if match, or 401 if not.
   response.redirect(307, venmoUrl);
-  
 
+};
+
+exports.signup = function(request, response) {
+ // TODO: create the user account
 };
 
 exports.logout = function(request, response) {
@@ -36,7 +42,7 @@ exports.logout = function(request, response) {
   console.log('User logged out - to be implemented');
 };
 
-exports.venmo_login = function(request, response) {
+exports.account = function(request, response) {
   response.redirect(307, venmoUrl);
 };
 
