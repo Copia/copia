@@ -30,4 +30,12 @@ module.exports = function(app) {
 
     app.get('/users/:userId', authentication.router_auth, user_service.get);
 
+    app.get('/users', authentication.router_auth, user_service.listAll)
+
+    // TEST ROUTES TO VERIFY CRUD 
+    // app.post('/_users', user_service.create);
+    // app.get('/_users/:userId', user_service.get);
+    // app.delete('/_users/:userId', user_service.delete);
+    // app.put('/_users/:userId', user_service.update);
+    // app.get('/_users', user_service.listAll);
 };

@@ -22,7 +22,10 @@ var UserSchema = new Schema({
         is_friend: Boolean,
         friends_count: Number,
         about: String,
-        email: {type: String, unique: true},
+        email: {
+          type: String, 
+          unique: true
+        },
         phone: String,
         profile_picture_url: String,
         id: String,
