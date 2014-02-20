@@ -30,6 +30,7 @@ exports.create = function(req, res) {
                 loan: loan
             });
         } else {
+            console.log("loan created");
             res.jsonp(loan);
         }
     });
@@ -38,21 +39,11 @@ exports.create = function(req, res) {
 /**
  * Update a loan
  */
-exports.update = function(req, res) {
-    var loan = req.loan;
-
-    loan = _.extend(loan, req.body);
-
-    loan.save(function(err) {
-        if (err) {
-            return res.send('./public/404.html', {
-                errors: err.errors,
-                loan: loan
-            });
-        } else {
-            res.jsonp(loan);
-        }
-    });
+exports.update = function(req, res, id) {
+  var lender = req.body.lender_id;
+  Loan.findByIdAndUpdate(id,{ matched: true, lender_id: lender },null,function(err, query){
+    res.jsonp(query);
+  });
 };
 
 /**

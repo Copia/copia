@@ -11,6 +11,7 @@ var mongoose = require('mongoose'),
  * Find user by id
  */
 exports.user = function(req, res, id) {
+    console.log("GET USER");
     User.findById(id, function(err, user) {
         if (err) return next(err);
         if (!user) return next(new Error('Failed to load user ' + id));

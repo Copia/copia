@@ -3,6 +3,7 @@ var mongoose    = require("mongoose");
 var config      = require('./package.json').config;
 var users       = require("./app/models/user");
 var loans       = require("./app/models/loan");
+var transactions = require("./app/models/transaction");
 var consolidate = require('consolidate');
 var path        = require('path');
 
@@ -24,8 +25,9 @@ app.use( express.static( rootPath + '/public') );
 var db  = mongoose.connect(config.db);
 
 // Get routes and models
-require('./app/routes/users')(app);
 require('./app/routes/loans')(app);
+require('./app/routes/transactions')(app);
+require('./app/routes/users')(app);
 
 // Use command line port, if no the one in package.json/config
 var port = Number(process.env.PORT || config.port);

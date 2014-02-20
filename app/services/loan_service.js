@@ -19,9 +19,9 @@ exports.all = function(request, response) {
 }
 
 exports.update = function(request, response) {
-  console.log("PUT to: ",request.body.url, "-->Add lender to Loan" );
+  console.log("PUT to: ",request.params.loanId, "-->Add lender to Loan" );
   //attach lender_id to the loan object
-  loans.update(request, response);
+  loans.update(request, response, request.params.loanId);
 };
 
 exports.delete = function(request, response) {
