@@ -15,11 +15,6 @@ var venmoUrl = 'https://api.venmo.com/v1/oauth/authorize?';
     venmoUrl += '&response_type=code';
 
 exports.create = function(request, response, body) {
-  //check if user exists?
-
-  // request.body.karma = 0;
-  // request.body.session_token = "This_will_be_a_session_token";
-  console.log("USER_SERVICE: create user: ",request.body);
   users.create(request, response);
 };
 
@@ -33,8 +28,15 @@ exports.login = function(request, response) {
 
 };
 
+exports.listAll = function(request, response) {
+  users.all(request, response);
+}
+
 exports.signup = function(request, response) {
  // TODO: create the user account
+ // QUESTION: how is this functionality different than create, above?
+ // the following is TEMPORARY for TESTING
+    users.create(request, response);
 };
 
 exports.logout = function(request, response) {
@@ -47,14 +49,14 @@ exports.account = function(request, response) {
 };
 
 exports.update = function(request, response) {
-  users.update(request, response);
+  users.update(request, response, request.params.userId);
 };
 
 exports.get = function(request, response) {
-  console.log(request.params.userId);
-  users.user(request, response, request.params.userId);
+  console.log('GET User: ', request.params.userId);
+  users.get(request, response, request.params.userId);
 };
 
 exports.delete = function(request, response) {
-  users.destroy(request, response);
+  users.destroy(request, response, request.params.userId);
 };
