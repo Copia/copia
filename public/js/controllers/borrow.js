@@ -48,9 +48,9 @@ function($scope, $location, BorrowRequest){
   $scope.debtNeededBySelected = false; //
   $scope.$watch('loan.date.neededBy', function(neededBy){
     //if neededBy is cleared, reset payback date
-    if(neededBy === undefined) {
+    if(neededBy === null) {
       $scope.debtNeededBySelected = false;
-      $scope.debtDueSelection = undefined;
+      $scope.debtDueSelection = null;
     } else {
       $scope.debtNeededBySelected = true;
     }
@@ -83,8 +83,8 @@ function($scope, $location, BorrowRequest){
   }
 
   //functionality for DEBT PAYBACK drop down menu
-  if($scope.loan.paybackDays === undefined) {
-    $scope.debtDueSelection = undefined; //drop down list selection
+  if($scope.loan.paybackDays === null) {
+    $scope.debtDueSelection = null; //drop down list selection
     $scope.otherDebtDueSelected = false; //"is Other" option on drop down list selected?
   } else if($scope.loan.paybackDays in daysToOptions) {
     $scope.debtDueSelection = daysToOptions[$scope.loan.paybackDays];

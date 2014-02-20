@@ -5,15 +5,15 @@ angular.module('app')
   
   this.loan = {
     amount : {
-      loan : undefined,
-      payback : undefined
+      loan : null,
+      payback : null
     },
     date : {
-      neededBy : undefined
+      neededBy : null
     },
-    paybackDays : undefined,
-    category : undefined,
-    reason : undefined
+    paybackDays : null,
+    category : null,
+    reason : null
   };
 
   this.validLoanAttrs = false; //record whether loan attrs are valid for posting to db
@@ -23,12 +23,12 @@ angular.module('app')
 
     var service = {
       clearLoan : function(){
-        self.loan.amount.loan = undefined;
-        self.loan.amount.payback = undefined;
-        self.loan.date.neededBy = undefined;
-        self.loan.paybackDays = undefined;
-        self.loan.category = undefined;
-        self.loan.reason = undefined;
+        self.loan.amount.loan = null;
+        self.loan.amount.payback = null;
+        self.loan.date.neededBy = null;
+        self.loan.paybackDays = null;
+        self.loan.category = null;
+        self.loan.reason = null;
       },
 
       //update loanAttrs status from borrow.js
