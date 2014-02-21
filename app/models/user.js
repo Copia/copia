@@ -5,7 +5,8 @@
 */
 var mongoose = require('mongoose'),
    Schema = mongoose.Schema,
-   crypto = require('crypto');
+   bcrypt = require('bcrypt'),
+   SALT_FACTOR = 10;
 
 /**
 * User Schema
@@ -37,8 +38,8 @@ var UserSchema = new Schema({
       unique: true
     },
     organization: String,
-    password_hash: String,
-    password_salt: String,
+    password: String, 
+    password_salt:String,
     session_token: String,
     karma: Number,
     refresh_token: String
@@ -67,10 +68,43 @@ var validatePresenceOf = function(value) {
    return value && value.length;
 };
 
+UserSchema.pre("save" , function(next) {
+  var user = this;
+
+  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+    if(err) return next(err);
+
+    user.password_salt = salt;
+    bcrypt.hash(user.password, salt, function(err, hash) {
+      if(err) return next(err);
+
+      user.password = hash;
+      next();
+    });
+  });
+});
+
+var generateSessionToken = function(cb) {
+  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+    cb(err, salt);
+  });
+};
+
 /**
 * Methods
 */
-UserSchema.methods = {
+
+UserSchema.methods.verifyPassword = function(password, cb) {
+    var user = this;
+    bcrypt.compare(password, this.password, function(err, isMatch) {
+        if (err) return cb(err);
+        generateSessionToken(function(err, salt) {
+          if(err) console.log(err);
+          user.session_token = salt;
+          user.save();
+          cb(null, isMatch);
+        });
+    });
 };
 
 mongoose.model('User', UserSchema);

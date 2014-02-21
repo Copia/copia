@@ -2,6 +2,7 @@
 
 // User routes use user service
 var user_service = require('../services/user_service');
+var users = require('../controllers/users');
 var authentication = require('./middleware/authentication');
 
 module.exports = function(app) {
@@ -11,7 +12,7 @@ module.exports = function(app) {
         res.render('index');
     });
 
-    app.get('/login', user_service.login);
+    app.post('/login', users.login); //call user controller method);
 
     app.post('/signup', user_service.signup);
 
