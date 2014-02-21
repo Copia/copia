@@ -1,13 +1,14 @@
 angular.module('app')
 .controller('BorrowController',
-["$scope", "$location", 'BorrowRequest',
-function($scope, $location, BorrowRequest){
-  
+["$scope", "$location", 'BorrowRequest', 'Sanitizer',
+function($scope, $location, BorrowRequest, Sanitizer){
   
   //load loan attrs from persistent loan service
   $scope.loan = BorrowRequest.getLoan();
 
+  
   $scope.borrowConfirm = function(){ //this function can only be called when form is valid
+    $scope.loan = Sanitizer.sanitize($scope.loan);
     BorrowRequest.saveLoan($scope.loan);
     $location.path( "/borrow_confirmation" );
   };
