@@ -31,23 +31,25 @@ exports.oauth2 = function( request, response, next) {
           next();
         }
     });
-
 };
 
 exports.router_auth = function(request, response, next) {
   //get id from request, check session_token
-  var id = request.body.id;
-  var token = request.body.session_token;
-  console.log("router_auth ID/token: ", id, token);
+  console.log('router_auth - params.userId:', request.params.userId);
+  var id = request.params.userId || request.query.userId || request.body.userId;
+  var token = request.params.session_token || request.query.session_token || request.body.session_token;
+  console.log('Id: ', id, 'Token: ', token);
   User.findById(id, "session_token", function(err, user) {
     console.log("FOUND USER: ",user);
-    if(err) console.log("ERROR");
-    else if (user.session_token !== token) {}; //do something}
-    console.log(user.session_token === token);
-    next();
+    if(err) {
+      console.log("ERROR");
+    }
+    else if (!user || user.session_token !== token) {
+      response.send(401, 'Not Authorized - ' +  token);
+    } else {
+      console.log('Authenticated User : ', user.session_token );
+      request.authenticated_user = user;
+      next();
+    }
   });
-  if (config.debug) {
-    console.log('Authentication Middleware', request.params);
-  }
-
 };

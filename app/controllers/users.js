@@ -42,8 +42,8 @@ exports.create = function(req, res) {
   console.log(user);
   user.save(function(err) {
     if (err) {
-      console.log(err.err);
-      res.send(403, err.err);
+      console.log(err);
+      res.send(403, err);
     } else {
       console.log("USER: ", user);
       exports.login(req, res);
