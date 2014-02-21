@@ -1,5 +1,5 @@
 .content {
-  margin-top: 60px;
+  margin-top: 20px;
   width:100%
 }
 
@@ -45,8 +45,20 @@ body {
 
 /* views/index.html */
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
 .index-button-group {
-  margin-top: 60px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
 }
 
 /* views/borrow.html */
