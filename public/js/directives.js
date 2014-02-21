@@ -29,7 +29,6 @@ app.directive('loanSnippet', function(){
     require: 'ngModel',
     restrict: 'A',
     templateUrl: '/views/loanSnippet.html',
-    // template: '<div>shit</div>',
     link: function($scope, iElm, iAttrs, controller) {
     }
   };
