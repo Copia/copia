@@ -39,6 +39,10 @@ app.config(['$routeProvider',
         templateUrl: 'views/lend.html',
         controller: 'LendController'
       }).
+      when('/lend/:loanId', {
+        templateUrl: 'views/loanDetails.html',
+        controller: 'LoanController'
+      }).
       otherwise({
         redirectTo: '/'
       });

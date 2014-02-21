@@ -2,7 +2,6 @@ angular.module('app')
 .controller('BorrowController',
 ["$scope", "$location", 'BorrowRequest', 'Sanitizer',
 function($scope, $location, BorrowRequest, Sanitizer){
-  
   //load loan attrs from persistent loan service
   $scope.loan = BorrowRequest.getLoan();
 
