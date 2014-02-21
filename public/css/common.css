@@ -49,6 +49,12 @@ body {
   margin-top: 60px;
 }
 
+/* views/borrow.html */
+
+textarea {
+  resize: none;
+}
+
 .dollarimg {
     height: 25px;
 }
