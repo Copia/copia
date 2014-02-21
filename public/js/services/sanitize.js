@@ -1,20 +1,22 @@
 'use strict';
 
 angular.module('app')
-.provider('Sanitizer', function(){
-  this.$get = function($sanitize){
+.factory('Sanitizer', function($sanitize){
 
     var service = {
       
       sanitize: function(object){
         var sanitizedObject = {};
         for (var key in object){
-          sanitizedObject[key] = $sanitize(object[key]);
+          if (!Array.isArray(object[key]) && (typeof(object[key]) === 'object')){
+            sanitizedObject[key] = this.sanitize(object);
+          } else {
+            sanitizedObject[key] = $sanitize(object[key]);
+          }
         }
         return sanitizedObject;
       }
 
     };
     return service;
-  }
 });
