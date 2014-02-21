@@ -6,11 +6,12 @@ angular.module('app')
 
     var service = {
       
-      sanitize: function(credentials){
-        return {
-          email: $sanitize(credentials.email),
-          password: $sanitize(credentials.password)
-        };
+      sanitize: function(object){
+        var sanitizedObject = {};
+        for (var key in object){
+          sanitizedObject[key] = $sanitize(object[key]);
+        }
+        return sanitizedObject;
       }
 
     };

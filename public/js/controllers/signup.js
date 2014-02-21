@@ -15,6 +15,7 @@ angular.module('app')
       // $http.post('/signup', data).success(function(){
       //   console.log($scope.email, $scope.password)  
       // });
+      console.log(credentials);
 
     };
 
