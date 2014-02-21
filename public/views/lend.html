@@ -4,6 +4,6 @@
 <ol class='loanSnippets'>
   <li ng-repeat='loan in loans'>
     <div ng-model='loan' loan-snippet></div>
-    <span ng-click='viewDetails(loan, loan._id)'>View Details</span>
+    <span ng-click='viewDetails(loan._id)'>View Details</span>
   </li>
 </ol>

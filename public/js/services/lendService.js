@@ -10,7 +10,8 @@ angular.module('app')
     var service = {
       getLoans : function(){
         var d = $q.defer();
-        $http.get('/users/id/loans')
+        //TODO: use actual user id
+        $http.get('/users/tempUserId/loans')
         .success(function(loans, status, headers, config) {
           d.resolve(loans);
         })
@@ -20,12 +21,17 @@ angular.module('app')
         return d.promise;
       },
 
-      setLoan : function(loan) {
-        self.loan = loan;
-      },
-
-      getLoan : function() {
-        return self.loan;
+      getLoan : function(id) {
+        var d = $q.defer();
+        //TODO: use actual user id
+        $http.get('/users/tempUserId/loans/'+id)
+        .success(function(loan, status, headers, config) {
+          d.resolve(loan);
+        })
+        .error(function(data, status, headers, config) {
+          d.reject(data);
+        });
+        return d.promise;
       }
     };
     return service;

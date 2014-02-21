@@ -14,10 +14,8 @@ function($scope, $location, LendRequest){
     console.log(error);
   });
 
-  $scope.viewDetails = function(loan, loanId) {
-    console.log(loan);
-    LendRequest.setLoan(loan);
-    $location.path( "/lend/"+loanId );
+  $scope.viewDetails = function(id) {
+    $location.path( "/lend/"+id );
   }
 
 }]);
