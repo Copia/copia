@@ -16,4 +16,8 @@ function($scope, $location, LendRequest){
     console.log('Error loading loan: '+error);
   });
 
+  $scope.returnToDashboard = function(){
+    $location.path( "/lend" );
+  };
+
 }]);

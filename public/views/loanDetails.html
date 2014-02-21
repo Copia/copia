@@ -3,7 +3,8 @@
   <div>{{ loan }}</div>
 </div>
 
-<div class='nonexistentLoan' ng-show='loan === null'>
-  <p>Sorry, does not exist.</p>
-
+<!-- Display error message if loan doesn't exist in db -->
+<div class='loanLoadError' ng-show='loan === null'>
+  <p>Sorry, <em class='nonexistentLoan'>Loan #{{loanId}}</em> does not exist.</p>
+  <button class='btn btn-success' ng-click='returnToDashboard()'>Return to Lending Dashboard</button>
 </div>
