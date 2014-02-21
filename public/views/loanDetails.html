@@ -1,2 +1,9 @@
-<div>Loan Details</div>
-<div>{{ loan }}</div>
+<div class='loanDetails' ng-show='loan !== null'>
+  <div>Loan Details</div>
+  <div>{{ loan }}</div>
+</div>
+
+<div class='nonexistentLoan' ng-show='loan === null'>
+  <p>Sorry, does not exist.</p>
+
+</div>
