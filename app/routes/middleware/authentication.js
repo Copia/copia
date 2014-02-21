@@ -1,7 +1,9 @@
 'use strict';
-var https_service = require('request');
-var url = require('url');
-var config = require('../../../package.json').config;
+var https_service = require('request'),
+    url = require('url'),
+    config = require('../../../package.json').config,
+    mongoose = require('mongoose'),
+    User = mongoose.model('User');
 
 exports.oauth2 = function( request, response, next) {
     var venmoUrl = 'https://api.venmo.com/v1/oauth/access_token';
@@ -33,9 +35,19 @@ exports.oauth2 = function( request, response, next) {
 };
 
 exports.router_auth = function(request, response, next) {
+  //get id from request, check session_token
+  var id = request.body.id;
+  var token = request.body.session_token;
+  console.log("router_auth ID/token: ", id, token);
+  User.findById(id, "session_token", function(err, user) {
+    console.log("FOUND USER: ",user);
+    if(err) console.log("ERROR");
+    else if (user.session_token !== token) {}; //do something}
+    console.log(user.session_token === token);
+    next();
+  });
   if (config.debug) {
-    console.log('Authentication Middlware', request.body);
+    console.log('Authentication Middleware', request.params);
   }
-  next();
 
 };

@@ -66,12 +66,13 @@ exports.show = function(req, res) {
  * List of loans
  */
 exports.all = function(req, res) {
-    Loan.find().sort('-created').populate('borrow_id lender_id').exec(function(err, loans) {
+    Loan.find().sort('-created').populate('borrower_id lender_id').exec(function(err, loans) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
+            console.log(loans);
             res.jsonp(loans);
         }
     });
