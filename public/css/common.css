@@ -1,10 +1,16 @@
-.content {
-  margin-top: 20px;
-  width:100%
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 body {
   background-color: #00b2ba;
+  margin-bottom: 60px;
+}
+
+.content {
+  margin-top: 20px;
+  width:100%
 }
 
 .white {
@@ -43,14 +49,6 @@ body {
   padding: 10px 12px;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
 
 .bottom-button-group {
   position: absolute;
@@ -92,7 +90,7 @@ form[name=loanRequestForm] input.ng-invalid.ng-dirty {
 
 form[name=loanRequestForm] input.ng-valid.ng-dirty {
     border: 3px solid forestgreen;
-}   
+}
 
 footer {
     position:fixed;
