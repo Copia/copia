@@ -1,10 +1,15 @@
 angular.module('app')
-.controller('SignInController', ["$scope", '$location',
+.controller('SignInController', ["$scope", '$location', 'Sanitizer',
   
-  function($scope, $location){
+  function($scope, $location, Sanitizer){
+
   
     $scope.signIn = function(){
-      console.log($scope.email, $scope.password);
+      var credentials = {
+        email: $scope.email,
+        password: $scope.password
+      };
+      credentials = Sanitizer.sanitize(credentials);
     };
 
     $scope.splashPage = function(){

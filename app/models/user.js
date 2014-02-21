@@ -24,6 +24,7 @@ var UserSchema = new Schema({
         about: String,
         email: {
           type: String, 
+          sparse: true,
           unique: true
         },
         phone: String,
