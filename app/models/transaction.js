@@ -11,9 +11,21 @@ var mongoose = require('mongoose'),
  * Transaction Schema
  */
 var TransactionSchema = new Schema({
-    from_user_id: {type: Schema.Types.ObjectId, ref: 'User'},
-    to_user_id: {type: Schema.Types.ObjectId, ref: 'User'},
-    loan_id: {type: Schema.Types.ObjectId, ref: 'Loan'},
+    from_user_id: {
+      type: Schema.Types.ObjectId, 
+      ref: 'User',
+      required: true
+    },
+    to_user_id: {
+      type: Schema.Types.ObjectId, 
+      ref: 'User',
+      required: true
+    },
+    loan_id: {
+      type: Schema.Types.ObjectId, 
+      ref: 'Loan',
+      required: true
+    },
     transaction_date: String,
     venmo_amount: Number,
     venmo_audience: String,
@@ -25,12 +37,7 @@ var TransactionSchema = new Schema({
     venmo_refund: Number
 });
 
-/**
- * Validations
- */
-var validatePresenceOf = function(value) {
-    return value && value.length;
-};
+
 
 /**
  * Statics
@@ -47,5 +54,15 @@ TransactionSchema.statics.load = function(id, cb) {
 TransactionSchema.methods = {
 };
 
-mongoose.model('Transaction', TransactionSchema);
+var Transaction = mongoose.model('Transaction', TransactionSchema);
+
+/**
+ * Validations
+ */
+var validatePresenceOf = function(value) {
+    return value && value.length;
+};
+Transaction.schema.path('from_user_id').validate(function (value) {
+  return ;
+}, 'Invalid payer id');
 
