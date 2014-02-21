@@ -3,6 +3,7 @@ angular.module('app')
 ["$scope", '$location', 'LendRequest',
 function($scope, $location, LendRequest){
   $scope.loan = null;
+  $scope.getRequestComplete = false;
   $scope.loanId = $location.path().slice($location.path().lastIndexOf('/')+1);
 
   //load loan from db
@@ -14,6 +15,9 @@ function($scope, $location, LendRequest){
   //error 
   function(error){
     console.log('Error loading loan: '+error);
+  })
+  .finally(function(){
+    $scope.getRequestComplete = true;
   });
 
   $scope.returnToDashboard = function(){
