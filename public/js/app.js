@@ -1,6 +1,7 @@
 var app = angular.module('app', [
   'ngRoute',
-  "ui.bootstrap"
+  'ui.bootstrap',
+  'ngSanitize'
 ]);
 
 app.config(['$routeProvider',

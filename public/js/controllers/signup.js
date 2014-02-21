@@ -1,24 +1,21 @@
 angular.module('app')
-.controller('SignUpController', ["$scope", '$location', '$http',
+.controller('SignUpController', ["$scope", '$location', '$http', 'Sanitizer',
   
-  function($scope, $location, $http){
+  function($scope, $location, $http, Sanitizer){
     
     $scope.signUp = function(){
-      var data = {
-        access_token: null,
-        balance: null,
-        expires_in: null,
-        username: $scope.email,
-        organization: null,
-        password_hash: $scope.password,
-        password_salt: null,
-        session_token: null,
-        karma: 0,
-        refresh_token: null
+      
+      var credentials = {
+        email: $scope.email,
+        password: $scope.password
       };
-      $http.post('/signup', data).success(function(){
-        console.log($scope.email, $scope.password)  
-      });
+
+      credentials = Sanitizer.sanitize(credentials);
+
+      // $http.post('/signup', data).success(function(){
+      //   console.log($scope.email, $scope.password)  
+      // });
+
     };
 
     $scope.splashPage = function(){
