@@ -1,7 +1,7 @@
 angular.module('app')
-.controller('SignInController', ["$scope", '$location', 'Sanitizer',
+.controller('SignInController', ["$scope", '$location', '$http', 'Sanitizer',
   
-  function($scope, $location, Sanitizer){
+  function($scope, $location, $http, Sanitizer){
 
   
     $scope.signIn = function(){
@@ -10,6 +10,17 @@ angular.module('app')
         password: $scope.password
       };
       credentials = Sanitizer.sanitize(credentials);
+
+      console.log('Signing user into database: ', credentials);
+      $http.post('/login', credentials)
+      .success(function(user){
+        console.log('User signed in:\n', user);
+      })
+      .error(function(error){
+        console.log('ERROR:\n', error);
+      });
+
+
     };
 
     $scope.splashPage = function(){
