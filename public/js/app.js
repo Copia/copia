@@ -24,7 +24,7 @@ app.config(['$routeProvider',
         controller: 'SignUpController'
       }).
       when('/dashboard', {
-        templateUrl: 'views/users/dashboard.html',
+        templateUrl: 'views/dashboard.html',
         controller: 'DashboardController'
       }).
       when('/borrow', {
