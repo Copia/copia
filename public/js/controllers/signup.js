@@ -23,7 +23,7 @@ angular.module('app')
     };
 
     $scope.splashPage = function(){
-      $location.path( "/splashPage" );
+      $location.path( "/" );
     };
       
 

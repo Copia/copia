@@ -6,14 +6,14 @@ angular.module('app')
   
     $scope.signIn = function(){
       var credentials = {
-        email: $scope.email,
+        username: $scope.email,
         password: $scope.password
       };
       credentials = Sanitizer.sanitize(credentials);
     };
 
     $scope.splashPage = function(){
-      $location.path( "/splashPage" );
+      $location.path( "/" );
     };
 
 }]);
