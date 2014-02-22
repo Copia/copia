@@ -35,7 +35,6 @@ exports.oauth2 = function( request, response, next) {
 
 exports.router_auth = function(request, response, next) {
   //get id from request, check session_token
-  console.log('router_auth - params.userId:', request.params.userId);
   var id = request.params.userId || request.query.userId || request.body.userId;
   var token = request.params.session_token || request.query.session_token || request.body.session_token;
   console.log('Id: ', id, 'Token: ', token);

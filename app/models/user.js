@@ -71,9 +71,10 @@ var validatePresenceOf = function(value) {
 UserSchema.pre("save" , function(next) {
   var user = this;
 
+  if (!user.isModified('password')) return next();
+
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
     if(err) return next(err);
-
     user.password_salt = salt;
     bcrypt.hash(user.password, salt, function(err, hash) {
       if(err) return next(err);

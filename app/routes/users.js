@@ -16,7 +16,7 @@ module.exports = function(app) {
 
     app.post('/signup', user_service.signup);
 
-    app.post('/account', authentication.router_auth, user_service.account);
+    app.post('/account', authentication.router_auth, users.update);
 
     app.post('/logout', authentication.router_auth, user_service.logout);
 

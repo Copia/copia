@@ -22,14 +22,13 @@ exports.get = function(req, res, id) {
 };
 
 exports.login = function(req, res) {
-  console.log("In USERS LOGIN: ", req.body);
   User.find({ username: req.body.username }, function(err, user) {
     //find returns an array...
     var user = user[0];
     user.verifyPassword(req.body.password, function(err, verified) {
       if(err) { res.send(404, err.err); }
       else if (verified) { res.jsonp(user); }
-      res.send(404, "LOGIN FAILED. I SEE YOU");
+      else {res.send(404, "LOGIN FAILED. I SEE YOU");}
     });
   });        
 };
