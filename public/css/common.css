@@ -63,6 +63,11 @@ textarea {
   resize: none;
 }
 
+.input-group input[type="date"] {
+  width: 204px;
+}
+
+/*
 .dollarimg {
     height: 25px;
 }
@@ -91,7 +96,7 @@ form[name=loanRequestForm] input.ng-invalid.ng-dirty {
 form[name=loanRequestForm] input.ng-valid.ng-dirty {
     border: 3px solid forestgreen;
 }
-
+*/
 footer {
     position:fixed;
     left:0px;
