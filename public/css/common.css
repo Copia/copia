@@ -1,17 +1,73 @@
-.navbar .nav>li>a.brand {
-    padding-left:20px;
-    margin-left:0
-}
-
-.content {
-    margin-top:70px;
-    width:100%
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 body {
   background-color: #00b2ba;
+  margin-bottom: 60px;
 }
 
+.content {
+  margin-top: 20px;
+  width:100%
+}
+
+.white {
+  color: #ffffff;
+}
+
+/*
+ * Button Inverse
+ *
+ * Buttons in the masthead.
+ */
+
+.btn-outline-inverse {
+  color: #fff;
+  background-color: transparent;
+  border-color: #cdbfe3;
+}
+
+@media (min-width: 768px) {
+  .btn-outline-inverse {
+      width: auto;
+      margin: 20px 5px 20px 0;
+      padding: 18px 24px;
+      font-size: 21px;
+  }
+}
+
+.btn-outline-inverse:hover, .btn-outline-inverse:focus, .btn-outline-inverse:active {
+  color: #563d7c;
+  text-shadow: none;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.input-group-addon.glyphicon {
+  padding: 10px 12px;
+}
+
+
+.bottom-button-group {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+/* views/borrow.html */
+
+textarea {
+  resize: none;
+}
+
+.input-group input[type="date"] {
+  width: 204px;
+}
+
+/*
 .dollarimg {
     height: 25px;
 }
@@ -39,8 +95,8 @@ form[name=loanRequestForm] input.ng-invalid.ng-dirty {
 
 form[name=loanRequestForm] input.ng-valid.ng-dirty {
     border: 3px solid forestgreen;
-}   
-
+}
+*/
 footer {
     position:fixed;
     left:0px;

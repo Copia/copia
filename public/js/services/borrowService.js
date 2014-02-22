@@ -2,14 +2,20 @@
 
 angular.module('app')
 .provider('BorrowRequest', function(){
-  
+  //returns today's date in proper <input type="date" /> format
+  var today = function() {
+    var local = new Date();
+    local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+  };
+
   this.loan = {
     amount : {
       loan : null,
       payback : null
     },
     date : {
-      neededBy : null
+      neededBy : today()
     },
     paybackDays : null,
     category : null,
@@ -48,7 +54,7 @@ angular.module('app')
       redirectInvalidLoan : function(){
         if(!self.validLoanAttrs) {
           $location.path( "/borrow" );
-        } 
+        }
       },
 
       submitBorrowRequest : function() {
