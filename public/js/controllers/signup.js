@@ -6,16 +6,19 @@ angular.module('app')
     $scope.signUp = function(){
       
       var credentials = {
-        email: $scope.email,
+        username: $scope.email,
         password: $scope.password
       };
-
       credentials = Sanitizer.sanitize(credentials);
 
-      // $http.post('/signup', data).success(function(){
-      //   console.log($scope.email, $scope.password)  
-      // });
-      console.log(credentials);
+      console.log('Adding user to database: ', credentials);
+      $http.post('/signup', credentials)
+      .success(function(user){
+        console.log('User added to database:\n', user);
+      })
+      .error(function(error){
+        console.log('ERROR:\n', error);
+      });
 
     };
 
