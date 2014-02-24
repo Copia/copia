@@ -1,7 +1,9 @@
 angular.module('app')
 .controller('LendController', 
-["$scope", '$location', 'LendRequest',
-function($scope, $location, LendRequest){
+["$scope", '$location', 'LendRequest', '$cookieStore',
+function($scope, $location, LendRequest, $cookieStore){
+
+  $scope.token = $cookieStore.get('session_token');
 
   //load loans from db
   LendRequest.getLoans()
