@@ -3,6 +3,8 @@ angular.module('app')
   
   function($scope, $location, $http, Sanitizer, $cookieStore){
     
+    //TODO:  Check to see if there is a valid session token stored and redirect automatically
+
     $scope.signUp = function(){
       
       var credentials = {
