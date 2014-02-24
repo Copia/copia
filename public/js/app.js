@@ -1,7 +1,8 @@
 var app = angular.module('app', [
   'ngRoute',
   'ui.bootstrap',
-  'ngSanitize'
+  'ngSanitize',
+  'ngCookies'
 ]);
 
 app.config(['$routeProvider',
