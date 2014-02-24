@@ -12,8 +12,6 @@ module.exports = function(app) {
   
   app.delete('/users/:userId/loans/:loanId', authentication.router_auth, loan_service.delete);
 
-  app.post('/users/:userId/loans', authentication.router_auth, loan_service.create);
-
-  app.get('/users/:userId/loans', authentication.router_auth, loan_service.all);
+  app.post('/users/:userId/loans', authentication.router_auth, loan_service.all);
 
 };
