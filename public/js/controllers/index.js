@@ -1,6 +1,12 @@
 angular.module('app')
-.controller('IndexController', ["$scope", function($scope){
+.controller('IndexController', 
+["$scope", '$location', 
+function($scope, $location){
+  $scope.signUp = function(){
+    $location.path( "/signup" );
+  };
+
   $scope.signIn = function(){
-    console.log('sign in');
-  }
+    $location.path( "/signin" );
+  };
 }]);

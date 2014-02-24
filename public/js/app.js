@@ -11,10 +11,6 @@ app.config(['$routeProvider',
         templateUrl: 'views/index.html',
         controller: 'IndexController'
       }).
-      when('/splashPage', {
-        templateUrl: 'views/splashPage.html',
-        controller: 'SplashPageController'
-      }).
       when('/signin', {
         templateUrl: 'views/signin.html',
         controller: 'SignInController'
@@ -24,7 +20,7 @@ app.config(['$routeProvider',
         controller: 'SignUpController'
       }).
       when('/dashboard', {
-        templateUrl: 'views/users/dashboard.html',
+        templateUrl: 'views/dashboard.html',
         controller: 'DashboardController'
       }).
       when('/borrow', {
