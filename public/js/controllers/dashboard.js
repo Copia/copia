@@ -8,8 +8,8 @@ function($scope, CookieService, VenmoAuthentication, $location){
   $scope.user_id = cookies.user_id;
 
   $scope.venmoAuth = function(){
-    VenmoAuthentication.authenticate($scope.user_id, $scope.session_token);
-    // $location.path( "/account" );
+    // VenmoAuthentication.authenticate($scope.user_id, $scope.session_token);
+    window.location.href = window.location.origin + '/venmo_login';
   };
 
 }]);
