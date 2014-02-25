@@ -16,8 +16,9 @@ angular.module('app')
       $http.post('/login', credentials)
       .success(function(user){
         console.log('User signed in:\n', user);
-        //store cookie
+        //store cookies
         $cookieStore.put('session_token', user.session_token);
+        $cookieStore.put('user_id', user._id);
         //redirect
         $location.path( "/dashboard" );
       })

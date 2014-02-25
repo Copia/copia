@@ -17,8 +17,9 @@ angular.module('app')
       $http.post('/signup', credentials)
       .success(function(user){
         console.log('User added to database:\n', user);
-        //store cookie
+        //store cookies
         $cookieStore.put('session_token', user.session_token);
+        $cookieStore.put('user_id', user._id);
         //redirect
         $location.path( "/dashboard" );
       })
