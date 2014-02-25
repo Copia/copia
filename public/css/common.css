@@ -63,6 +63,10 @@ textarea {
   resize: none;
 }
 
+.input-group input[type="date"] {
+  width: 204px;
+}
+
 /*
 .dollarimg {
     height: 25px;
