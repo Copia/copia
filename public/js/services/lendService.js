@@ -8,10 +8,12 @@ angular.module('app')
     var self = this;
 
     var service = {
-      getLoans : function(){
+      getLoans : function(token){
         var d = $q.defer();
+
+        // {'session_token' : token}
         //TODO: use actual user id
-        $http.get('/users/tempUserId/loans')
+        $http.get('/users/530bd2749debf900002038f1/loans?session_token='+token)
         .success(function(loans, status, headers, config) {
           d.resolve(loans);
         })
