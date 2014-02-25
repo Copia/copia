@@ -1,10 +1,47 @@
 <section>
-  <h1>Copia</h1>
-
-  <form name="signup">
-    <input type="email" ng-model="email" placeholder="Email"/>
-    <input type="password" ng-model="password" placeholder="Password"/>
-    <a class="btn btn-primary" ng-click='signUp()'>Sign Up</a>
-    <a class="btn btn-primary" ng-click='splashPage()'>Back</a>
+  <form class="form-horizontal" role="form" name="signup" novalidate>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <div class="input-group input-group-lg">
+          <label for"email" class="sr-only">Email</label>
+          <input type="email" name="email" ng-model="email" class="form-control" id="email" placeholder="Email" autofocus required />
+          <span class="input-group-btn">
+            <button class="btn btn-outline-inverse" type="button">?</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <div class="input-group input-group-lg">
+          <label for"password" class="sr-only">Password</label>
+          <input name="password" ng-model="password" type="password" class="form-control" id="password" placeholder="Password" required />
+          <span class="input-group-btn">
+            <button class="btn btn-outline-inverse" type="button">?</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-12">
+        <div class="input-group input-group-lg">
+          <label for"passwordConfirmation" class="sr-only">Password Confirmation</label>
+          <input name="password" ng-model="passwordConfirmation" type="password" class="form-control" id="password" placeholder="Password Confirmation" required />
+          <span class="input-group-btn">
+            <button class="btn btn-outline-inverse" type="button">?</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-button-group">
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-1">
+          <button class="btn btn-outline-inverse btn-lg" ng-click="splashPage()">Cancel</a>
+        </div>
+        <div class="col-xs-4 col-xs-offset-1">
+          <button class="btn btn-outline-inverse btn-lg" ng-click="signIn()">Sign In</button>
+        </div>
+      </div>
+    </div>
   </form>
 </section>
