@@ -7,14 +7,19 @@
 <h2>Loan Request Confirmation:</h2>
 <div class='loanConfText'>
   <p>
-    Loan amount: {{ loan.amount.loan }}
+    You requested ${{ loan.amount.loan}}.00 and will payback ${{ loan.amount.payback }}.00 in {{ loan.paybackDays }} after receiving the loan. 
+    You need to find a lender by {{ loan.date.neededBy }}.
+    The category of your debt is {{ loan.category }} and the reason you need the funds is: 
+  </p>
+  <p>{{ loan.reason }}</p>
+
+    <!-- Loan amount: {{ loan.amount.loan }}
     <br>Payback amount: {{ loan.amount.payback }}
     <br>Debt paid back in # days: {{ loan.paybackDays }}
     <br>Debt Deadline: {{ loan.date.neededBy }}
     <br>Debt Category: {{ loan.category }}
-    <br>Debt Reason: {{ loan.reason }}
-  </p>
-  <p>TERMS OF SERVICE:</p>
+    <br>Debt Reason: {{ loan.reason }} -->
+  
 </div>
 
 <button class='btn btn-danger' ng-click='cancel()'>Cancel</button>
