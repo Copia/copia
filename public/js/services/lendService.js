@@ -21,10 +21,11 @@ angular.module('app')
         return d.promise;
       },
 
-      getLoan : function(session_token, user_id) {
+      getLoan : function(load_id, session_token, user_id) {
         var d = $q.defer();
-
-        $http.get('/users/'+user_id+'/loans', {params: {session_token: session_token}})
+        
+        // /users/:userId/loans/:loanId
+        $http.get('/users/'+user_id+'/loans/'+load_id, {params: {session_token: session_token}})
         .success(function(loan, status, headers, config) {
           d.resolve(loan);
         })
