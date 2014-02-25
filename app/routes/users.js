@@ -14,17 +14,24 @@ module.exports = function(app) {
 
     app.post('/login', users.login); //call user controller method);
 
+    
+
     app.post('/signup', user_service.signup);
 
-    app.post('/account', authentication.router_auth, users.update);
+    app.post('/account', authentication.router_auth, user_service.account);
 
     app.post('/logout', authentication.router_auth, user_service.logout);
 
+    
+    app.get('/venmo_login', user_service.login);
+
     //redirect from venmo
-    app.get('/auth', authentication.oauth2, user_service.create);
+    app.get('/auth', authentication.oauth2, user_service.create, function(request, response){
+
+    });
 
     app.get('/dashboard', authentication.router_auth, function(request, response) {
-        response.send('Welcome to Copia!!!');
+      response.send('Welcome to Copia!!!');
     });
 
     app.post('/users/:userId/:update', authentication.router_auth, user_service.get);
