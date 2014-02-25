@@ -55,20 +55,25 @@ exports.create = function(req, res) {
   });
 };
 
-exports.connectVenmo = function(req, res) {  
+exports.addUserToVenmo = function(req, res) {  
   console.log('Connecting with Venmo', req.body);
-  var user = new User(req.body);
-  user.save(function(err) {
-    if (err) {
-      console.log('FAIL');
-      console.log(err);
-      res.send(403, err);
-    } else {
-      console.log("Venmo Info: ", user);
-      //TODO: Make this path relative
-      res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
-    }
-  });
+  var venmoUserInfo = new User(req.body);
+  console.log('ADD THIS VENMO USER INFO TO USER OBJECT:\n', venmoUserInfo);
+
+  //TODO: Make this path relative
+  res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
+
+  // var venmoUserInfo = new User(req.body);
+  // venmoUserInfo.save(function(err) {
+  //   if (err) {
+  //     console.log('FAIL');
+  //     console.log(err);
+  //     res.send(403, err);
+  //   } else {
+  //     console.log("Venmo Info: ", venmoUserInfo);
+  //     res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
+  //   }
+  // });
 };
 
 /**

@@ -20,10 +20,10 @@ module.exports = function(app) {
 
     app.post('/logout', authentication.router_auth, user_service.logout);
 
-    app.get('/venmo_login', authentication.router_auth, user_service.login);
+    app.get('/venmo_login', authentication.router_auth, user_service.authorizeVenmo);
 
     //redirect from venmo
-    app.get('/auth', authentication.oauth2, user_service.create);
+    app.get('/auth', authentication.oauth2, user_service.addVenmoToUser);
 
     app.get('/dashboard', authentication.router_auth, function(request, response) {
       response.send('Welcome to Copia!!!');
