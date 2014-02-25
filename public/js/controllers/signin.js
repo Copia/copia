@@ -1,8 +1,7 @@
 angular.module('app')
-.controller('SignInController', ["$scope", '$location', '$http', 'Sanitizer', "$cookieStore",
+.controller('SignInController', ["$scope", '$location', '$http', 'Sanitizer', 'CookieService',
   
-  function($scope, $location, $http, Sanitizer, $cookieStore){
-
+  function($scope, $location, $http, Sanitizer, CookieService){
     //TODO:  Check to see if there is a valid session token stored and redirect automatically
 
     $scope.signIn = function(){
@@ -16,8 +15,9 @@ angular.module('app')
       $http.post('/login', credentials)
       .success(function(user){
         console.log('User signed in:\n', user);
-        //store cookie
-        $cookieStore.put('session_token', user.session_token);
+        //store cookies
+        CookieService.storeCookies(user);
+
         //redirect
         $location.path( "/dashboard" );
       })

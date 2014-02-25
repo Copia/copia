@@ -3,4 +3,8 @@
 
   <a href="/#borrow" class="btn btn-primary">Borrow</a>
   <a href="/#lend" class="btn btn-primary">Lend</a>
+
+  <div ng-show='!venmoConnected'>
+    <button class="btn btn-primary" ng-click='venmoAuth()'>Connect with Venmo</button>
+  </div>
 </section>

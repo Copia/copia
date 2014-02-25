@@ -1,7 +1,7 @@
 angular.module('app')
-.controller('SignUpController', ["$scope", '$location', '$http', 'Sanitizer', '$cookieStore',
+.controller('SignUpController', ["$scope", '$location', '$http', 'Sanitizer', 'CookieService',
   
-  function($scope, $location, $http, Sanitizer, $cookieStore){
+  function($scope, $location, $http, Sanitizer, CookieService){
     
     //TODO:  Check to see if there is a valid session token stored and redirect automatically
 
@@ -17,8 +17,8 @@ angular.module('app')
       $http.post('/signup', credentials)
       .success(function(user){
         console.log('User added to database:\n', user);
-        //store cookie
-        $cookieStore.put('session_token', user.session_token);
+        //store cookies
+        CookieService.storeCookies(user);
         //redirect
         $location.path( "/dashboard" );
       })
