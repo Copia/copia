@@ -1,6 +1,6 @@
 angular.module('app')
-.controller('DashboardController', ["$scope", 'CookieService', 'VenmoAuthentication',
-function($scope, CookieService, VenmoAuthentication){
+.controller('DashboardController', ["$scope", 'CookieService', 'VenmoAuthentication', '$location',
+function($scope, CookieService, VenmoAuthentication, $location){
 
   $scope.venmoConnected = false;
   var cookies = CookieService.getCookies();
@@ -9,6 +9,7 @@ function($scope, CookieService, VenmoAuthentication){
 
   $scope.venmoAuth = function(){
     VenmoAuthentication.authenticate($scope.user_id, $scope.session_token);
+    // $location.path( "/account" );
   };
 
 }]);

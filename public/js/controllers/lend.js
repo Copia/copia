@@ -1,12 +1,14 @@
 angular.module('app')
 .controller('LendController', 
-["$scope", '$location', 'LendRequest', '$cookieStore',
-function($scope, $location, LendRequest, $cookieStore){
+["$scope", '$location', 'LendRequest', 'CookieService',
+function($scope, $location, LendRequest, CookieService){
 
-  $scope.token = $cookieStore.get('session_token');
+  var cookies = CookieService.getCookies();
+  $scope.session_token = cookies.session_token;
+  $scope.user_id = cookies.user_id;
 
   //load loans from db
-  LendRequest.getLoans($scope.token)
+  LendRequest.getLoans($scope.session_token, $scope.user_id)
   //success
   .then(function(loans){
     $scope.loans = loans;
