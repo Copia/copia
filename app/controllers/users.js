@@ -57,11 +57,23 @@ exports.create = function(req, res) {
 
 exports.addUserToVenmo = function(req, res) {  
   console.log('Connecting with Venmo', req.body);
-  var venmoUserInfo = new User(req.body);
-  console.log('ADD THIS VENMO USER INFO TO USER OBJECT:\n', venmoUserInfo);
+  //var user = User.find(req.userId);
+  console.log( 'User ID to add to Venmo: ', req.userId);
+  console.log( 'Adding user to Venmo:', req.body.user);
+  
+  User.findByIdAndUpdate(req.userId, {user: req.body.user}, function(err, updatedUser) {
+    if (err) {
+      console.log('Error: ', err.errmsg);
+      res.send(403, err.errmsg );
+    } else {
+      console.log('Updated User: ', updatedUser);
+      res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
+      //res.jsonp(updatedUser);
+    }
+  });
 
   //TODO: Make this path relative
-  res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
+  //res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
 
   // var venmoUserInfo = new User(req.body);
   // venmoUserInfo.save(function(err) {
