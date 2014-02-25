@@ -8,12 +8,10 @@ angular.module('app')
     var self = this;
 
     var service = {
-      getLoans : function(token){
+      getLoans : function(session_token, user_id){
         var d = $q.defer();
 
-        // {'session_token' : token}
-        //TODO: use actual user id
-        $http.get('/users/530bd2749debf900002038f1/loans?session_token='+token)
+        $http.get('/users/'+user_id+'/loans', {params: {session_token: session_token}})
         .success(function(loans, status, headers, config) {
           d.resolve(loans);
         })
@@ -23,10 +21,10 @@ angular.module('app')
         return d.promise;
       },
 
-      getLoan : function(id) {
+      getLoan : function(session_token, user_id) {
         var d = $q.defer();
-        //TODO: use actual user id
-        $http.get('/users/tempUserId/loans/'+id)
+
+        $http.get('/users/'+user_id+'/loans', {params: {session_token: session_token}})
         .success(function(loan, status, headers, config) {
           d.resolve(loan);
         })

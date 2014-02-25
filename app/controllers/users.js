@@ -45,7 +45,8 @@ exports.create = function(req, res) {
       res.send(403, err);
     } else {
       console.log("USER: ", user);
-      exports.login(req, res);
+      //TODO: Make this path relative
+      res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
     }
   });
 };

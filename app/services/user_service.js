@@ -16,6 +16,7 @@ var venmoUrl = 'https://api.venmo.com/v1/oauth/authorize?';
 
 exports.create = function(request, response, body) {
   users.create(request, response);
+  // window.location.href = 'https://copia.ngrok.com/#/';
 };
 
 exports.login = function(request, response) {
@@ -45,6 +46,7 @@ exports.logout = function(request, response) {
 };
 
 exports.account = function(request, response) {
+  
   response.redirect(307, venmoUrl);
 };
 
