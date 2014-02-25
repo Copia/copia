@@ -9,7 +9,9 @@ function($scope, CookieService, VenmoAuthentication, $location){
 
   $scope.venmoAuth = function(){
     // VenmoAuthentication.authenticate($scope.user_id, $scope.session_token);
-    window.location.href = window.location.origin + '/venmo_login';
+    var url = '/venmo_login?session_token=' + $scope.session_token + '&userId=' + $scope.user_id;
+    
+    window.location.href = window.location.origin + url;
   };
 
 }]);

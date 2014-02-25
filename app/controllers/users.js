@@ -22,6 +22,7 @@ exports.get = function(req, res, id) {
 };
 
 exports.login = function(req, res) {
+  console.log('Finding user: ',req.body);
   User.find({ username: req.body.username }, function(err, user) {
     //find returns an array...
     var user = user[0];
@@ -37,18 +38,42 @@ exports.login = function(req, res) {
  */
 exports.create = function(req, res) {  
   console.log('Creating user', req.body);
+  var tempPassword = req.body.password;
   var user = new User(req.body);
-  console.log(user);
   user.save(function(err) {
     if (err) {
+      console.log('FAIL');
       console.log(err);
       res.send(403, err);
     } else {
-      console.log("USER: ", user);
-      //TODO: Make this path relative
-      res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
+      user.verifyPassword(tempPassword, function(err, verified) {
+        if(err) { res.send(404, err.err); }
+        else if (verified) { res.jsonp(user); }
+        else {res.send(404, "NEW USER LOGIN FAILED. I SEE YOU");}
+      });
     }
   });
+};
+
+exports.addUserToVenmo = function(req, res) {  
+  console.log('Connecting with Venmo', req.body);
+  var venmoUserInfo = new User(req.body);
+  console.log('ADD THIS VENMO USER INFO TO USER OBJECT:\n', venmoUserInfo);
+
+  //TODO: Make this path relative
+  res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
+
+  // var venmoUserInfo = new User(req.body);
+  // venmoUserInfo.save(function(err) {
+  //   if (err) {
+  //     console.log('FAIL');
+  //     console.log(err);
+  //     res.send(403, err);
+  //   } else {
+  //     console.log("Venmo Info: ", venmoUserInfo);
+  //     res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
+  //   }
+  // });
 };
 
 /**
