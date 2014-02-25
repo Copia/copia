@@ -112,3 +112,13 @@ footer {
 footer p {
     padding:5px 0 12px 10px
 }
+
+.loanDetail {
+  padding: 0;
+  margin: 3px;
+}
+
+.loanSnippets {
+  margin-top: 5px
+  border : 8px solid black;
+}

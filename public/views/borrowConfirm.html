@@ -1,26 +1,23 @@
-<div class='dashboardHeader'>
+<!-- <div class='dashboardHeader'>
   <a href="#/borrow" class='glyphicon glyphicon-chevron-left'></a>
   <h2>C (add logo)</h2>
   <a href="" class="glyphicon glyphicon-align-justify"></a>
-</div>
+</div> -->
+<section>
+  <div class="row">
+    <div class="col-xs-12">
+      <div>
+        <h3 class="white">Loan Request Confirmation: </h3>
+          <p class="h4 white">
+            You requested ${{ loan.amount.loan}}.00 and will payback ${{ loan.amount.payback }}.00 in {{ loan.paybackDays }} after receiving the loan. 
+            You need to find a lender by {{ loan.date.neededBy }}.
+            The category of your debt is <strong class='h3 white'>{{ loan.category }}</strong> and the reason you need the funds is: 
+          </p>
+          <p class="h4 white">{{ loan.reason }}</p>
+      </div>
+    </div>
+  </div>
 
-<h2>Loan Request Confirmation:</h2>
-<div class='loanConfText'>
-  <p>
-    You requested ${{ loan.amount.loan}}.00 and will payback ${{ loan.amount.payback }}.00 in {{ loan.paybackDays }} after receiving the loan. 
-    You need to find a lender by {{ loan.date.neededBy }}.
-    The category of your debt is {{ loan.category }} and the reason you need the funds is: 
-  </p>
-  <p>{{ loan.reason }}</p>
-
-    <!-- Loan amount: {{ loan.amount.loan }}
-    <br>Payback amount: {{ loan.amount.payback }}
-    <br>Debt paid back in # days: {{ loan.paybackDays }}
-    <br>Debt Deadline: {{ loan.date.neededBy }}
-    <br>Debt Category: {{ loan.category }}
-    <br>Debt Reason: {{ loan.reason }} -->
-  
-</div>
-
-<button class='btn btn-danger' ng-click='cancel()'>Cancel</button>
-<button class='btn btn-success' ng-click="submitBorrowRequest()">Accept</button>
+  <button class='btn btn-danger' ng-click='cancel()'>Cancel</button>
+  <button class='btn btn-success' ng-click="submitBorrowRequest()">Accept</button>
+</section>  

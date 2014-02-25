@@ -1,9 +1,16 @@
 <a href="#/dashboard">Back</a>
-<h2>C (add logo)</h2>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div>
+      <h3 class="white">Lending Dashboard</h3>
+    </div>
+  </div>
+</div>
 
 <ol class='loanSnippets'>
   <li ng-repeat='loan in loans'>
     <div ng-model='loan' loan-snippet></div>
-    <span ng-click='viewDetails(loan._id)'>View Details</span>
+    <span class="h5 black" ng-click='viewDetails(loan._id)'>View Details</span>
   </li>
 </ol>

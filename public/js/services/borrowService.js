@@ -57,7 +57,7 @@ angular.module('app')
         }
       },
 
-      submitBorrowRequest : function() {
+      submitBorrowRequest : function(session_token, user_id) {
         console.log('Loan request submitted: ', self.loan);
 
         //format loan attributes to match up with database;
@@ -72,14 +72,15 @@ angular.module('app')
         //TODO: update this field with the actual organization
         loan.organization = 'Organization Placeholder';
 
-        //TODO: need a way to access the actual user_id
         //Route to post new loans:  /users/:userId/loans
-        $http.post('/users/500/loans', loan)
+        $http.post('/users/'+user_id+'/loans', {session_token : session_token, loan : loan})
         .success(function(data, status, headers, config) {
           console.log('Loan posted to db: ',loan);
+          $location.path( "/dashboard" );
         })
         .error(function(data, status, headers, config) {
           console.log('Error: ', data);
+          $location.path( "/dashboard" );
         });
       }
     };

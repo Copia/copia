@@ -1,8 +1,22 @@
 <div ng-show='getRequestComplete'>
   <div class='loanDetails' ng-show='loan !== null'>
-    <div>Loan Details</div>
-    <div>{{ loan }}</div>
+
+    <p class='h2 white'>Loan Details</p>
+    <div class='loanSnippet' >
+      <p class="h4 white loanDetail">Name:  {{loan.borrower_id.user.display_name}}  |  Organization:  {{loan.organization}}</p>
+      <p class="h5 white loanDetail">Category:  {{loan.category}}</p>
+      <p class="h5 white loanDetail">Purpose:  {{loan.purpose}}</p>
+
+      <br>
+      <p class="h5 white loanDetail">Amount Requested:  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
+      <p class="h5 white loanDetail">Amount Paid Back:  ${{loan.payback_amount}}.00 within {{loan.payback_days}} of receipt.</p>
+
+      <br>
+      <p class="h5 white loanDetail">Bio:  {{loan.borrower_id.user.about}}</p>
+    </div>
   </div>
+
+  <button class='btn btn-success' ng-click='returnToDashboard()'>Back</button>
 
   <!-- Display error message if loan doesn't exist in db -->
   <div class='loanLoadError' ng-show='loan === null'>
