@@ -23,7 +23,7 @@ module.exports = function(app) {
     app.get('/venmo_login', authentication.router_auth, user_service.authorizeVenmo);
 
     //redirect from venmo
-    app.get('/auth', authentication.oauth2, user_service.addVenmoToUser);
+    app.post('/auth', authentication.oauth2, user_service.addVenmoToUser);
 
     app.get('/dashboard', authentication.router_auth, function(request, response) {
       response.send('Welcome to Copia!!!');
@@ -36,6 +36,7 @@ module.exports = function(app) {
     app.get('/users', authentication.router_auth, user_service.listAll)
 
     app.delete('/users/:userId', user_service.delete);
+
     app.put('/users/:userId', user_service.update);
 
     // TEST ROUTES TO VERIFY CRUD 
