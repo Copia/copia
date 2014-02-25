@@ -1,5 +1,11 @@
-<div class='loanSnippet'>
-  <div>LOAN</div>
-  <div>{{loan}}</div>
+<div class='loanSnippet' >
+  <p class="h4 white loanDetail">Name:  {{loan.borrower_id.user.display_name}}  |  Organization:  {{loan.organization}}</p>
+  <p class="h5 white loanDetail">Category:  {{loan.category}}</p>
+  <p class="h5 white loanDetail">Amount Requested:  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
+  <p class="h5 white loanDetail">Amount Paid Back:  ${{loan.payback_amount}}.00 within {{loan.payback_days}} of receipt.</p>
 </div>
 
+<!-- {"principal":100,"payback_amount":110,"match_deadline":"12/28/14","payback_days":10,"category":"Education","purpose":"Buy books","matched":false,"organization":"Hack Reactor ","borrower_id":{"__v":0,"_id":"530cfb8695335f00000624a0","password":"$2a$10$DRMUPYfgww/RlBupe3My3O/qMl265/987LlTshsHMSg3.s6NI9xl2","password_salt":"$2a$10$DRMUPYfgww/RlBupe3My3O","session_token":"$2a$10$i6wiDb5KhkvaYuxLFRu.ze","username":"bverissimo@ucdavis.edu",
+
+
+"user":{"username":"brendon-verissimo","first_name":"Brendon","last_name":"Verissimo","display_name":"Brendon Verissimo","is_friend":false,"friends_count":1,"about":"No Short Bio","email":"bverissimo@ucdavis.edu","phone":"16502246188","profile_picture_url":"https://venmopics.appspot.com/u/v1/s/4e52c52b-b90b-426a-af68-6ed974cdd017","id":"1347448874205184160","date_joined":"2014-02-03T03:00:23"}},"_id":"530cfe47cdffba0000d359f8","__v":0} -->
