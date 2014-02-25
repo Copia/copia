@@ -22,7 +22,7 @@ exports.loan = function(req, res, id) {
  * Create a loan
  */
 exports.create = function(req, res) {
-    var loan = new Loan(req.body);
+    var loan = new Loan(req.body.loan);
     loan.save(function(err) {
         if (err) {
             return res.send('./public/404.html', {
