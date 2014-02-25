@@ -23,6 +23,7 @@ module.exports = function(app) {
     app.get('/venmo_login', authentication.router_auth, user_service.authorizeVenmo);
 
     //redirect from venmo
+
     app.post('/auth', authentication.oauth2, user_service.addVenmoToUser);
 
     app.get('/dashboard', authentication.router_auth, function(request, response) {
