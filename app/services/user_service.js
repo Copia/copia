@@ -46,8 +46,8 @@ exports.signup = function(request, response) {
 };
 
 exports.logout = function(request, response) {
-  // TODO - delete  session token
-  console.log('User logged out - to be implemented');
+   console.log('GET User: ', request.body.userId, request.authenticated_user._id);
+   users.update( {body: { session_token: null } }, response, request.authenticated_user._id);
 };
 
 exports.account = function(request, response) {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-.provider('CheckUser', function(){
+.provider('ModifyUser', function(){
   this.user = null;
 
   this.$get = function($http, $location, $q, $rootScope){
@@ -18,6 +18,18 @@ angular.module('app')
           } else {
             $rootScope.venmoConnected = true;
           }
+          d.resolve(user);
+        })
+        .error(function(data, status, headers, config) {
+          d.reject(data);
+        });
+        return d.promise;
+      },
+      logoutUser : function(cookie){
+        var d = $q.defer();
+
+        $http.post('/logout', {session_token: cookie.session_token, userId: cookie.user_id})
+        .success(function(user, status, headers, config) {
           d.resolve(user);
         })
         .error(function(data, status, headers, config) {
