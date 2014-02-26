@@ -128,7 +128,7 @@ footer p {
   border : 8px solid black;
 }
 
-.userDashTitle {
+.userDashTitle, .lendingDashTitle {
   background-color: rgba(199, 95, 54, 0.90);
   margin-bottom: 20px;
 }
