@@ -3,6 +3,7 @@
 // Loan service use loans controller
 var mongoose = require('mongoose'),
     loans = require('../controllers/loans'),
+    users = require('../controllers/users'),
     Loan = mongoose.model('Loan');
 
 exports.create = function(request, response) {
@@ -27,8 +28,6 @@ exports.all = function(request, response) {
 }
 
 exports.update = function(request, response) {
-  console.log("PUT to: ",request.params.loanId, "-->Add lender to Loan" );
-  //attach lender_id to the loan object
   loans.update(request, response, request.params.loanId);
 };
 

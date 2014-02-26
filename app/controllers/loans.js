@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Loan = mongoose.model('Loan'),
+    User = mongoose.model('User'),
     _ = require('lodash');
 
 /**
@@ -41,9 +42,28 @@ exports.create = function(req, res) {
  * Update a loan
  */
 exports.update = function(req, res, id) {
-  Loan.findByIdAndUpdate(id,{ $set: req.body },function(err, query){
-    res.jsonp(query);
+  Loan.load(id, function(err, loan) {
+    if( loan.status === "pending" ) {
+      loan.status = "funded";
+      loan.lender_id = req.body.lender_id;
+      var addedKarma = loan.principal;
+      User.findById(req.body.lender_id, function(err, user) {
+        user.karma += addedKarma;
+        user.save();
+      });
+      loan.save();
+      res.jsonp(loan);   
+    } else {
+      res.send(401, "Loan not available");
+    }
   });
+
+
+
+
+  // ,{ $set: req.body },function(err, query){
+  //   res.jsonp(query);
+  // });
 };
 
 /**
