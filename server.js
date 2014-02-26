@@ -21,6 +21,16 @@ app.use( express.bodyParser() );
 app.use( app.router );
 app.use( express.static( rootPath + '/public') );
 
+// Error handling middleware
+app.use(function(err, req, res, next) {
+  if(err) {
+    console.log('server.js:errMiddleware => error.', err);
+    response.send(err);
+  } else {
+    next();
+  }
+});
+
 // Connect to database
 var db  = mongoose.connect(config.db);
 
