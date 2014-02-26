@@ -70,7 +70,8 @@ exports.create = function(req, res, loan) {
         res.jsonp(transaction);
       }
     });
-  }
+  });
+  
 };
 
 /** 
