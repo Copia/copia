@@ -24,9 +24,7 @@ var UserSchema = new Schema({
         friends_count: Number,
         about: String,
         email: {
-          type: String, 
-          sparse: true,
-          unique: true
+          type: String
         },
         phone: String,
         profile_picture_url: String,
@@ -49,18 +47,6 @@ var UserSchema = new Schema({
   }
 );
 
-
-/**
-* Virtuals
-*/
-// UserSchema.virtual('password').set(function(password) {
-//     this._password = password;
-//     this.salt = this.makeSalt();
-//     this.hashed_password = this.encryptPassword(password);
-// }).get(function() {
-//     return this._password;
-// });
-
 /**
 * Validations
 */
@@ -74,11 +60,16 @@ UserSchema.pre("save" , function(next) {
   if (!user.isModified('password')) return next();
 
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
-    if(err) return next(err);
+    if(err) {
+      console.log('models/users.js:UserSchema.pre-save => bcrypt.genSalt error. ', err);
+      return next(err);
+    }
     user.password_salt = salt;
     bcrypt.hash(user.password, salt, function(err, hash) {
-      if(err) return next(err);
-
+      if(err) { 
+        console.log('models/users.js:UserSchema.pre-save => bcrypt.hash error. ', err);
+        return next(err)
+      };
       user.password = hash;
       next();
     });
@@ -98,9 +89,13 @@ var generateSessionToken = function(cb) {
 UserSchema.methods.verifyPassword = function(password, cb) {
     var user = this;
     bcrypt.compare(password, this.password, function(err, isMatch) {
-        if (err) return cb(err);
+        if (err) {
+          return cb(err);
+        }
         generateSessionToken(function(err, salt) {
-          if(err) console.log(err);
+          if(err) {
+            return cb(err)
+          } 
           user.session_token = salt;
           user.save();
           cb(null, isMatch);
