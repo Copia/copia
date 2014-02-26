@@ -13,6 +13,7 @@ function($scope, $location, CookieService, ModifyUser, $rootScope){
   $scope.logout = function(){
     ModifyUser.logoutUser(CookieService.getCookies());
     CookieService.eatCookies();
+    $rootScope.navbar = false;
     $location.path( "/" );
   };
 
