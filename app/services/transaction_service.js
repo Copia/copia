@@ -1,6 +1,6 @@
 'use strict';
 var mongoose = require('mongoose'),
-Transaction = mongoose.model('Transaction');
+Transaction = mongoose.model('Transaction'),
 Loan = mongoose.model('Loan');
 
 // Transaction service use transactions controller
