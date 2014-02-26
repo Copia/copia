@@ -1,12 +1,22 @@
 'use strict';
 var mongoose = require('mongoose'),
 Transaction = mongoose.model('Transaction');
+Loan = mongoose.model('Loan');
 
 // Transaction service use transactions controller
 var transactions = require('../controllers/transactions');
 
 exports.create = function(request, response) {
-  transactions.create(request, response, request.params.userId);
+  Loan.find(request.body.loan_id , function(err, loan) {
+    if (err) {
+      return response.send(400, 'transaction_service.js/create/Loan.find => Could not find loan with id ' + request.body.loan_id);
+    } 
+    if (loan.borrower_id !== request.body.authenticated_user ) {
+      var msg = 'User ' + request.authenticated_user + ' is not in borrower_id field of loan ' + request.body.loan_id;
+      return response.send(401, 'transaction_service.js/create/Loan.find => ' + msg)
+    } 
+    transactions.create(request, response, loan);  
+  });
 };
 
 exports.get = function(request, response) {
