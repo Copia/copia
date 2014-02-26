@@ -6,7 +6,7 @@
   </div>
 
   <ul class='loanSnippets'>
-    <li ng-repeat='loan in loans'>
+    <li class='loanSnippet' ng-repeat='loan in loans'>
       <div ng-model='loan' loan-snippet></div>
       <span class="h5 black" ng-click='viewDetails(loan._id)'>View Details</span>
     </li>

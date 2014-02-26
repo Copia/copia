@@ -124,8 +124,15 @@ footer p {
 }
 
 .loanSnippets {
-  margin-top: 5px
-  border : 8px solid black;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.loanSnippet {
+  border: 3px solid rgba(199, 95, 54, 0.90);
+  margin-bottom: 15px;
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .userDashTitle, .lendingDashTitle {
