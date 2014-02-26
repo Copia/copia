@@ -58,10 +58,11 @@
     <script type="text/javascript" src="/js/controllers/signup.js"></script>
     <script type="text/javascript" src="/js/controllers/splashPage.js"></script>
     <script type="text/javascript" src="/js/controllers/loan.js"></script>
+    <script type="text/javascript" src="/js/controllers/navbar.js"></script>
     <script type="text/javascript" src="/js/controllers/VenmoAuthController.js"></script>
     <!-- <script type="text/javascript" src="/js/controllers/header.js"></script> -->
 <!-- <script type="text/javascript" src="/js/init.js"></script> -->
-      <nav class="navbar navbar-inverse" role="navigation">
+      <nav class="navbar navbar-inverse" role="navigation" ng-controller="NavbarController">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -83,10 +84,7 @@
               <li><a href="#/legal">Legal</a></li>
               <li><a href="#/blog">Blog</a></li>
               <li><a href="#/support">Support</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#/">Sign In</a></li>
-              <li><a href="#/">Sign Up</a></li>
+              <li><a ng-click="logout()">Log Out</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
