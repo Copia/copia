@@ -41,7 +41,6 @@ exports.create = function(req, res) {
  * Update a loan
  */
 exports.update = function(req, res, id) {
-  console.log("UPDATE ",req.body);
   Loan.findByIdAndUpdate(id,{ $set: req.body },function(err, query){
     res.jsonp(query);
   });
@@ -73,7 +72,6 @@ exports.all = function(req, res) {
                 status: 500
             });
         } else {
-            console.log(loans);
             res.jsonp(loans);
         }
     });
