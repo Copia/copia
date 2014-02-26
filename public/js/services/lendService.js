@@ -39,7 +39,7 @@ angular.module('app')
         var d = $q.defer();
         
         // /users/:userId/loans/:loanId
-        $http.post('/users/'+user_id+'/transaction/', {params: {session_token: session_token, loan_id:'123'}})
+        $http.post('/users/'+user_id+'/transaction/', {params: {session_token: session_token, loan_id:loan_id}})
         .success(function(loan, status, headers, config) {
           d.resolve(loan);
         })
