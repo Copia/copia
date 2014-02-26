@@ -8,11 +8,10 @@ var authentication = require('./middleware/authentication');
 module.exports = function(app) {
 
     app.get('/', function(req, res){
-        // TODO - do we want to 'render' or serve a fixed asset?
-        res.render('index');
+        res.sendfile('public/index.html');
     });
 
-    app.post('/login', users.login); //call user controller method);
+    app.post('/login', users.login);
 
     app.post('/signup', user_service.signup);
 
@@ -21,8 +20,6 @@ module.exports = function(app) {
     app.post('/logout', authentication.router_auth, user_service.logout);
 
     app.get('/venmo_login', authentication.router_auth, user_service.authorizeVenmo);
-
-    //redirect from venmo
 
     app.post('/auth', authentication.oauth2, user_service.addVenmoToUser);
 
@@ -40,10 +37,4 @@ module.exports = function(app) {
 
     app.put('/users/:userId', user_service.update);
 
-    // TEST ROUTES TO VERIFY CRUD 
-    // app.post('/_users', user_service.create);
-    // app.get('/_users/:userId', user_service.get);
-    // app.delete('/_users/:userId', user_service.delete);
-    // app.put('/_users/:userId', user_service.update);
-    // app.get('/_users', user_service.listAll);
 };

@@ -2,6 +2,7 @@
   "name": "Copia",
   "version": "0.0.1",
   "config": {
+    "host":"copia.ngrok.com",
     "db": "mongodb://heroku_app22242686:do2856rbauaa0nlb1epfqgj61o@ds033569.mongolab.com:33569/heroku_app22242686",
     "port": 3000,
     "venmo": {
