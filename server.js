@@ -4,7 +4,6 @@ var config      = require('./package.json').config;
 var users       = require("./app/models/user");
 var loans       = require("./app/models/loan");
 var transactions = require("./app/models/transaction");
-var consolidate = require('consolidate');
 var path        = require('path');
 
 // instantiate expressjs app
@@ -12,9 +11,6 @@ var app = express();
 
 // Set up serving up of static resources and server side dynamic views
 var rootPath = path.normalize(__dirname );
-app.engine('html', consolidate.swig);
-app.set('view engine', 'html');
-app.set('views', __dirname + '/public');
 
 // Set up some standard express middleware
 app.use( express.bodyParser() );
