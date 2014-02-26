@@ -11,10 +11,11 @@ var mongoose = require('mongoose'),
  * Find user by id
  */
 exports.get = function(req, res, id) {
-  console.log('controllers/user.js:User.findById => Getting user:', id);
+  console.log('controllers/user.js:get/User.findById => Getting user:', id);
   User.findById(id, function(err, user) {
     if (err) {
-      res.send(404, 'controllers/user.js:User.findById => got error ' + err);
+      console.log('controllers/user.js:User.findById => got error ' + err);
+      res.send(400,'controllers/user.js:User.findById => got error ' + err);
     } else {
       res.jsonp(user);
     }

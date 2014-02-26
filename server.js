@@ -22,7 +22,7 @@ app.use( app.router );
 app.use( express.static( rootPath + '/public') );
 
 // Error handling middleware
-app.use(function(err, req, res, next) {
+app.use(function(err, request, response, next) {
   if(err) {
     console.log('server.js:errMiddleware => error.', err);
     response.send(err);
