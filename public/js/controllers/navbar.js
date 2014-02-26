@@ -1,8 +1,8 @@
 angular.module('app')
 .controller('NavbarController',  
 function($scope, $location, CookieService, ModifyUser){
-  $scope.signUp = function(){
-    $location.path( "/signup" );
+  $scope.home = function(){
+    $location.path( "/dashboard" );
   };
 
   $scope.logout = function(){
