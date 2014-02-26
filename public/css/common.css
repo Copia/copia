@@ -127,3 +127,20 @@ footer p {
   margin-top: 5px
   border : 8px solid black;
 }
+
+.userDashTitle {
+  background-color: rgba(199, 95, 54, 0.90);
+  margin-bottom: 20px;
+}
+
+.userDashName {
+  background-color: rgba(100, 100, 100, 0.50);
+  margin-bottom: 10px;
+  padding-top: 5px;
+  border-bottom: 2px solid rgba(199, 95, 54, 0.90);
+  border-top: 2px solid rgba(199, 95, 54, 0.90);
+}
+
+.userDashPhoto {
+  padding-right : 0px;
+}

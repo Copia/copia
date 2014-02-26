@@ -9,8 +9,11 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   $rootScope.showDashboard = false;
 
 
-  ModifyUser.getUser(cookies).then();
-
+  ModifyUser.getUser(cookies).then(function(user){
+    $scope.user = user;
+    user.user.profile_picture_url = user.user.profile_picture_url.replace('\/s\/', '/l/');
+    console.log(user);
+  });
 
   $scope.venmoAuth = function(){
     // VenmoAuthentication.authenticate($scope.user_id, $scope.session_token);
