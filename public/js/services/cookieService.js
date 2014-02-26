@@ -16,6 +16,10 @@ angular.module('app')
           'session_token' : $cookieStore.get('session_token'),
           'user_id' : $cookieStore.get('user_id')
         };
+      },
+      eatCookies : function(user){
+        $cookieStore.remove(user.session_token);
+        $cookieStore.remove(user._id);
       }
     };
     return service;
