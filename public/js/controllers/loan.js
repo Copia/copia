@@ -5,7 +5,6 @@ function($scope, $location, LendRequest, CookieService, $modal){
   $scope.loan = null;
   $scope.getRequestComplete = false;
   $scope.loan_id = $location.path().slice($location.path().lastIndexOf('/')+1);
-
   var cookies = CookieService.getCookies();
   $scope.session_token = cookies.session_token;
   $scope.user_id = cookies.user_id;
@@ -32,6 +31,10 @@ function($scope, $location, LendRequest, CookieService, $modal){
   $scope.confirmFunding = function(){
     //ADD CALL HERE
     console.log('funding is confirmed!!');
+    LendRequest.makeLoan($scope.loan_id, $scope.session_token, $scope.user_id)
+    .then(function(result) {
+      console.log("RESULT: ",result);
+    });
   };
 
   //POP OUT CONFIRMATION

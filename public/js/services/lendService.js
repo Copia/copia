@@ -33,6 +33,20 @@ angular.module('app')
           d.reject(data);
         });
         return d.promise;
+      },
+
+      makeLoan : function(loan_id, session_token, user_id) {
+        var d = $q.defer();
+        console.log("MAKELOAN");
+        $http.put('/users/'+ user_id +'/loans/'+ loan_id, {session_token: session_token, lender_id: user_id})
+        .success(function(loan, status, headers, config) {
+          console.log(loan, status, headers, config);
+          d.resolve(loan);
+        })
+        .error(function(data, status, headers, config) {
+          d.reject(data);
+        });
+        return d.promise;
       }
     };
     return service;
