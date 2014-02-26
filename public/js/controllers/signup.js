@@ -9,7 +9,8 @@ angular.module('app')
       
       var credentials = {
         username: $scope.email,
-        password: $scope.password
+        password: $scope.password,
+        organization: $scope.organization
       };
       credentials = Sanitizer.sanitize(credentials);
 
