@@ -1,7 +1,23 @@
+// var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
+
+//   $scope.items = items;
+//   $scope.selected = {
+//     item: $scope.items[0]
+//   };
+
+//   $scope.ok = function () {
+//     $modalInstance.close($scope.selected.item);
+//   };
+
+//   $scope.cancel = function () {
+//     $modalInstance.dismiss('cancel');
+//   };
+// };
+
 angular.module('app')
 .controller('LoanController', 
-["$scope", '$location', 'LendRequest', 'CookieService', '$modal',
-function($scope, $location, LendRequest, CookieService, $modal){
+["$scope", '$location', 'LendRequest', 'CookieService', '$modal', '$rootScope',
+function($scope, $location, LendRequest, CookieService, $modal, $rootScope){
   $scope.loan = null;
   $scope.getRequestComplete = false;
   $scope.loan_id = $location.path().slice($location.path().lastIndexOf('/')+1);
@@ -27,31 +43,34 @@ function($scope, $location, LendRequest, CookieService, $modal){
     $location.path( "/lend" );
   };
 
-  //put('/users/:userId/loans/:loanId'
   $scope.confirmFunding = function(){
-    //ADD CALL HERE
-    console.log('funding is confirmed!!');
+    $scope.modalInstance.close();
     LendRequest.makeLoan($scope.loan_id, $scope.session_token, $scope.user_id)
     .then(function(result) {
-      console.log("RESULT: ",result);
+      console.log("Loan posted to database:\n",result);
     });
+  };
+
+  $scope.cancelModal = function(){
+    $scope.modalInstance.dismiss();
   };
 
   //POP OUT CONFIRMATION
   $scope.openConfirmation = function() {
 
-    var modalInstance = $modal.open({
+    $scope.modalInstance = $modal.open({
       templateUrl: 'modalConfirmation.html',
-      controller: 'LoanController'
+      scope: $scope
     });
 
-    modalInstance.result.then(function (selectedItem) {
-      console.log('OPEN!');
+    $scope.modalInstance.result.then(function (selectedItem) {
+      console.log('Confirmed from modal');
     }, function () {
-      console.log('ACCEPT');
+      console.log('Cancel from modal');
     });
-
-    
   };
+
+
+
 
 }]);
