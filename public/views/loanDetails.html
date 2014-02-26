@@ -3,7 +3,7 @@
 
     <p class='h2 white'>Loan Details</p>
     <div class='loanSnippet' >
-      <p class="h4 white loanDetail">Name:  {{loan.borrower_id.user.display_name}}  |  Organization:  {{loan.organization}}</p>
+      <p class="h4 white loanDetail">Name:  {{loan.borrower_id.user.display_name}}  |  Organization:  {{loan.borrower_id.organization}}</p>
       <p class="h5 white loanDetail">Category:  {{loan.category}}</p>
       <p class="h5 white loanDetail">Purpose:  {{loan.purpose}}</p>
 
@@ -14,9 +14,11 @@
       <br>
       <p class="h5 white loanDetail">Bio:  {{loan.borrower_id.user.about}}</p>
     </div>
-  </div>
 
-  <button class='btn btn-success' ng-click='returnToDashboard()'>Back</button>
+    <br>
+    <button class='btn btn-default' ng-click='returnToDashboard()'>Back</button>
+    <button class="btn btn-success" ng-click="openConfirmation()">Fund this Loan</button>
+  </div>
 
   <!-- Display error message if loan doesn't exist in db -->
   <div class='loanLoadError' ng-show='loan === null'>
@@ -24,4 +26,23 @@
     <button class='btn btn-success' ng-click='returnToDashboard()'>Return to Lending Dashboard</button>
   </div>
 </div>
+
+  <button class="btn btn-success" ng-click="confirmFunding()">TEMPORARY CONFIRM BUTTON</button>
+
+ <script type="text/ng-template" id="modalConfirmation.html">
+    <div class="modal-header">
+      <h3>Funding Confirmation</h3>
+    </div>
+    <div class="modal-body">
+      <p>You agree to fund {{loan.borrower_id.user.display_name}}'s request for ${{loan.principal}}.00.</p>
+      <p>{{loan.borrower_id.user.display_name}}'s agrees to refund you ${{loan.payback_amount}}.00 within {{loan.payback_days}} of receipt.</p>
+      <br>
+      <strong>Terms of Service</strong>
+      <p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" ng-click='cancel()'>Cancel</button>
+      <button class="btn btn-success" ng-click='ok()'>Confirm Funding</button>
+    </div>
+</script>
 

@@ -21,6 +21,8 @@ angular.module('app')
           d.resolve(user);
         })
         .error(function(data, status, headers, config) {
+          //redirect to splash page
+          $location.path( "/l" );
           d.reject(data);
         });
         return d.promise;
