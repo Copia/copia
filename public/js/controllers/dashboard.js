@@ -1,12 +1,12 @@
 angular.module('app')
-.controller('DashboardController', ["$scope", 'CookieService', 'VenmoAuthentication', '$location', 'CheckUser', '$rootScope',
-function($scope, CookieService, VenmoAuthentication, $location, CheckUser, $rootScope){
+.controller('DashboardController', ["$scope", 'CookieService', 'VenmoAuthentication', '$location', 'ModifyUser', '$rootScope',
+function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $rootScope){
   var cookies = CookieService.getCookies();
   $scope.session_token = cookies.session_token;
   $scope.user_id = cookies.user_id;
 
   
-  CheckUser.getUser(cookies).then();
+  ModifyUser.getUser(cookies).then();
   
 
 
