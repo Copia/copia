@@ -21,11 +21,25 @@ angular.module('app')
         return d.promise;
       },
 
-      getLoan : function(load_id, session_token, user_id) {
+      getLoan : function(loan_id, session_token, user_id) {
         var d = $q.defer();
         
         // /users/:userId/loans/:loanId
-        $http.get('/users/'+user_id+'/loans/'+load_id, {params: {session_token: session_token}})
+        $http.get('/users/'+user_id+'/loans/'+loan_id, {params: {session_token: session_token}})
+        .success(function(loan, status, headers, config) {
+          d.resolve(loan);
+        })
+        .error(function(data, status, headers, config) {
+          d.reject(data);
+        });
+        return d.promise;
+      },
+
+      repayLoan : function(loan_id, session_token, user_id) {
+        var d = $q.defer();
+        
+        // /users/:userId/loans/:loanId
+        $http.post('/users/'+user_id+'/transaction/', {params: {session_token: session_token, loan_id:'123'}})
         .success(function(loan, status, headers, config) {
           d.resolve(loan);
         })
