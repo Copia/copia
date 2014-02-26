@@ -35,9 +35,9 @@ angular.module('app')
         return d.promise;
       },
 
-      makeLoan : function(loan_id, session_token, user_id) {
+      fundLoan : function(loan_id, session_token, user_id) {
         var d = $q.defer();
-        console.log("MAKELOAN");
+        console.log("Funding loan...");
         $http.put('/users/'+ user_id +'/loans/'+ loan_id, {session_token: session_token, lender_id: user_id})
         .success(function(loan, status, headers, config) {
           console.log(loan, status, headers, config);
