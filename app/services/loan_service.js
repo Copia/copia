@@ -7,8 +7,14 @@ var mongoose = require('mongoose'),
 
 exports.create = function(request, response) {
   //check if user already has loan
-
-  loans.create(request, response);
+  Loan.find({ borrower_id: request.params.userId, status: "pending" }, function(err, loan) {
+    console.log("LOAN CREATE: ", err, loan);
+    if( loan.length > 0 ) {
+      response.send(401, "Unauthorized");
+    } else {
+    loans.create(request, response);
+    }
+  });
 };
 
 exports.get = function(request, response) {

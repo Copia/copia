@@ -41,8 +41,8 @@ exports.create = function(req, res) {
  * Update a loan
  */
 exports.update = function(req, res, id) {
-  var lender = req.body.lender_id;
-  Loan.findByIdAndUpdate(id,{ matched: true, lender_id: lender },function(err, query){
+  console.log("UPDATE ",req.body);
+  Loan.findByIdAndUpdate(id,{ $set: req.body },function(err, query){
     res.jsonp(query);
   });
 };

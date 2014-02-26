@@ -39,7 +39,8 @@ var UserSchema = new Schema({
     password: String, 
     password_salt:String,
     session_token: String,
-    karma: Number,
+    karma: { type: Number,
+             default: 0 },
     refresh_token: String
   }, 
   {
