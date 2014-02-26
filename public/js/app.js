@@ -44,10 +44,6 @@ app.config(['$routeProvider',
         templateUrl: 'views/venmoAuth.html',
         controller: 'VenmoAuthController'
       }).
-      when('/logout', {
-        templateUrl: 'views/index.html',
-        controller: 'LogoutController'
-      }).
       otherwise({
         redirectTo: '/'
       });
