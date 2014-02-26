@@ -4,8 +4,9 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    User = mongoose.model('User'),
-    _ = require('lodash');
+        User = mongoose.model('User'),
+           _ = require('lodash'),
+      config = require('../../package.json').config;
 
 /**
  * Find user by id
@@ -93,8 +94,10 @@ exports.addUserToVenmo = function(req, res) {
     if (err) {
       res.send(401, "controllers/user.js:addUserToVenmo/User.findByIdAndUpdate => got error" + err.errmsg );
     } else {
-      console.log('controllers/user.js:addUserToVenmo/User.findByIdAndUpdate =>Updated User: ', updatedUser);
-      res.redirect(302, 'https://copia.ngrok.com/#/dashboard');
+      console.log('controllers/user.js:addUserToVenmo/User.findByIdAndUpdate =>Received user Venmo Accout/session_token: ', updatedUser);
+      var conf = config.host ? (config.host+'/') : '';
+      console.log('controllers/user.js:addUserToVenmo/User.findByIdAndUpdate => Redirecting user to Dashboard: ', 'https://'+conf+'#/dashboard');
+      res.redirect(302, 'https://' + conf + '#/dashboard');
     }
   });
 };
