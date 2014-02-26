@@ -42,9 +42,6 @@ exports.listAll = function(request, response) {
 }
 
 exports.signup = function(request, response) {
- // TODO: create the user account
- // QUESTION: how is this functionality different than create, above?
- // the following is TEMPORARY for TESTING
     users.create(request, response);
 };
 
@@ -54,7 +51,6 @@ exports.logout = function(request, response) {
 };
 
 exports.account = function(request, response) {
-  
   response.redirect(307, venmoUrl);
 };
 
