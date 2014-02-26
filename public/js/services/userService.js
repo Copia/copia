@@ -14,9 +14,10 @@ angular.module('app')
         $http.get('/users/'+cookie.user_id, {params: {session_token: cookie.session_token, userId: cookie.user_id}})
         .success(function(user, status, headers, config) {
           if (user.user){
-            $rootScope.venmoConnected = false;
+            console.log(user)
+            $rootScope.showDashboard = true;
           } else {
-            $rootScope.venmoConnected = true;
+            $rootScope.venmoConnected = false;
           }
           d.resolve(user);
         })

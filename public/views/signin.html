@@ -1,5 +1,5 @@
 <section>
-  <form class="form-horizontal" role="form" name="signin" novalidate>
+  <form class="form-horizontal" role="form" name="signin"  novalidate>
     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -25,10 +25,10 @@
     <div class="bottom-button-group">
       <div class="row">
         <div class="col-xs-4 col-xs-offset-1">
-          <button class="btn btn-outline-inverse btn-lg" ng-click="splashPage()">Cancel</a>
+          <button type="button" class="btn btn-outline-inverse btn-lg" ng-click="splashPage()">Cancel</a>
         </div>
         <div class="col-xs-4 col-xs-offset-1">
-          <button class="btn btn-outline-inverse btn-lg" ng-click="signIn()">Sign In</button>
+          <button class="btn btn-outline-inverse btn-lg" ng-keyup="$event.keyCode == 13 ? signIn() : null" ng-click="signIn()">Sign In</button>
         </div>
       </div>
     </div>

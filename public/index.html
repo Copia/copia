@@ -62,7 +62,7 @@
     <script type="text/javascript" src="/js/controllers/VenmoAuthController.js"></script>
     <!-- <script type="text/javascript" src="/js/controllers/header.js"></script> -->
 <!-- <script type="text/javascript" src="/js/init.js"></script> -->
-      <nav class="navbar navbar-inverse" role="navigation" ng-controller="NavbarController">
+      <nav class="navbar navbar-inverse" role="navigation" ng-controller="NavbarController" ng-cloak ng-show="navbar">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -72,12 +72,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/">Copia</a>
+            <a class="navbar-brand" ng-click="home()">Copia</a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div collapse="isCollapsed" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a ng-click="home()">Home</a></li>
               <li><a href="#/about">About</a></li>
               <li><a href="#/security">Security</a></li>
               <li><a href="#/faq">Fees & FAQ</a></li>
