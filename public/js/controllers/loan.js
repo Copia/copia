@@ -1,7 +1,7 @@
 angular.module('app')
 .controller('LoanController', 
-["$scope", '$location', 'LendRequest', 'CookieService',
-function($scope, $location, LendRequest, CookieService){
+["$scope", '$location', 'LendRequest', 'CookieService', '$modal',
+function($scope, $location, LendRequest, CookieService, $modal){
   $scope.loan = null;
   $scope.getRequestComplete = false;
   $scope.loan_id = $location.path().slice($location.path().lastIndexOf('/')+1);
@@ -26,6 +26,25 @@ function($scope, $location, LendRequest, CookieService){
 
   $scope.returnToDashboard = function(){
     $location.path( "/lend" );
+  };
+
+  //put('/users/:userId/loans/:loanId'
+
+  //POP OUT CONFIRMATION
+  $scope.openConfirmation = function() {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'myModalContent.html',
+      controller: 'LoanController'
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      // $scope.selected = selectedItem;
+    }, function () {
+      // $log.info('Modal dismissed at: ' + new Date());
+    });
+
+    
   };
 
 }]);
