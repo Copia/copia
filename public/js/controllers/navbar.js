@@ -1,6 +1,6 @@
 angular.module('app')
 .controller('NavbarController',  
-function($scope, $location, CookieService, ModifyUser){
+function($scope, $location, CookieService, ModifyUser, $rootScope){
   
   if ($location.path() !== '/'){
     $rootScope.navbar = true;
