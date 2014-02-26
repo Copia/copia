@@ -1,9 +1,10 @@
 <section>
   <form class="form-horizontal" role="form" name="signup" novalidate>
+    
     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
-          <label for"email" class="sr-only">Email</label>
+          <label for="email" class="sr-only">Email</label>
           <input type="email" name="email" ng-model="email" class="form-control" id="email" placeholder="Email" autofocus required />
           <span class="input-group-btn">
             <button class="btn btn-outline-inverse" type="button">?</button>
@@ -11,10 +12,23 @@
         </div>
       </div>
     </div>
+    
     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
-          <label for"password" class="sr-only">Password</label>
+          <label for="organization" class="sr-only">Organization</label>
+          <input type="text" name="organization" ng-model="organization" class="form-control" id="organization" placeholder="Organization" required />
+          <span class="input-group-btn">
+            <button class="btn btn-outline-inverse" type="button">?</button>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-xs-12">
+        <div class="input-group input-group-lg">
+          <label for="password" class="sr-only">Password</label>
           <input name="password" ng-model="password" type="password" class="form-control" id="password" placeholder="Password" required />
           <span class="input-group-btn">
             <button class="btn btn-outline-inverse" type="button">?</button>
@@ -22,10 +36,11 @@
         </div>
       </div>
     </div>
+
     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
-          <label for"passwordConfirmation" class="sr-only">Password Confirmation</label>
+          <label for="passwordConfirmation" class="sr-only">Password Confirmation</label>
           <input name="password" ng-model="passwordConfirmation" type="password" class="form-control" id="password" placeholder="Password Confirmation" required />
           <span class="input-group-btn">
             <button class="btn btn-outline-inverse" type="button">?</button>
@@ -33,6 +48,7 @@
         </div>
       </div>
     </div>
+
     <div class="bottom-button-group">
       <div class="row">
         <div class="col-xs-4 col-xs-offset-1">
