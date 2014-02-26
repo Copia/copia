@@ -8,16 +8,24 @@
     <div class="col-xs-12">
       <div>
         <h3 class="white">Loan Request Confirmation: </h3>
-          <p class="h4 white">
-            You requested ${{ loan.amount.loan}}.00 and will payback ${{ loan.amount.payback }}.00 in {{ loan.paybackDays }} after receiving the loan. 
-            You need to find a lender by {{ loan.date.neededBy }}.
-            The category of your debt is <strong class='h3 white'>{{ loan.category }}</strong> and the reason you need the funds is: 
-          </p>
-          <p class="h4 white">{{ loan.reason }}</p>
+        <p class="h4 white">
+          You requested <strong>${{ loan.amount.loan}}.00</strong> and will payback <strong>${{ loan.amount.payback }}.00</strong> in <strong>{{ loan.paybackDays }}</strong> days after receiving the loan.
+          The category of your debt is <strong>{{ loan.category }}</strong> and the reason you need the funds is: <strong>{{ loan.reason }}</strong>.
+          These terms apply if you receive the loan before <strong>{{ loan.date.neededBy }}</strong>.
+        </p>
       </div>
     </div>
   </div>
+  <div class="bottom-button-group">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-1">
+        <button ng-click="cancel()" class="btn btn-outline-inverse btn-lg">Cancel</button>
+      </div>
+      <div class="col-xs-4 col-xs-offset-1">
+        <button ng-click="submitBorrowRequest()" class="btn btn-outline-inverse btn-lg">Accept</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <button class='btn btn-danger' ng-click='cancel()'>Cancel</button>
-  <button class='btn btn-success' ng-click="submitBorrowRequest()">Accept</button>
-</section>  
+
