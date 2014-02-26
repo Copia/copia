@@ -45,7 +45,7 @@ function($scope, $location, LendRequest, CookieService, $modal, $rootScope){
 
   $scope.confirmFunding = function(){
     $scope.modalInstance.close();
-    LendRequest.makeLoan($scope.loan_id, $scope.session_token, $scope.user_id)
+    LendRequest.fundLoan($scope.loan_id, $scope.session_token, $scope.user_id)
     .then(function(result) {
       console.log("Loan posted to database:\n",result);
     });
