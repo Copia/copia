@@ -22,5 +22,9 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
     window.location.href = window.location.origin + url;
   };
 
+  $scope.repayLoan = function(){
+
+  };
+
 }]);
 
