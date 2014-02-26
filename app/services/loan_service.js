@@ -4,7 +4,6 @@
 var loans = require('../controllers/loans');
 
 exports.create = function(request, response) {
-  console.log("POST to: ",request.url, "-->Create Loan" );
   //check if user already has loan
   loans.create(request, response);
 };
