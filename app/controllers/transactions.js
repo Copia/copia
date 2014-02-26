@@ -6,7 +6,7 @@
 var mongoose = require('mongoose'),
   Transaction = mongoose.model('Transaction'),
   _ = require('lodash');
-
+  var venmoAPI = require('../lib/venmoAPI.js');
 /**
  * Find transaction by id
  */
@@ -36,24 +36,41 @@ exports.destroy = function(req, res, id) {
 /**
  * Create a transaction
  */
-exports.create = function(req, res, userId) {
-  console.log('User ', userId, ' creating transaction ', req.body );
+exports.create = function(req, res, loan) {
+  console.log('User ', req.authenticated_user, ' creating transaction ', req.body );
 
-  var transaction = new Transaction( 
-    _.extend( req.body, {
-      from_user_id: userId
-    }));
+  vemoAPI.postPayment( {}, function(err, data) {
 
-  transaction
-  .save(function(err) {
     if (err) {
-      console.log(err.err);
-      res.send(403, err.err);
-    } else {
-      console.log("Transaction: ", transaction);
-      res.jsonp(transaction);
+      return response.send(400, 'Venmo payment did not go through');
     }
-  });
+
+    var transaction = new Transaction({
+      from_user_id: req.authenticated_user,
+      to_user_id: loan.lender_id,
+      loan_id: loan._id,
+      transaction_date: Date.now(),
+      venmo_amount: loan.payback_amount,
+      venmo_audient: "public",
+      venmo_date_created: Date.now(),
+      venmo_date_completed: Date.now(),
+      venmo_status: "pending",
+      venmo_payment_id: null,
+      venmo_fee: 0,
+      venmo_refund: null
+    });
+
+    transaction
+    .save(function(err) {
+      if (err) {
+        console.log(err.err);
+        res.send(403, err.err);
+      } else {
+        console.log("Transaction: ", transaction);
+        res.jsonp(transaction);
+      }
+    });
+  }
 };
 
 /** 
