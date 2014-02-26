@@ -29,19 +29,23 @@ function($scope, $location, LendRequest, CookieService, $modal){
   };
 
   //put('/users/:userId/loans/:loanId'
+  $scope.confirmFunding = function(){
+    //ADD CALL HERE
+    console.log('funding is confirmed!!');
+  };
 
   //POP OUT CONFIRMATION
   $scope.openConfirmation = function() {
 
     var modalInstance = $modal.open({
-      templateUrl: 'myModalContent.html',
+      templateUrl: 'modalConfirmation.html',
       controller: 'LoanController'
     });
 
     modalInstance.result.then(function (selectedItem) {
-      // $scope.selected = selectedItem;
+      console.log('OPEN!');
     }, function () {
-      // $log.info('Modal dismissed at: ' + new Date());
+      console.log('ACCEPT');
     });
 
     
