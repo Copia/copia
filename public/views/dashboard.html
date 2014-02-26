@@ -1,14 +1,37 @@
 <section>
   <div class="row">
+    <div class="col-xs-12">
+      <h3 class="white">Dashboard</h3>
+    </div>
+  </div>
+  <div ng-hide="venmoConnected" ng-cloak class="row ng-cloak">
     <div class="col-xs-4">
-      <div ng-show='venmoConnected'>
-        <button class="btn btn-outline-inverse btn-lg" ng-click='venmoAuth()'>Connect with Venmo</button>
+      <img src="https://pbs.twimg.com/profile_images/378800000360513029/8393cb5543a3c56d829d29a8b01cf43c.png" alt="Profile Picture" class="img-circle img-responsive" />
+    </div>
+    <div class="col-xs-8">
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="h3 white">Eddard Stark</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="h3 white">K 1,234</p>
+        </div>
       </div>
     </div>
   </div>
-
-
-  <div class="bottom-button-group">
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="h4 white">You need to connect with Venmo to begin using Copia!</p>
+    </div>
+  </div
+  <div ng-show="venmoConnected" class="row">
+    <p class="text-center">
+      <button class="btn btn-outline-inverse btn-lg" ng-click='venmoAuth()'>Venmo Connect</button>
+    </p>
+  </div>
+  <div ng-hide="venmoConnected" class="bottom-button-group">
     <div class="row">
       <div class="col-xs-4 col-xs-offset-1">
         <a href="/#borrow" class="btn btn-outline-inverse btn-lg">Borrow</a>
@@ -18,5 +41,4 @@
       </div>
     </div>
   </div>
-  
 </section>
