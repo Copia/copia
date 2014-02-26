@@ -3,7 +3,7 @@ angular.module('app')
 function($scope, $location, CookieService, ModifyUser){
   
   if ($location.path() !== '/'){
-    $scope.navbar = true;
+    $rootScope.navbar = true;
   }
 
   $scope.home = function(){
