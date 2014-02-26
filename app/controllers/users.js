@@ -109,6 +109,7 @@ exports.update = function(req, res, id) {
       res.send(403, 'controllers/user.js:update/User.findByIdAndUpdate => got Error: ' + err.errmsg );
     } else {
       console.log('controllers/user.js:update/User.findByIdAndUpdaate updated User: ', updatedUser);
+       console.log('controllers/user.js:update/User.findByIdAndUpdaate updated fields: ', req.body);
       res.jsonp(updatedUser);
     }
   });
