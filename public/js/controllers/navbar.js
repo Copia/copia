@@ -1,12 +1,12 @@
 angular.module('app')
-.controller('NavbarController', 
-["$scope", '$location', 
-function($scope, $location){
+.controller('NavbarController',  
+function($scope, $location, CookieService){
   $scope.signUp = function(){
     $location.path( "/signup" );
   };
 
   $scope.logout = function(){
-    $location.path( "/logout" );
+    CookieService.eatCookies();
+    $location.path( "/" );
   };
-}]);
+});
