@@ -1,10 +1,13 @@
 'use strict';
 
 // Loan service use loans controller
-var loans = require('../controllers/loans');
+var mongoose = require('mongoose'),
+    loans = require('../controllers/loans'),
+    Loan = mongoose.model('Loan');
 
 exports.create = function(request, response) {
   //check if user already has loan
+
   loans.create(request, response);
 };
 

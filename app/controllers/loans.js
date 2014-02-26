@@ -23,6 +23,7 @@ exports.loan = function(req, res, id) {
  */
 exports.create = function(req, res) {
     var loan = new Loan(req.body.loan);
+    loan.borrower_id = req.params.userId;
     loan.save(function(err) {
         if (err) {
             return res.send('./public/404.html', {
