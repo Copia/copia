@@ -1,6 +1,7 @@
 html {
   position: relative;
   min-height: 100%;
+  max-width: 940px;
 }
 
 body {
@@ -10,11 +11,15 @@ body {
 
 .content {
   margin-top: 20px;
-  width:100%
+  width: 100%;
 }
 
 .white {
   color: #ffffff;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }
 
 /*

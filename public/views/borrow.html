@@ -4,7 +4,7 @@
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <span class="input-group-addon">$</span>
-          <label for"amount" class="sr-only">Loan Amount</label>
+          <label for="amount" class="sr-only">Loan Amount</label>
           <input type="number" min=50 max=1000 step=10 name="debtAmount" ng-model="loan.amount.loan" class="form-control" id="amount" placeholder="Loan Amount" autofocus required />
           <span class="input-group-btn">
             <button class="btn btn-outline-inverse" type="button">?</button>
@@ -19,7 +19,7 @@
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <span class="input-group-addon glyphicon glyphicon-calendar"></span>
-          <label for"deadline" class="sr-only">Need by deadline</label>
+          <label for="deadline" class="sr-only">Need by deadline</label>
           <input name="debtDeadline" value="{{ loan.date.neededBy }}" min="{{ loan.date.neededBy }}" ng-model="loan.date.neededBy" type="date" class="form-control" id="deadline" required />
           <span class="input-group-btn">
             <button class="btn btn-outline-inverse" type="button">?</button>
@@ -32,7 +32,7 @@
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <span class="input-group-addon">$</span>
-          <label for"amount" class="sr-only">Payback Amount</label>
+          <label for="amount" class="sr-only">Payback Amount</label>
           <input type="number" name="debtPayback" class="form-control" ng-model='loan.amount.payback' id="payback-amount" placeholder="Payback Amount" payback-validation required>
           <span class="input-group-btn">
             <button class="btn btn-outline-inverse" type="button">?</button>
@@ -47,7 +47,7 @@
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <span class="input-group-addon glyphicon glyphicon-list"></span>
-          <label for"payback-deadline" class="sr-only">Payback deadline</label>
+          <label for="payback-deadline" class="sr-only">Payback deadline</label>
           <select name="debtDueSelection" ng-model="loan.paybackDays" class="form-control" id="payback-deadline" required>
             <option value="" disabled selected>Payback deadline</option>
             <option value="7">One week</option>
@@ -69,7 +69,7 @@
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <span class="input-group-addon glyphicon glyphicon-tags"></span>
-          <label for"purpose-category" class="sr-only">Purpose Category</label>
+          <label for="purpose-category" class="sr-only">Purpose Category</label>
           <select name="debtCategory" ng-model="loan.category" class="form-control" id="purpose-category" required>
             <option value="" disabled selected>Purpose</option>
             <option value="education">Education</option>
@@ -87,7 +87,7 @@
     </div>
     <div class="form-group" ng-class="{ 'has-error' : loanRequestForm.purpose.$dirty && loanRequestForm.purpose.$invalid, 'has-success' : loanRequestForm.purpose.$dirty && !loanRequestForm.purpose.$invalid }">
       <div class="col-xs-12">
-        <label for"purpose" class="sr-only">Purpose text</label>
+        <label for="purpose" class="sr-only">Purpose text</label>
         <textarea name="purpose" id="purpose" class="form-control" rows="3" maxlength="140" ng-model="loan.reason" placeholder="Elaborate on why you need the loan.  More information increases the likehood of lending. You have 140 characters." required></textarea>
         <span class="help-block" ng-show="loanRequestForm.purpose.$dirty && loanRequestForm.purpose.$error.required">Purpose category required.</span>
       </div>
