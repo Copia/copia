@@ -1,19 +1,3 @@
-// var ModalInstanceCtrl = function ($scope, $modalInstance, items) {
-
-//   $scope.items = items;
-//   $scope.selected = {
-//     item: $scope.items[0]
-//   };
-
-//   $scope.ok = function () {
-//     $modalInstance.close($scope.selected.item);
-//   };
-
-//   $scope.cancel = function () {
-//     $modalInstance.dismiss('cancel');
-//   };
-// };
-
 angular.module('app')
 .controller('LoanController', 
 ["$scope", '$location', 'LendRequest', 'CookieService', '$modal', '$rootScope',
