@@ -58,8 +58,8 @@ exports.update = function(req, res, loan, venmoResponse) {
     }
   });
   loan.save();
-  console.log(loan);
-  res.send("Good Job");   
+  console.log("UPDATED LOAN: ",loan);
+  res.jsonp(loan);   
 };
 
 /**
