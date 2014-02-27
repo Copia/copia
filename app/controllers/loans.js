@@ -13,9 +13,11 @@ var mongoose = require('mongoose'),
  */
 exports.loan = function(req, res, id) {
     Loan.load(id, function(err, loan) {
-        if (err) return next(err); 
-        if (!loan) return next(new Error('Failed to load loan ' + id));
-        res.jsonp(loan);
+        if ( err || !loan ) {
+          res.send(404, "Loan not found");
+        } else {
+          res.jsonp(loan);
+        }
     });
 };
 
@@ -42,7 +44,7 @@ exports.create = function(req, res) {
  * Update a loan
  */
 exports.update = function(req, res, loan, venmoResponse) {
-  console.log("IN LOAN CNTRLR: ", loan, venmoResponse);
+  //console.log("IN LOAN CNTRLR: ", loan, venmoResponse.body);
   var addedKarma = loan.principal;
 
   loan.status = "funded";
@@ -56,7 +58,8 @@ exports.update = function(req, res, loan, venmoResponse) {
     }
   });
   loan.save();
-  res.jsonp(loan);   
+  console.log(loan);
+  res.send("Good Job");   
 };
 
 /**
