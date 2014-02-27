@@ -25,6 +25,7 @@
     "bootstrap": "3.0.3",
     "angular-bootstrap": "latest",
     "angular-ui-utils": "latest",
-    "angular-sanitize": "latest"
+    "angular-sanitize": "latest",
+    "jasmine": "~2.0.0"
   }
 }

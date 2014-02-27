@@ -5,13 +5,13 @@
         <div class="input-group input-group-lg">
           <span class="input-group-addon">$</span>
           <label for="amount" class="sr-only">Loan Amount</label>
-          <input type="number" min=50 max=1000 step=10 name="debtAmount" ng-model="loan.amount.loan" class="form-control" id="amount" placeholder="Loan Amount" autofocus required />
+          <input type="number" min=1 max=1000 step=10 name="debtAmount" ng-model="loan.amount.loan" class="form-control" id="amount" placeholder="Loan Amount" autofocus required />
           <span class="input-group-btn">
             <button class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
         <span class="help-block" ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$error.required">Loan Amount required.</span>
-        <span class="help-block" ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$error.min">Minimum loan is $50.</span>
+        <span class="help-block" ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$error.min">Minimum loan is $1.</span>
         <span class="help-block" ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$error.max">Maximum loan is $1,000.</span>
       </div>
     </div>
