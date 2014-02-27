@@ -23,6 +23,14 @@ body {
 }
 
 /*
+ * Color Palette
+*/
+
+/* Background */
+
+/* Text */
+
+/*
  * Video Background
 */
 
@@ -71,7 +79,7 @@ body {
 }
 
 .btn-outline-inverse:hover, .btn-outline-inverse:focus, .btn-outline-inverse:active {
-  color: #563d7c;
+  color: #00b2ba;
   text-shadow: none;
   background-color: #fff;
   border-color: #fff;
@@ -156,7 +164,7 @@ footer p {
 }
 
 .loanSnippet {
-  border: 3px solid rgba(199, 95, 54, 0.90);
+  border: 1px solid #ffffff;
   margin-bottom: 15px;
   margin-right: 5px;
   margin-left: 5px;
@@ -165,11 +173,10 @@ footer p {
 }
 
 .loanSnippet:hover {
-  background-color: rgba(75, 75, 75, 0.30);
+  background-color: #3BC0C5;
 }
 
 .userDashTitle, .lendingDashTitle {
-  background-color: rgba(199, 95, 54, 0.90);
   margin-bottom: 20px;
 }
 
