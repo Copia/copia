@@ -4,7 +4,12 @@
   "config": {
     "host":"copia.ngrok.com",
   "stubVenmo": true,
-    "db": "mongodb://heroku_app22242686:do2856rbauaa0nlb1epfqgj61o@ds033569.mongolab.com:33569/heroku_app22242686",
+    "db": {
+      "uri":"mongodb://heroku_app22242686:do2856rbauaa0nlb1epfqgj61o@ds033569.mongolab.com:33569/heroku_app22242686",
+      "options" : {
+        "keepAlive":1
+      }
+    },
     "port": 3000,
     "venmo": {
       "authUrl": "https://api.venmo.com/v1/oauth/authorize",

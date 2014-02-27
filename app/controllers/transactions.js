@@ -39,6 +39,11 @@ exports.destroy = function(req, res, id) {
 exports.create = function(req, res, loan, lender) {
   console.log('User ', req.authenticated_user, ' creating transaction ', req.body );
 
+  if (!lender || !lender.user) {
+    console.log('transaction.js/create => Error, lender venmo account not available (loan funded?). Lender:', lender);
+    return res.send(400, 'transaction.js/create => Error, lender venmo account not available (loan funded?). Lender:' + lender);
+
+  }
   var venmoPayment = {
     "access_token" : req.authenticated_user_access_token,
     "email" : lender.user.email,
@@ -78,6 +83,8 @@ exports.create = function(req, res, loan, lender) {
         res.send(403, err.err);
       } else {
         console.log("Transaction: ", transaction);
+        loan.status = "repaid";
+        loan.save();
         res.jsonp(transaction);
       }
     });

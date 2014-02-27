@@ -9,7 +9,7 @@ exports.postPayment = function(data, cb) {
   var venmoUrl = 'https://api.venmo.com/v1/payments';
 
   if (config.stubVenmo) {
-    cb(null, null, 'VenmoStub' )
+    cb(null, null, JSON.stringify({"stub":"VenmoStub"}) );
   } else {
     https_service({
       method : "POST",
