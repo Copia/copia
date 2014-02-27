@@ -15,6 +15,9 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
        $scope.user.user.profile_picture_url = $scope.user.user.profile_picture_url.replace('\/s\/', '/l/');
     }
     $scope.loan = userObj.loans;
+    if ($scope.loan.length > 0){
+      $scope.borrower = true;
+    }
     console.log(userObj);
   });
 
