@@ -1,7 +1,7 @@
 'use strict';
 
 //custom validation to ensure that payback amount is >= loan amount
-app.directive('paybackValidation', function(){
+angular.module('app').directive('paybackValidation', function(){
   return {
     require: 'ngModel',
     link : function($scope, elm, attrs, ngModel) {
@@ -24,7 +24,7 @@ app.directive('paybackValidation', function(){
 });
 
 //custom element to display loan snippets
-app.directive('loanSnippet', function(){
+angular.module('app').directive('loanSnippet', function(){
   return {
     require: 'ngModel',
     restrict: 'A',
