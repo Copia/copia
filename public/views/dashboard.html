@@ -57,7 +57,7 @@
   <div ng-hide="!borrower" class='loanSnippet row'>
 
       <div class="col-xs-9"> 
-        <p class="h3 loanDetail">Loan Status:  <b style="color:red">{{borrowStatus}}</b> </p>
+        <p class="h3 loanDetail">Loan Status: <b ng-style="borrowColor">{{borrowStatus}}</b> </p>
         <p class="h4 white loanDetail">Name:  {{user.user.display_name}}</p>
         <p class="h4 white loanDetail">Organization:  {{user.organization}}</p>
         <p class="h5 white loanDetail">Category:  {{loanView.category}}</p>
