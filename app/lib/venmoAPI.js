@@ -12,7 +12,6 @@ exports.postPayment = function(data, cb) {
     url : venmoUrl,
     form : data
   }, function(err, response, body) {
-    //var body = JSON.parse( body );
     cb(err, response, body);
   });
 };

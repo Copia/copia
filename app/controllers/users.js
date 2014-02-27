@@ -89,6 +89,7 @@ exports.addUserToVenmo = function(req, res) {
   console.log('controllers/user.js:addUserToVenmo =>Connecting with Venmo', req.body);
   console.log( 'controllers/user.js:addUserToVenmo =>User ID to add to Venmo: ', req.userId);
   console.log( 'controllers/user.js:addUserToVenmo =>Adding user to Venmo:', req.body.user);
+  console.log( 'controllers/user.js:addUserToVenmo =>ACCESS_TOKEN:', req.body.access_token);
   
   User.findByIdAndUpdate(req.userId, {access_token: req.body.access_token, user: req.body.user}, function(err, updatedUser) {
     if (err) {
