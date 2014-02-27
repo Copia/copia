@@ -1,6 +1,6 @@
 angular.module('app')
-.controller('DashboardController', ["$scope", 'CookieService', 'VenmoAuthentication', '$location', 'ModifyUser', '$rootScope',
-function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $rootScope){
+.controller('DashboardController', ["$scope", 'CookieService', 'VenmoAuthentication', '$location', 'ModifyUser', '$rootScope', 'LendRequest', '$timeout',
+function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $rootScope, LendRequest, $timeout){
   $rootScope.navbar = true;
   var cookies = CookieService.getCookies();
   $scope.session_token = cookies.session_token;
@@ -21,6 +21,14 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
     
     window.location.href = window.location.origin + url;
   };
+
+  $scope.repayLoan = function(){
+    LendRequest.repayLoan('123', $scope.session_token, $scope.user_id);
+  };
+
+  window.showmethemoney = function(){
+    $timeout(function(){$rootScope.showDashboard = false;},0);
+  }
 
 }]);
 

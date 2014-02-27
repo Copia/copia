@@ -23,7 +23,7 @@ angular.module('app')
         })
         .error(function(data, status, headers, config) {
           //redirect to splash page
-          $location.path( "/l" );
+          $location.path( "/" );
           d.reject(data);
         });
         return d.promise;
