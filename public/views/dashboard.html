@@ -21,17 +21,7 @@
       </div>
     </div>
 
-    <div ng-hide="!borrower" class='loanSnippet row'>
-
-      <div class="col-xs-9">
-        <p class="h4 white loanDetail">Name:  {{user.user.display_name}}</p>
-        <p class="h4 white loanDetail">Organization:  {{user.organization}}</p>
-        <p class="h5 white loanDetail">Category:  {{loanView.category}}</p>
-        <p class="h5 white loanDetail">Amount Requested:  ${{loanView.principal}}.00 by {{loanView.match_deadline}}</p>
-        <p class="h5 white loanDetail">Amount Paid Back:  ${{loanView.payback_amount}}.00 within {{loanView.payback_days}} days of receipt.</p>
-      </div>
-
-    </div>
+    
 
     <div ng-hide="borrower" class='bottom-button-group'>
       <div class='row'>
@@ -63,5 +53,18 @@
       <button class="btn btn-outline-inverse btn-lg" ng-click='venmoAuth()'>Venmo Connect</button>
     </p>
   </div>
+
+  <div ng-hide="!borrower" class='loanSnippet row'>
+
+      <div class="col-xs-9"> 
+        <p class="h2  loanDetail">{{borrowTitle}} </p>
+        <p class="h4 white loanDetail">Name:  {{user.user.display_name}}</p>
+        <p class="h4 white loanDetail">Organization:  {{user.organization}}</p>
+        <p class="h5 white loanDetail">Category:  {{loanView.category}}</p>
+        <p class="h5 white loanDetail">Amount Requested:  ${{loanView.principal}}.00 by {{loanView.match_deadline}}</p>
+        <p class="h5 white loanDetail">Amount Paid Back:  ${{loanView.payback_amount}}.00 within {{loanView.payback_days}} days of receipt.</p>
+      </div>
+
+    </div>
 
 </section>

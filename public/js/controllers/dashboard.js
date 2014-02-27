@@ -8,6 +8,8 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   $rootScope.venmoConnected = true;
   $rootScope.showDashboard = false;
 
+  $scope.borrowTitle = 'Pending Loan';
+
 
   ModifyUser.getUser(cookies).then(function(userObj){
     $scope.user = userObj.user;
