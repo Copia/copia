@@ -54,11 +54,11 @@ exports.update = function(request, response) {
         "amount" : loan.principal,
         "audience" : "public"
         };
-        venmo.postPayment(data, function(err, response) {
+        venmo.postPayment(data, function(err, response, body) {
           if( err || body.error ) {
             response.send(401, "Venmo transaction failed");
           } else {
-            console.log("VENMO RESP:   ", response);
+            console.log("VENMO RESP:   \n\n\n\n\n", response, "\n\n\n\n\n", body, "\n\n\n\n\n");
             loans.update(request, response, loan, response);
           }
         });
