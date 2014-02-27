@@ -49,6 +49,8 @@ function($scope, $location, LendRequest, CookieService, $modal, $rootScope){
 
     $scope.modalInstance.result.then(function (selectedItem) {
       console.log('Confirmed from modal');
+      $location.path( "/" );
+
     }, function () {
       console.log('Cancel from modal');
     });
