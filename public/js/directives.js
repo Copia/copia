@@ -20,7 +20,7 @@ angular.module('app').directive('paybackValidation', function(){
         }
       }, true);
     }
-  }
+  };
 });
 
 //custom element to display loan snippets

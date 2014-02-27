@@ -23,5 +23,5 @@ angular.module('app')
       }
     };
     return service;
-  }
+  };
 });

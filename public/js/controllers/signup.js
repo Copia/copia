@@ -38,6 +38,5 @@ angular.module('app')
     $scope.splashPage = function(){
       $location.path( "/" );
     };
-      
-
-}]);
+    
+  }]);

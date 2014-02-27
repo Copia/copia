@@ -9,7 +9,7 @@ angular.module('app')
       if(loan.status === 'pending') {
         filtered.push(loan);
       }
-    })
+    });
     return filtered;
   };
 });

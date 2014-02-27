@@ -14,7 +14,7 @@ angular.module('app')
         $http.get('/users/'+cookie.user_id, {params: {session_token: cookie.session_token, userId: cookie.user_id}})
         .success(function(userObj, status, headers, config) {
           if (userObj.user.user){
-            console.log('user:', userObj)
+            console.log('user:', userObj);
             $rootScope.showDashboard = true;
           } else {
             $rootScope.venmoConnected = false;
@@ -42,5 +42,5 @@ angular.module('app')
       }
     };
     return service;
-  }
+  };
 });

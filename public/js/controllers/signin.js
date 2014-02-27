@@ -38,4 +38,4 @@ angular.module('app')
       $location.path( "/" );
     };
 
-}]);
+  }]);
