@@ -9,11 +9,14 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   $rootScope.showDashboard = false;
 
 
-
   ModifyUser.getUser(cookies).then(function(userObj){
+    $scope.user = userObj.user;
+    if($scope.user.user) {
+       $scope.user.user.profile_picture_url = $scope.user.user.profile_picture_url.replace('\/s\/', '/l/');
+    }
     $scope.loan = userObj.loans;
-    if(user.user) {
-      $scope.user.user.profile_picture_url = $scope.user.user.profile_picture_url.replace('\/s\/', '/l/');
+    if ($scope.loan.length > 0){
+      $scope.borrower = true;
     }
     console.log(userObj);
   });
