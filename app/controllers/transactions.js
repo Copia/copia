@@ -39,7 +39,15 @@ exports.destroy = function(req, res, id) {
 exports.create = function(req, res, loan) {
   console.log('User ', req.authenticated_user, ' creating transaction ', req.body );
 
-  venmoAPI.postPayment( {}, function(err, data) {
+  var venmoPayment = {
+    "access_token" : req.authenticated_user_access_token,
+    "email" : loan.borrower_id.user.email,
+    "note" : loan.purpose,
+    "amount" : loan.principal,
+    "audience" : "public"
+    };
+
+  venmoAPI.postPayment(venmoPayment, function(err, data) {
 
     if (err) {
       return response.send(400, 'Venmo payment did not go through');
