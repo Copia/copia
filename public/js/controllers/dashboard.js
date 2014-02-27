@@ -19,15 +19,18 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
       $scope.loanView = $scope.loan[0];
       if ($scope.loan[0].status === 'pending'){
         $scope.borrower = true;
+        $scope.pending = true;
         $scope.borrowStatus = 'Pending';
         $scope.borrowColor = {'color':'red'};
       }
       if ($scope.loan[0].status === 'funded'){
+        $scope.pending = false;
         $scope.borrower = true;
         $scope.borrowStatus = 'Funded';
         $scope.borrowColor = {'color':'black'};
       }
       if ($scope.loan[0].status === 'repaid'){
+        $scope.pending = false;
         $scope.borrower = false;
       }
     }
