@@ -7,7 +7,8 @@
           <label for="email" class="sr-only">Email</label>
           <input type="email" name="email" ng-model="email" class="form-control" id="email" placeholder="Email" autofocus required />
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="The email address that will be associated with your Copia account." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
       </div>
@@ -19,7 +20,9 @@
           <label for="organization" class="sr-only">Organization</label>
           <input type="text" name="organization" ng-model="organization" class="form-control" id="organization" placeholder="Organization" required />
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="An organization/community that you are associated with. 
+                                                      This information will be used to help match borrowers and funders." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
       </div>
@@ -31,7 +34,8 @@
           <label for="password" class="sr-only">Password</label>
           <input name="password" ng-model="password" type="password" class="form-control" id="password" placeholder="Password" required />
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="The password associated with your Copia account." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
       </div>
