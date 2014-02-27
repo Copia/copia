@@ -36,10 +36,24 @@ exports.destroy = function(req, res, id) {
 /**
  * Create a transaction
  */
-exports.create = function(req, res, loan) {
+exports.create = function(req, res, loan, lender) {
   console.log('User ', req.authenticated_user, ' creating transaction ', req.body );
 
-  venmoAPI.postPayment( {}, function(err, data) {
+  if (!lender || !lender.user) {
+    console.log('transaction.js/create => Error, lender venmo account not available (loan funded?). Lender:', lender);
+    return res.send(400, 'transaction.js/create => Error, lender venmo account not available (loan funded?). Lender:' + lender);
+
+  }
+  var venmoPayment = {
+    "access_token" : req.authenticated_user_access_token,
+    "email" : lender.user.email,
+    "note" : loan.purpose,
+    "amount" : loan.payback_amount,
+    "audience" : "public"
+    };
+
+  console.log('transaction.js/create/venmoApi.postPayment => create', venmoPayment);
+  venmoAPI.postPayment(venmoPayment, function(err, response, data) {
 
     if (err) {
       return response.send(400, 'Venmo payment did not go through');
@@ -61,6 +75,7 @@ exports.create = function(req, res, loan) {
     });
 
     console.log('transaction.js/create/venmoApi.postPayment => transaction: ', transaction);
+    console.log('transaction.js/create/venmoApi.postPayment => Venmo data: ', data);
     transaction
     .save(function(err) {
       if (err) {
@@ -68,6 +83,8 @@ exports.create = function(req, res, loan) {
         res.send(403, err.err);
       } else {
         console.log("Transaction: ", transaction);
+        loan.status = "repaid";
+        loan.save();
         res.jsonp(transaction);
       }
     });
