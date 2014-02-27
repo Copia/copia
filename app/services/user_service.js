@@ -1,6 +1,10 @@
 'use strict';
 
 // User service use users controller
+var mongoose = require('mongoose'),
+        User = mongoose.model('User'),
+        Loan = mongoose.model('Loan');
+
 var users = require('../controllers/users');
 var uuid = require('node-uuid');
 var venmoUrl = 'https://api.venmo.com/v1/oauth/authorize?';
@@ -49,8 +53,27 @@ exports.update = function(request, response) {
 };
 
 exports.get = function(request, response) {
-  console.log('GET User: ', request.params.userId);
-  users.get(request, response, request.params.userId);
+  console.log('user_service.js/get => GET User: ', request.params.userId);
+//  users.get(request, response, request.params.userId);
+  User.findById(request.params.userId, function(err, user) {
+    if (err) {
+      console.log('controllers/user.js:User.findById => got error ' + err);
+      next(400,'controllers/user.js:User.findById => got error ' + err);
+    } else {
+        Loan.find({ borrower_id: request.params.userId })
+        .where('status').in(["pending", "funded"])
+        .exec( function(err, loans) {    
+          if (err) {
+            console.log("user_service.js/get/User.findById/Loan.find => error fetching user loans", err);
+            return response.send(400, "user_service.js/get/User.findById/Loan.find => error fetching user loans" + err)
+          }
+          console.log('user_service/get/Loan.find => Found loans for user : ', loans);
+          user.loans = loans; 
+          console.log('user_service/get/Loan.find => Complete user object : ', user);
+          response.jsonp( {user: user, loans: loans} );
+        });
+    }
+  });
 };
 
 exports.delete = function(request, response) {
