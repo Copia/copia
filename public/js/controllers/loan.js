@@ -32,7 +32,7 @@ function($scope, $location, LendRequest, CookieService, $modal, $rootScope){
     LendRequest.fundLoan($scope.loan_id, $scope.session_token, $scope.user_id)
     .then(function(result) {
       console.log("Loan posted to database:\n",result);
-      $location.path( "/" );
+      $location.path( "/dashboard" );
     });
   };
 
@@ -54,8 +54,6 @@ function($scope, $location, LendRequest, CookieService, $modal, $rootScope){
       console.log('Cancel from modal');
     });
   };
-
-  $scope.hello = 'hello world';
 
 
 }]);
