@@ -6,7 +6,7 @@
   </div>
 
   <ul class='loanSnippets'>
-    <li ng-repeat='loan in loans'>
+    <li ng-repeat='loan in loans | loanStatusFilter'>
       <div class='loanSnippet row' ng-click='viewDetails(loan._id)'>
         <div class='col-xs-12'>
           <div ng-model='loan' loan-snippet></div>
