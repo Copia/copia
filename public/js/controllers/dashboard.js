@@ -11,7 +11,9 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
 
   ModifyUser.getUser(cookies).then(function(user){
     $scope.user = user;
-    user.user.profile_picture_url = user.user.profile_picture_url.replace('\/s\/', '/l/');
+    if(user.user) {
+      user.user.profile_picture_url = user.user.profile_picture_url.replace('\/s\/', '/l/');
+    }
     console.log(user);
   });
 
