@@ -191,3 +191,18 @@ footer p {
 .userDashPhoto {
   padding-right : 0px;
 }
+
+.loginError {
+  background-color: rgba(100, 100, 100, 0.5);
+  height: 50px;
+}
+
+.loginErrorText {
+  font-family: Arial;
+  font-size: 24px;
+  font-style: bold;
+  color: rgb(171, 40, 40);
+  line-height: 50px;
+}
+
+

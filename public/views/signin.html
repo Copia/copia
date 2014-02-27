@@ -1,4 +1,5 @@
 <section>
+
   <form class="form-horizontal" role="form" name="signin"  novalidate>
     <div class="form-group">
       <div class="col-xs-12">
@@ -11,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : failedLogin }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <label for"password" class="sr-only">Password</label>
@@ -20,8 +21,12 @@
             <button class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
+        <div class='help-block row loginError' ng-show='failedLogin'>
+          <p class='loginErrorText text-center'>Invalid username/password</p>
+        </div>
       </div>
     </div>
+
     <div class="bottom-button-group">
       <div class="row">
         <div class="col-xs-4 col-xs-offset-1">
@@ -33,4 +38,7 @@
       </div>
     </div>
   </form>
+
+  
+
 </section>
