@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('BorrowConfirmController', 
 ["$scope", 'BorrowRequest', '$location', 'CookieService',

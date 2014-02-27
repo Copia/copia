@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('SignInController', ["$scope", '$location', '$http', 'Sanitizer', 'CookieService',
   

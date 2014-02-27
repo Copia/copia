@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('BorrowController',
 ["$scope", "$location", 'BorrowRequest', 'Sanitizer',

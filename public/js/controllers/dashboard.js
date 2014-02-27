@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('DashboardController', ["$scope", 'CookieService', 'VenmoAuthentication', '$location', 'ModifyUser', '$rootScope', 'LendRequest', '$timeout', '$route',
 function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $rootScope, LendRequest, $timeout, $route){

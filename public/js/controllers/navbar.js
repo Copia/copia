@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('NavbarController',  
 function($scope, $location, CookieService, ModifyUser, $rootScope){
