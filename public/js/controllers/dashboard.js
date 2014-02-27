@@ -9,12 +9,13 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   $rootScope.showDashboard = false;
 
 
-  ModifyUser.getUser(cookies).then(function(user){
-    $scope.user = user;
+
+  ModifyUser.getUser(cookies).then(function(userObj){
+    $scope.loan = userObj.loans;
     if(user.user) {
-      user.user.profile_picture_url = user.user.profile_picture_url.replace('\/s\/', '/l/');
+      $scope.user.user.profile_picture_url = $scope.user.user.profile_picture_url.replace('\/s\/', '/l/');
     }
-    console.log(user);
+    console.log(userObj);
   });
 
   $scope.venmoAuth = function(){
@@ -25,7 +26,7 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   };
 
   $scope.repayLoan = function(){
-    LendRequest.repayLoan('123', $scope.session_token, $scope.user_id);
+    LendRequest.repayLoan($scope.loan[0]._id, $scope.session_token, $scope.user_id);
   };
 
   window.showmethemoney = function(){
