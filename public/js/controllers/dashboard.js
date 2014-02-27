@@ -8,7 +8,7 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   $rootScope.venmoConnected = true;
   $rootScope.showDashboard = false;
 
-
+  
   ModifyUser.getUser(cookies).then(function(userObj){
     $scope.user = userObj.user;
     if ($scope.user.user) {
@@ -16,7 +16,20 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
     }
     $scope.loan = userObj.loans;
     if ($scope.loan.length > 0){
-      $scope.borrower = true;
+      $scope.loanView = $scope.loan[0];
+      if ($scope.loan[0].status === 'pending'){
+        $scope.borrower = true;
+        $scope.borrowStatus = 'Pending';
+        $scope.borrowColor = {'color':'red'};
+      }
+      if ($scope.loan[0].status === 'funded'){
+        $scope.borrower = true;
+        $scope.borrowStatus = 'Funded';
+        $scope.borrowColor = {'color':'black'};
+      }
+      if ($scope.loan[0].status === 'repaid'){
+        $scope.borrower = false;
+      }
     }
     console.log(userObj);
   });
