@@ -1,8 +1,8 @@
 'use strict';
 
 // Loan routes use loan service
-var loan_service = require('../services/loan_service');
-var authentication = require('./middleware/authentication');
+var loan_service = require('../services/loan_service'),
+    authentication = require('./middleware/authentication');
 
 module.exports = function(app) {
 

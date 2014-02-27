@@ -41,29 +41,22 @@ exports.create = function(req, res) {
 /**
  * Update a loan
  */
-exports.update = function(req, res, id) {
-  Loan.load(id, function(err, loan) {
-    if( loan.status === "pending" ) {
-      loan.status = "funded";
-      loan.lender_id = req.body.lender_id;
-      var addedKarma = loan.principal;
-      User.findById(req.body.lender_id, function(err, user) {
-        user.karma += addedKarma;
-        user.save();
-      });
-      loan.save();
-      res.jsonp(loan);   
+exports.update = function(req, res, loan, venmoResponse) {
+  console.log("IN LOAN CNTRLR: ", loan, venmoResponse);
+  var addedKarma = loan.principal;
+
+  loan.status = "funded";
+  loan.lender_id = req.body.lender_id;
+  User.findById(req.body.lender_id, function(err, user) {
+    if( err ) {
+      res.send(500, "Couldn't update karma");
     } else {
-      res.send(401, "Loan not available");
+      user.karma += addedKarma;
+      user.save();
     }
   });
-
-
-
-
-  // ,{ $set: req.body },function(err, query){
-  //   res.jsonp(query);
-  // });
+  loan.save();
+  res.jsonp(loan);   
 };
 
 /**
