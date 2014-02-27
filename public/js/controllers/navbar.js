@@ -1,12 +1,6 @@
 angular.module('app')
 .controller('NavbarController',  
 function($scope, $location, CookieService, ModifyUser, $rootScope){
-  
-
-  $scope.isCollapsed = true;
-  $scope.toggleNavbar = function(){
-    $scope.isCollapsed = !$scope.isCollapsed;
-  }
 
   if ($location.path() !== '/'){
     $rootScope.navbar = true;
