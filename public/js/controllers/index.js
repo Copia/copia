@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('IndexController', 
 ["$scope", '$location', 

@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('VenmoAuthController',
 ["$scope", 'CookieService', '$http', '$location',

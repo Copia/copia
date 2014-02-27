@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('LendController', 
 ["$scope", '$location', 'LendRequest', 'CookieService',

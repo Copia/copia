@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app')
 .controller('SplashPageController', ["$scope", '$location',
   
@@ -11,4 +13,4 @@ angular.module('app')
         $location.path( "/signin" );
       };
 
-}]);
+    }]);
