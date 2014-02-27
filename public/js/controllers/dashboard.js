@@ -8,7 +8,8 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   $rootScope.venmoConnected = true;
   $rootScope.showDashboard = false;
 
-  $scope.borrowTitle = 'Pending Loan';
+  $scope.borrowStatus = 'Pending';
+  $scope.borrowColor
 
 
   ModifyUser.getUser(cookies).then(function(userObj){
