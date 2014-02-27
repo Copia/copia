@@ -3,10 +3,11 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
+var  mongoose = require('mongoose'),
   Transaction = mongoose.model('Transaction'),
-  _ = require('lodash');
-  var venmoAPI = require('../lib/venmoAPI.js');
+        User = mongoose.model('User'),
+            _ = require('lodash'),
+     venmoAPI = require('../lib/venmoAPI.js');
 /**
  * Find transaction by id
  */
@@ -76,6 +77,9 @@ exports.create = function(req, res, loan, lender) {
 
     console.log('transaction.js/create/venmoApi.postPayment => transaction: ', transaction);
     console.log('transaction.js/create/venmoApi.postPayment => Venmo data: ', data);
+    req.authenticated_user.karma += loan.payback_amount;
+    req.authenticated_user.save();
+    console.log("UPDATED USER: ", req.authenticated_user);
     transaction
     .save(function(err) {
       if (err) {
