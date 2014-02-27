@@ -72,7 +72,6 @@ body {
 @media (min-width: 768px) {
   .btn-outline-inverse {
       width: auto;
-      margin: 20px 5px 20px 0;
       padding: 18px 24px;
       font-size: 21px;
   }
