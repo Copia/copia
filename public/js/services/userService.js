@@ -12,14 +12,14 @@ angular.module('app')
         var d = $q.defer();
 
         $http.get('/users/'+cookie.user_id, {params: {session_token: cookie.session_token, userId: cookie.user_id}})
-        .success(function(user, status, headers, config) {
-          if (user.user){
-            console.log(user)
+        .success(function(userObj, status, headers, config) {
+          if (userObj.user.user){
+            console.log('user:', userObj)
             $rootScope.showDashboard = true;
           } else {
             $rootScope.venmoConnected = false;
           }
-          d.resolve(user);
+          d.resolve(userObj);
         })
         .error(function(data, status, headers, config) {
           //redirect to splash page
