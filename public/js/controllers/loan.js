@@ -2,8 +2,8 @@ angular.module('app')
 .controller('LoanController', 
 ["$scope", '$location', 'LendRequest', 'CookieService', '$modal', '$rootScope',
 function($scope, $location, LendRequest, CookieService, $modal, $rootScope){
-  $scope.loan = null;
   $scope.getRequestComplete = false;
+  $scope.loan = null;
   $scope.loan_id = $location.path().slice($location.path().lastIndexOf('/')+1);
   var cookies = CookieService.getCookies();
   $scope.session_token = cookies.session_token;
