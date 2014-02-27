@@ -1,7 +1,7 @@
 <section>
   <form class="form-horizontal" role="form" name="signup" novalidate>
     
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : failedLogin }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <label for="email" class="sr-only">Email</label>
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+<!--     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <label for="passwordConfirmation" class="sr-only">Password Confirmation</label>
@@ -47,7 +47,7 @@
           </span>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="bottom-button-group">
       <div class="row">
@@ -58,6 +58,10 @@
           <button class="btn btn-outline-inverse btn-lg" ng-click="signUp()">Sign Up</button>
         </div>
       </div>
+    </div>
+
+    <div class='help-block row loginError' ng-show='failedLogin'>
+      <p class='loginErrorText text-center'>Username is already registered.</p>
     </div>
   </form>
 </section>
