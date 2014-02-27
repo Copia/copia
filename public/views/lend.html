@@ -1,16 +1,25 @@
-<a href="#/dashboard">Back</a>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div>
-      <h3 class="white">Lending Dashboard</h3>
+<section>
+  <div class="row">
+    <div class="col-xs-12 lendingDashTitle">
+      <h3 class="white text-center">Lending Dashboard</h3>
     </div>
   </div>
-</div>
 
-<ol class='loanSnippets'>
-  <li ng-repeat='loan in loans'>
-    <div ng-model='loan' loan-snippet></div>
-    <span class="h5 black" ng-click='viewDetails(loan._id)'>View Details</span>
-  </li>
-</ol>
+  <ul class='loanSnippets'>
+    <li ng-repeat='loan in loans'>
+      <div class='loanSnippet row' ng-click='viewDetails(loan._id)'>
+        <div class='col-xs-12'>
+          <div ng-model='loan' loan-snippet></div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <br>
+  <div class='col-xs-4 col-xs-offset-4'>
+    <a href="#/dashboard" class="btn btn-outline-inverse btn-lg center-block">Back</a>
+  </div>
+
+</section>
+
+<!-- <span class="h5 black" ng-click='viewDetails(loan._id)'>View Details</span> -->

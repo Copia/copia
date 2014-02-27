@@ -1,9 +1,19 @@
 
-<div class='loanSnippet' >
-  <p class="h4 white loanDetail">Name:  {{loan.borrower_id.user.display_name}}  |  Organization:  {{loan.borrower_id.organization}}</p>
-  <p class="h5 white loanDetail">Category:  {{loan.category}}</p>
-  <p class="h5 white loanDetail">Amount Requested:  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
-  <p class="h5 white loanDetail">Amount Paid Back:  ${{loan.payback_amount}}.00 within {{loan.payback_days}} days of receipt.</p>
+<div>
+  <div class="col-xs-3">
+
+    <img ng-src={{enlargePhotoURL(loan.borrower_id.user.profile_picture_url)}} alt="Profile Picture" class="img-circle img-responsive center-block" />
+    <!-- <img src={{loan.borrower_id.user.profile_picture_url}} alt="Profile Picture" class="img-circle img-responsive center-block" /> -->
+  </div>
+
+  <div class="col-xs-9">
+    <p class="h4 white loanDetail">Name:  {{loan.borrower_id.user.display_name}}</p>
+    <p class="h4 white loanDetail">Organization:  {{loan.borrower_id.organization}}</p>
+    <p class="h5 white loanDetail">Category:  {{loan.category}}</p>
+    <p class="h5 white loanDetail">Amount Requested:  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
+    <p class="h5 white loanDetail">Amount Paid Back:  ${{loan.payback_amount}}.00 within {{loan.payback_days}} days of receipt.</p>
+  </div>
+
 </div>
 
 <!-- {"principal":100,"payback_amount":110,"match_deadline":"12/28/14","payback_days":10,"category":"Education","purpose":"Buy books","matched":false,"organization":"Hack Reactor ","borrower_id":{"__v":0,"_id":"530cfb8695335f00000624a0","password":"$2a$10$DRMUPYfgww/RlBupe3My3O/qMl265/987LlTshsHMSg3.s6NI9xl2","password_salt":"$2a$10$DRMUPYfgww/RlBupe3My3O","session_token":"$2a$10$i6wiDb5KhkvaYuxLFRu.ze","username":"bverissimo@ucdavis.edu",

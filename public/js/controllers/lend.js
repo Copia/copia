@@ -20,6 +20,10 @@ function($scope, $location, LendRequest, CookieService){
 
   $scope.viewDetails = function(id) {
     $location.path( "/lend/"+id );
-  }
+  };
+
+  $scope.enlargePhotoURL = function(url){
+    return url.replace('\/s\/', '/l/');
+  };
 
 }]);
