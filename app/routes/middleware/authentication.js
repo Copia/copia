@@ -32,7 +32,7 @@ exports.oauth2 = function( request, response, next) {
           console.log('authentication.js/oauth2 => INVALID ACCESS:');
           response.redirect(301, '/login');
         } else {
-          console.log("authentication.js/oauth2 => AUTH SUCCESSFUL");
+          console.log("authentication.js/oauth2 => AUTH SUCCESSFUL \n\n\n",body, "\n\n\n\n" );
           request.body = body;
           request.userId = userId;
           next();
