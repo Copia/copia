@@ -7,7 +7,7 @@ Loan = mongoose.model('Loan');
 var transactions = require('../controllers/transactions');
 
 exports.create = function(request, response) {
-  Loan.find(request.body.loan_id , function(err, loan) {
+  Loan.find({_id: request.body.loan_id }, function(err, loan) {
     if (err) {
       return response.send(400, 'transaction_service.js/create/Loan.find => Could not find loan with id ' + request.body.loan_id);
     } 
@@ -15,7 +15,8 @@ exports.create = function(request, response) {
       var msg = 'User ' + request.authenticated_user + ' is not in borrower_id field of loan ' + request.body.loan_id;
       return response.send(401, 'transaction_service.js/create/Loan.find => ' + msg)
     } 
-    transactions.create(request, response, loan);  
+    console.log("transaction_service/create/Loan.find => create transaction against loan ", loan[0], 'loan_id in POST: ', request.body.loan_id);
+    transactions.create(request, response, loan[0]);  
   });
 };
 

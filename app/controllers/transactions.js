@@ -39,7 +39,7 @@ exports.destroy = function(req, res, id) {
 exports.create = function(req, res, loan) {
   console.log('User ', req.authenticated_user, ' creating transaction ', req.body );
 
-  vemoAPI.postPayment( {}, function(err, data) {
+  venmoAPI.postPayment( {}, function(err, data) {
 
     if (err) {
       return response.send(400, 'Venmo payment did not go through');
@@ -60,6 +60,7 @@ exports.create = function(req, res, loan) {
       venmo_refund: null
     });
 
+    console.log('transaction.js/create/venmoApi.postPayment => transaction: ', transaction);
     transaction
     .save(function(err) {
       if (err) {
@@ -71,7 +72,7 @@ exports.create = function(req, res, loan) {
       }
     });
   });
-  
+
 };
 
 /** 
