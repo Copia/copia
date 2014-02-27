@@ -1,18 +1,24 @@
 <div ng-show='getRequestComplete'>
   <div class='loanDetails' ng-show='loan !== null'>
 
-    <p class='h2 white'>Loan Details</p>
-    <div class='loanSnippet' >
-      <p class="h4 white loanDetail">Name:  {{loan.borrower_id.user.display_name}}  |  Organization:  {{loan.borrower_id.organization}}</p>
-      <p class="h5 white loanDetail">Category:  {{loan.category}}</p>
-      <p class="h5 white loanDetail">Purpose:  {{loan.purpose}}</p>
+    <div class="row">
+      <div class="col-xs-12 lendingDashTitle">
+        <h2 class="white text-center">Loan Details</h3>
+      </div>
+    </div>
+
+    <div>
+      <p class="h2 white loanDetail">{{loan.borrower_id.user.display_name}}</p>
+      <p class="h3 white loanDetail">Organization:  {{loan.borrower_id.organization}}</p>
+      <p class="h4 white loanDetail">Category:  {{loan.category}}</p>
+      <p class="h4 white loanDetail">Purpose:  {{loan.purpose}}</p>
 
       <br>
-      <p class="h5 white loanDetail">Amount Requested:  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
-      <p class="h5 white loanDetail">Amount Paid Back:  ${{loan.payback_amount}}.00 within {{loan.payback_days}} of receipt.</p>
+      <p class="h4 white loanDetail">Amount Requested:  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
+      <p class="h4 white loanDetail">Amount Paid Back:  ${{loan.payback_amount}}.00 within {{loan.payback_days}} of receipt.</p>
 
       <br>
-      <p class="h5 white loanDetail">Bio:  {{loan.borrower_id.user.about}}</p>
+      <p class="h4 white loanDetail">Bio:  {{loan.borrower_id.user.about}}</p>
     </div>
 
     <br>
