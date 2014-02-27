@@ -1,9 +1,8 @@
 <div ng-show='getRequestComplete'>
   <div class='loanDetails' ng-show='loan !== null'>
-
     <div class="row">
       <div class="col-xs-12 lendingDashTitle">
-        <h2 class="white text-center">Loan Details</h3>
+        <h2 class="white text-center">Loan Details</h2>
       </div>
     </div>
 
@@ -20,21 +19,17 @@
       <br>
       <p class="h4 white loanDetail">Bio:  {{loan.borrower_id.user.about}}</p>
     </div>
-
-    <br>
-    
-    <div class='row'>
-        <div class='col-xs-6'>
-          <button class="btn btn-outline-inverse btn-lg center-block" ng-click='returnToDashboard()'>Back</button>
-        </div>
-        <div class='col-xs-6' >
-          <button class="btn btn-outline-inverse btn-lg center-block" ng-click="openConfirmation()">Fund this Loan</button>
-        </div>
-      </div>
-    </div>
-
   </div>
-
+  <br>
+  <div class='row'>
+    <div class='col-xs-6'>
+      <button class="btn btn-outline-inverse btn-lg center-block" ng-click='returnToDashboard()'>Back</button>
+    </div>
+    <div class='col-xs-6' >
+      <button class="btn btn-outline-inverse btn-lg center-block" ng-click="openConfirmation()">Fund this Loan</button>
+    </div>
+  </div>
+  
   <!-- Display error message if loan doesn't exist in db -->
   <div class='loanLoadError' ng-show='loan === null'>
     <p>Sorry, <em class='nonexistentLoan'>Loan #{{loanId}}</em> does not exist.</p>

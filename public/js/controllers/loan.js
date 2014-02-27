@@ -54,7 +54,7 @@ function($scope, $location, LendRequest, CookieService, $modal, $rootScope){
     });
   };
 
-
+  $scope.hello = 'hello world';
 
 
 }]);

@@ -12,6 +12,7 @@ function($scope, $location, LendRequest, CookieService){
   //success
   .then(function(loans){
     $scope.loans = loans;
+    console.log(loans);
   },
   //error 
   function(error){
