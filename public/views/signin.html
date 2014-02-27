@@ -1,4 +1,5 @@
 <section>
+
   <form class="form-horizontal" role="form" name="signin"  novalidate>
     <div class="form-group">
       <div class="col-xs-12">
@@ -6,22 +7,28 @@
           <label for"email" class="sr-only">Email</label>
           <input type="email" name="email" ng-model="email" class="form-control" id="email" placeholder="Email" autofocus required />
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="The email associated with your Copia account." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error' : failedLogin }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
           <label for"password" class="sr-only">Password</label>
           <input name="password" ng-model="password" type="password" class="form-control" id="password" placeholder="Password" required />
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="The password associated with your Copia account." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
+        </div>
+        <div class='help-block row loginError' ng-show='failedLogin'>
+          <p class='loginErrorText text-center'>Invalid username/password</p>
         </div>
       </div>
     </div>
+
     <div class="bottom-button-group">
       <div class="row">
         <div class="col-xs-4 col-xs-offset-1">
@@ -33,4 +40,7 @@
       </div>
     </div>
   </form>
+
+  
+
 </section>

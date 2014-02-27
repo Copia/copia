@@ -4,7 +4,7 @@ angular.module('app')
   function($scope, $location, $http, Sanitizer, CookieService){
     
     //TODO:  Check to see if there is a valid session token stored and redirect automatically
-
+    $scope.failedLogin = false;
     $scope.signUp = function(){
       
       var credentials = {
@@ -25,6 +25,10 @@ angular.module('app')
       })
       .error(function(error){
         console.log('ERROR:\n', error);
+        $scope.failedLogin = true;
+        $scope.email = null;
+        $scope.password = null;
+        $scope.organization = null;
       });
 
     };

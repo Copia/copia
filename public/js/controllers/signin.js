@@ -3,6 +3,7 @@ angular.module('app')
   
   function($scope, $location, $http, Sanitizer, CookieService){
     //TODO:  Check to see if there is a valid session token stored and redirect automatically
+    $scope.failedLogin = false;
 
     $scope.signIn = function(){
       var credentials = {
@@ -22,6 +23,9 @@ angular.module('app')
         $location.path( "/dashboard" );
       })
       .error(function(error){
+        $scope.failedLogin = true;
+        $scope.email = null;
+        $scope.password = null;
         console.log('ERROR:\n', error);
       });
 

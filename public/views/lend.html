@@ -5,18 +5,28 @@
     </div>
   </div>
 
-  <ul class='loanSnippets'>
-    <li class="loanSnippet" ng-click="viewDetails(loan._id)" ng-repeat='loan in loans | loanStatusFilter'>
-      <div class="row" ng-model='loan' loan-snippet></div>
-    </li>
-  </ul>
-
-  <br>
-  <div class="row">
-    <div class="col-xs-12">
+  <div class='row' ng-hide='loansLoaded'>
+    <div class='col-xs-12'>
       <p class="text-center">
-        <a href="#/dashboard" class="btn btn-outline-inverse btn-lg">Back</a>
+        <img src="../img/spinner.gif">
       </p>
+    </div>
+  </div>
+
+  <div ng-show='loansLoaded'>
+    <div class='loanSnippets'>
+      <div class="loanSnippet" ng-click="viewDetails(loan._id)" ng-repeat='loan in loans | loanStatusFilter'>
+        <div class='row' ng-model='loan' loan-snippet></div>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="text-center">
+          <a href="#/dashboard" class="btn btn-outline-inverse btn-lg">Back</a>
+        </p>
+      </div>
     </div>
   </div>
 
