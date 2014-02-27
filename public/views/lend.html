@@ -14,11 +14,11 @@
   </div>
 
   <div ng-show='loansLoaded'>
-    <ul class='loanSnippets'>
-      <li class="loanSnippet" ng-click="viewDetails(loan._id)" ng-repeat='loan in loans | loanStatusFilter'>
-        <div class="row" ng-model='loan' loan-snippet></div>
-      </li>
-    </ul>
+    <div class='loanSnippets'>
+      <div class="loanSnippet" ng-click="viewDetails(loan._id)" ng-repeat='loan in loans | loanStatusFilter'>
+        <div class='row' ng-model='loan' loan-snippet></div>
+      </div>
+    </div>
 
     <br>
     <div class="row">

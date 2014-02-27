@@ -1,21 +1,23 @@
-<div class="col-xs-4">
 
-  <img ng-src={{enlargePhotoURL(loan.borrower_id.user.profile_picture_url)}} alt="Profile Picture" class="img-circle img-responsive" />
-  <!-- <img src={{loan.borrower_id.user.profile_picture_url}} alt="Profile Picture" class="img-circle img-responsive center-block" /> -->
+<div class='col-xs-5'>
+  <p class='h3 white text-center'>
+    <strong>{{loan.borrower_id.user.display_name}}</strong>
+  </p>
+  <p class='text-center'>
+    <img ng-src={{enlargePhotoURL(loan.borrower_id.user.profile_picture_url)}} alt="Profile Picture" class="img-circle profileImg" />
+  </p>
+  <p class='h3 white text-center'>
+    <strong>Karma: {{loan.borrower_id.karma}}</strong>
+  </p>
 </div>
 
-<div class="col-xs-8">
-  <p class="h4 white"><strong>{{loan.borrower_id.user.display_name}}</strong></p>
-  <p class="white"><strong>Karma:</strong> {{loan.borrower_id.karma}}</p>
-  <p class="white"><strong>Org:</strong>  {{loan.borrower_id.organization}}</p>
-  <p class="white"><strong>Category:</strong> {{loan.category}}</p>
-  <p class="white"><strong>Requests:</strong> ${{loan.principal}}.00</p>
-  <p class="white"><strong>By:</strong> {{loan.match_deadline}}</p>
-  <p class="white"><strong>Payback:</strong> ${{loan.payback_amount}}.00</p>
-  <p class="white"><strong>Within:</strong> {{loan.payback_days}} days of receipt.</p>
+<div class="col-xs-7 white h4">
+  <div class='vert-pad'>
+    <p><strong>Organization:</strong>  {{loan.borrower_id.organization}}</p>
+    <p><strong>Request:</strong> ${{loan.principal}}.00</p>
+    <p><strong>Category:</strong> {{loan.category}}</p>
+    <p><strong>By:</strong> {{loan.match_deadline}}</p>
+    <p><strong>Payback:</strong> ${{loan.payback_amount}}.00</p>
+    <p><strong>Within:</strong> {{loan.payback_days}} days of receipt.</p>
+  </div>
 </div>
-
-<!-- {"principal":100,"payback_amount":110,"match_deadline":"12/28/14","payback_days":10,"category":"Education","purpose":"Buy books","matched":false,"organization":"Hack Reactor ","borrower_id":{"__v":0,"_id":"530cfb8695335f00000624a0","password":"$2a$10$DRMUPYfgww/RlBupe3My3O/qMl265/987LlTshsHMSg3.s6NI9xl2","password_salt":"$2a$10$DRMUPYfgww/RlBupe3My3O","session_token":"$2a$10$i6wiDb5KhkvaYuxLFRu.ze","username":"bverissimo@ucdavis.edu",
-
-
-"user":{"username":"brendon-verissimo","first_name":"Brendon","last_name":"Verissimo","display_name":"Brendon Verissimo","is_friend":false,"friends_count":1,"about":"No Short Bio","email":"bverissimo@ucdavis.edu","phone":"16502246188","profile_picture_url":"https://venmopics.appspot.com/u/v1/s/4e52c52b-b90b-426a-af68-6ed974cdd017","id":"1347448874205184160","date_joined":"2014-02-03T03:00:23"}},"_id":"530cfe47cdffba0000d359f8","__v":0} -->
