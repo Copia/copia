@@ -13,6 +13,6 @@ exports.postPayment = function(data, cb) {
     form : data
   }, function(err, response, body) {
     //var body = JSON.parse( body );
-    console.log(response, body);
+    cb(err, response, body);
   });
 };
