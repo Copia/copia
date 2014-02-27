@@ -63,6 +63,7 @@ exports.router_auth = function(request, response, next) {
       console.log("authentication.js/router_auth:User.findById => Found User: ",user);
       console.log('authentication.js/router_auth:User.findById => Authenticated User session_token: ', user.session_token );
       request.authenticated_user = user;
+      request.authenticated_user_access_token = user.access_token;
       next();
     }
   });
