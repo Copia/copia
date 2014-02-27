@@ -6,9 +6,12 @@
   </div>
 
   <ul class='loanSnippets'>
-    <li class='loanSnippet' ng-repeat='loan in loans'>
-      <div ng-model='loan' loan-snippet></div>
-      <span class="h5 black" ng-click='viewDetails(loan._id)'>View Details</span>
+    <li ng-repeat='loan in loans'>
+      <div class='loanSnippet row' ng-click='viewDetails(loan._id)'>
+        <div class='col-xs-12'>
+          <div ng-model='loan' loan-snippet></div>
+        </div>
+      </div>
     </li>
   </ul>
 
@@ -18,3 +21,5 @@
   </div>
 
 </section>
+
+<!-- <span class="h5 black" ng-click='viewDetails(loan._id)'>View Details</span> -->

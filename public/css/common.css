@@ -131,8 +131,14 @@ footer p {
 .loanSnippet {
   border: 3px solid rgba(199, 95, 54, 0.90);
   margin-bottom: 15px;
+  margin-right: 5px;
+  margin-left: 5px;
   border-radius: 15px;
   padding: 10px;
+}
+
+.loanSnippet:hover {
+  background-color: rgba(75, 75, 75, 0.30);
 }
 
 .userDashTitle, .lendingDashTitle {
