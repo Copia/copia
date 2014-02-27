@@ -44,6 +44,10 @@ app.config(['$routeProvider',
         templateUrl: 'views/venmoAuth.html',
         controller: 'VenmoAuthController'
       }).
+      when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutController'
+      }).
       otherwise({
         redirectTo: '/'
       });
