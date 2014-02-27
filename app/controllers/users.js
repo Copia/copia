@@ -29,12 +29,12 @@ exports.login = function(req, res) {
     console.log('controllers/user.js:login => No username provided')
     res.send(401, 'controllers/user.js:login => No username provided');
   } else {
-    User.find({ username: req.body.username }, function(err, user) {
+    User.findOne({ username: req.body.username }, function(err, user) {
       if (err) {
         console.log('controllers/user.js:login/User.find => Could not find user with username' + req.body.username + 'Err: ' + err);
         res.send(401, 'controllers/user.js:login/User.find => Could not find user with username' + req.body.username + 'Err: ' + err);
       } else {
-        var user = user[0];
+        //var user = user[0];
         if (!user) {
           console.log('controllers/user.js:login/User.find => Could not find user with username ' + req.body.username);
           res.send(401, 'controllers/user.js:login/User.find => Could not find user with username ' + req.body.username);
