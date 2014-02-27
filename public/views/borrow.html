@@ -1,5 +1,6 @@
 <section>
   <form class="form-horizontal" role="form" name="loanRequestForm" novalidate>
+    
     <div class="form-group" ng-class="{ 'has-error' : loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$invalid, 'has-success' : loanRequestForm.debtAmount.$dirty && !loanRequestForm.debtAmount.$invalid }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -7,7 +8,8 @@
           <label for="amount" class="sr-only">Loan Amount</label>
           <input type="number" min=1 max=1000 step=10 name="debtAmount" ng-model="loan.amount.loan" class="form-control" id="amount" placeholder="Loan Amount" autofocus required />
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="The amount of money you would like funding for." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
         <span class="help-block" ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$error.required">Loan Amount required.</span>
@@ -15,6 +17,8 @@
         <span class="help-block" ng-show="loanRequestForm.debtAmount.$dirty && loanRequestForm.debtAmount.$error.max">Maximum loan is $1,000.</span>
       </div>
     </div>
+
+
     <div class="form-group" ng-class="{ 'has-error' : loanRequestForm.debtDeadline.$dirty && loanRequestForm.debtDeadline.$invalid, 'has-success' : loanRequestForm.debtDeadline.$dirty && !loanRequestForm.debtDeadline.$invalid }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -22,12 +26,15 @@
           <label for="deadline" class="sr-only">Need by deadline</label>
           <input name="debtDeadline" value="{{ loan.date.neededBy }}" min="{{ loan.date.neededBy }}" ng-model="loan.date.neededBy" type="date" class="form-control" id="deadline" required />
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="The date by which you need the funding by."
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
         <span class="help-block" ng-show="loanRequestForm.debtDeadline.$dirty && loanRequestForm.debtDeadline.$error.required">Select a date by which you need the loan.</span>
       </div>
     </div>
+
+
     <div class="form-group" ng-class="{ 'has-error' : loanRequestForm.debtPayback.$dirty && loanRequestForm.debtPayback.$invalid, 'has-success' : loanRequestForm.debtPayback.$dirty && !loanRequestForm.debtPayback.$invalid }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -35,7 +42,8 @@
           <label for="amount" class="sr-only">Payback Amount</label>
           <input type="number" name="debtPayback" class="form-control" ng-model='loan.amount.payback' id="payback-amount" placeholder="Payback Amount" payback-validation required>
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="The amount you agree to payback to your funder." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
         <span class="help-block" ng-show="loanRequestForm.debtPayback.$dirty && loanRequestForm.debtPayback.$error.required">Payback amount required.</span>
@@ -43,6 +51,8 @@
         <span class="help-block" ng-show="loanRequestForm.debtPayback.$dirty && loanRequestForm.debtPayback.$error.paybackThreshold">Payback amount must be greater than or equal to loan amount.</span>
       </div>
     </div>
+
+
     <div class="form-group" ng-class="{ 'has-error' : loanRequestForm.debtDueSelection.$dirty && loanRequestForm.debtDueSelection.$invalid, 'has-success' : loanRequestForm.debtDueSelection.$dirty && !loanRequestForm.debtDueSelection.$invalid }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -59,12 +69,15 @@
             <option value="365">Twelve months</option>
           </select>
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="The amount of time between receiving funding and paying your funder back." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
         <span class="help-block" ng-show="loanRequestForm.debtDueSelection.$dirty && loanRequestForm.debtDueSelection.$error.required">Payback deadline required.</span>
       </div>
     </div>
+
+
     <div class="form-group" ng-class="{ 'has-error' : loanRequestForm.debtCategory.$dirty && loanRequestForm.debtCategory.$invalid, 'has-success' : loanRequestForm.debtCategory.$dirty && !loanRequestForm.debtCategory.$invalid }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -79,12 +92,15 @@
             <option value="">Other</option>
           </select>
           <span class="input-group-btn">
-            <button class="btn btn-outline-inverse" type="button">?</button>
+            <button popover-placement="left" popover="General category for why you need the funding." 
+              class="btn btn-outline-inverse" type="button">?</button>
           </span>
         </div>
         <span class="help-block" ng-show="loanRequestForm.debtCategory.$dirty && loanRequestForm.debtCategory.$error.required">Purpose category required.</span>
       </div>
     </div>
+
+
     <div class="form-group" ng-class="{ 'has-error' : loanRequestForm.purpose.$dirty && loanRequestForm.purpose.$invalid, 'has-success' : loanRequestForm.purpose.$dirty && !loanRequestForm.purpose.$invalid }">
       <div class="col-xs-12">
         <label for="purpose" class="sr-only">Purpose text</label>
