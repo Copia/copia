@@ -11,7 +11,7 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
 
 
   ModifyUser.getUser(cookies).then(function(userObj){
-    $scope.user = userObj.user;
+    $scope.loan = userObj.loans;
     if(user.user) {
       $scope.user.user.profile_picture_url = $scope.user.user.profile_picture_url.replace('\/s\/', '/l/');
     }
@@ -26,7 +26,7 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   };
 
   $scope.repayLoan = function(){
-    LendRequest.repayLoan('123', $scope.session_token, $scope.user_id);
+    LendRequest.repayLoan($scope.userObj.loans[0]._id, $scope.session_token, $scope.user_id);
   };
 
   window.showmethemoney = function(){
