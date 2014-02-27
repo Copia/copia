@@ -21,19 +21,14 @@
       </div>
     </div>
 
-    <div ng-hide="!borrower">
-      <div class="col-xs-3">
-
-        <img ng-src={{enlargePhotoURL(loan.borrower_id.user.profile_picture_url)}} alt="Profile Picture" class="img-circle img-responsive center-block" />
-        <!-- <img src={{loan.borrower_id.user.profile_picture_url}} alt="Profile Picture" class="img-circle img-responsive center-block" /> -->
-      </div>
+    <div ng-hide="!borrower" class='loanSnippet row'>
 
       <div class="col-xs-9">
-        <p class="h4 white loanDetail">Name:  {{loan.borrower_id.user.display_name}}</p>
-        <p class="h4 white loanDetail">Organization:  {{loan.borrower_id.organization}}</p>
-        <p class="h5 white loanDetail">Category:  {{loan.category}}</p>
-        <p class="h5 white loanDetail">Amount Requested:  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
-        <p class="h5 white loanDetail">Amount Paid Back:  ${{loan.payback_amount}}.00 within {{loan.payback_days}} days of receipt.</p>
+        <p class="h4 white loanDetail">Name:  {{user.user.display_name}}</p>
+        <p class="h4 white loanDetail">Organization:  {{user.organization}}</p>
+        <p class="h5 white loanDetail">Category:  {{loanView.category}}</p>
+        <p class="h5 white loanDetail">Amount Requested:  ${{loanView.principal}}.00 by {{loanView.match_deadline}}</p>
+        <p class="h5 white loanDetail">Amount Paid Back:  ${{loanView.payback_amount}}.00 within {{loanView.payback_days}} days of receipt.</p>
       </div>
 
     </div>

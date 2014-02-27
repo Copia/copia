@@ -17,6 +17,7 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
     $scope.loan = userObj.loans;
     if ($scope.loan.length > 0){
       $scope.borrower = true;
+      $scope.loanView = $scope.loan[0];
     }
     console.log(userObj);
   });
