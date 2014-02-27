@@ -50,7 +50,7 @@ exports.router_auth = function(request, response, next) {
   var token = request.params.session_token || request.query.session_token || request.body.session_token;
 
   console.log('Id: ', id, 'Token: ', token);
-  User.findById(id, "authentication.js/router_auth => session_token", function(err, user) {
+  User.findById(id, function(err, user) {
     if(err) {
       console.log("authentication.js/router_auth:User.findById => Error: ", err);
       next(404, 'authentication.js/router_auth:User.findById => Error authenticating');
@@ -63,6 +63,8 @@ exports.router_auth = function(request, response, next) {
       console.log("authentication.js/router_auth:User.findById => Found User: ",user);
       console.log('authentication.js/router_auth:User.findById => Authenticated User session_token: ', user.session_token );
       request.authenticated_user = user;
+      request.authenticated_user_access_token = user.access_token;
+      request.authenticated_user_email = user.user && user.user.email;
       next();
     }
   });

@@ -1,7 +1,8 @@
 'use strict';
 var mongoose = require('mongoose'),
 Transaction = mongoose.model('Transaction'),
-Loan = mongoose.model('Loan');
+Loan = mongoose.model('Loan'),
+User = mongoose.model('User');
 
 // Transaction service use transactions controller
 var transactions = require('../controllers/transactions');
@@ -16,7 +17,13 @@ exports.create = function(request, response) {
       return response.send(401, 'transaction_service.js/create/Loan.find => ' + msg)
     } 
     console.log("transaction_service/create/Loan.find => create transaction against loan ", loan[0], 'loan_id in POST: ', request.body.loan_id);
-    transactions.create(request, response, loan[0]);  
+    User.find( {_id:loan[0].lender_id}, function(err, lender) {
+      if (err) {
+        return response.send(401, 'transaction_service.js/create/Loan.find => could not find the lender with lender Id' + loan[0].lender_id);
+      }
+      console.log("transaction_service/create/Loan.find => paying lender: ", lender[0]);
+      transactions.create(request, response, loan[0], lender[0]);  
+    });
   });
 };
 
