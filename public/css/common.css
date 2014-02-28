@@ -234,8 +234,17 @@ footer p {
 }
 
 .fundingConfirmation {
-  background-color: rgba(0, 0, 0, 0.28);
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: 1;
   margin: 0;
+  padding-top: 5px;
+}
+
+.fundConfButton, .fundCancButton {
+  width: 75%;
+}
+
+.confirmButtons {
+  height: 80px;
 }
