@@ -194,8 +194,7 @@ textarea {
   height: 80px;
 }
 
-
-.signin form, .signup form {
+.signin form, .signup form, .borrow form {
   margin-top: 20px;
 }
 
