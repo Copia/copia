@@ -70,4 +70,20 @@ require('./app/routes/users')(app);
 var port = Number(process.env.PORT || config.port);
 
 // Start server
-app.listen(port);
+var server = app.listen(port);
+
+server.cleanup = function() {
+  server._connections=0 ;
+  server.close(function () {
+    console.log("Closed out remaining connections.");
+    mongoose.connection.close();
+    process.exit();
+  });
+
+  setTimeout( function () {
+    console.error("Could not close connections in time, forcing shut down");
+    process.exit(1);
+  }, 30*1000);
+};
+
+exports.server = server;

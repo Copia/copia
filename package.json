@@ -59,7 +59,8 @@
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-concurrent": "~0.4.3",
     "grunt-env": "~0.4.1",
-    "jasmine-node": "~1.13.1"
+    "jasmine-node": "~1.13.1",
+    "mocha": "~1.17.1"
   },
   "scripts": {
     "postinstall": "node node_modules/bower/bin/bower install"
