@@ -209,6 +209,38 @@ footer p {
   height: 80px;
 }
 
+
 .signin form, .signup form {
   margin-top: 20px;
+@font-face {
+  font-family: GearedSlabBold;
+  src: url(fonts/Geared/GearedSlab-Bold.ttf);
+}
+
+@font-face {
+  font-family: MissionGothicLight;
+  src: url(fonts/MissionGothic/MG_Light.otf);
+}
+
+@font-face {
+  font-family: MissionGothicRegular;
+  src: url(fonts/MissionGothic/MG_Regular.otf);
+}
+
+.splashTitleC {
+  font-family: MissionGothicRegular;
+  font-size: 120px;
+  /*text-shadow: 5px 5px black;*/
+}
+
+.splashTitle {
+  font-family: MissionGothicRegular;
+  font-size: 90px;
+  /*text-shadow: 5px 5px black;*/
+}
+
+.splashText {
+  font-family: MissionGothicLight;
+  font-size: 24px;
+  text-align: center;
 }
