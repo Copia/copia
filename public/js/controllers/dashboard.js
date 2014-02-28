@@ -38,7 +38,12 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   });
 
   $scope.cancelLoan = function(){
-    LendRequest.cancelLoan($scope.loan[0]._id, $scope.session_token, $scope.user_id).then(function(){$timeout(function(){$route.reload();},0);});
+    for(var i=0; i<$scope.loan.length; i++) {
+      if ($scope.loan[i].status === 'pending') {
+        break;
+      }
+    }
+    LendRequest.cancelLoan($scope.loan[i]._id, $scope.session_token, $scope.user_id).then(function(){$timeout(function(){$route.reload();},0);});
   };
 
   $scope.venmoAuth = function(){
