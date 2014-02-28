@@ -8,6 +8,25 @@ var mongoose = require('mongoose'),
     Loan = mongoose.model('Loan'),
     User = mongoose.model('User');
 
+var applyIfOwned = function(request, response, cb) {
+  if (!request.params || ! request.params.loanId) {
+    return response.send(400, 'Bad response. No loanId provided.');
+  }
+  Loan.findById( request.params.loanId, function(err, loan) {
+    if (err) { 
+      response.send(404, 'Loan not found' + request.params.loanId);
+    } else {
+      // TODO : Figure out proper cast to remove this '=='
+      if (''+loan.borrower_id === ''+request.authenticated_user._id) {
+        cb(request, response, loan);
+      } else {
+        console.log('loan_service.js/applyIfOwned => loan.borrower_id: ', loan.borrower_id);
+        response.send(401, 'loan_service.js/applyIfOwned => Not authorized to modify loan with id ' +  loan._id);
+      }
+    }
+  });
+};
+
 exports.create = function(request, response) {
   //check if user already has loan
   User.findById(request.params.userId, function( err, user ) {
@@ -69,6 +88,21 @@ exports.update = function(request, response) {
 };
 
 exports.delete = function(request, response) {
-  console.log("DELETE to: ",request.url, "-->Delete Loan" );
-  loans.destroy(request, response, request.params.loanId);
+  console.log(" loan_service.js/delete => Cancelling loan: ",  request.params.loanId);
+  applyIfOwned(request, response, function(request, response, loan) {
+    if (loan.status === 'pending') {
+      loan.status = 'cancelled';
+      loan.save( function(err, data) {
+        if (err) {
+          return response.send(400, 'Could not cancel loan.');
+        } else {
+          response.send(200, 'Loan cancelled');
+        }
+      });
+    }
+  });
 };
+
+
+
+
