@@ -213,6 +213,8 @@ footer p {
 
 .signin form, .signup form {
   margin-top: 20px;
+}
+
 @font-face {
   font-family: GearedSlabBold;
   src: url(fonts/Geared/GearedSlab-Bold.ttf);
