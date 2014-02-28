@@ -20,13 +20,6 @@ body {
   display: none !important;
 }
 
-/*
- * Color Palette
-*/
-
-/* Background */
-
-/* Text */
 
 /*
  * Video Background
@@ -34,8 +27,8 @@ body {
 
 #video-background {
   position: absolute;
+  right: 20px;
   bottom: 0px;
-  right: -400px;
   min-width: 100%;
   min-height: 100%;
   width: auto;
@@ -88,9 +81,11 @@ body {
 
 
 .button-group {
- /* position: absolute;
-  bottom: 0;*/
   margin-top: 40px;
+}
+
+.splash-button-group {
+  margin-top: 30%;
 }
 
 /* views/borrow.html */
@@ -99,40 +94,6 @@ textarea {
   resize: none;
 }
 
-.input-group input[type="date"] {
-  width: 204px;
-}
-
-/*
-.dollarimg {
-    height: 25px;
-}
-
-textarea[name=debtReason] {
-    resize: none;
-}
-
-.loanRequestForm {
-    background-color: rgba(200,200,200,0.75);
-    border: 3px solid black;
-}
-
-form[name=loanRequestForm].ng-invalid.ng-dirty {
-    border: 3px solid yellow;
-}
-
-form[name=loanRequestForm].ng-valid.ng-dirty {
-    border: 3px solid forestgreen;
-}
-
-form[name=loanRequestForm] input.ng-invalid.ng-dirty {
-    border: 3px solid red;
-}
-
-form[name=loanRequestForm] input.ng-valid.ng-dirty {
-    border: 3px solid forestgreen;
-}
-*/
 footer {
     position:fixed;
     left:0px;
