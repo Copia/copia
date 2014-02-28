@@ -209,3 +209,7 @@ footer p {
 .confirmButtons {
   height: 80px;
 }
+
+.signin form, .signup form {
+  margin-top: 20px;
+}
