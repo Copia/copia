@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       js: {
-        files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**'],
+        files: ['package.json', 'gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**'],
         options: {
           livereload: true,
         },
@@ -60,6 +60,19 @@ module.exports = function(grunt) {
         }
       }
     },
+    mochaTest: {
+      options: {
+        reporter: 'spec',
+        require: 'server.js',
+        timeout: 5000
+      },
+      src: ['app/spec/**/*.js']
+    },
+    env: {
+      test: {
+        NODE_ENV: 'test'
+      }
+    },
     concurrent: {
       tasks: ['nodemon', 'watch'],
       options: {
@@ -72,9 +85,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-env');
 
   //Default task(s).
   grunt.registerTask('default', ['jshint:all', 'concurrent']);
+  grunt.registerTask('test', ['env:test', 'mochaTest']);
 };

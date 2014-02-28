@@ -6,9 +6,11 @@ var users       = require("./app/models/user");
 var loans       = require("./app/models/loan");
 var transactions = require("./app/models/transaction");
 var path        = require('path');
+var q           = require('q');
 
 // instantiate expressjs app
 var app = express();
+var defer = q.defer();
 
 // Set up serving up of static resources and server side dynamic views
 var rootPath = path.normalize(__dirname );
@@ -31,23 +33,23 @@ app.use( express.static( rootPath + '/public') );
 
 // Connection event handlers
 mongoose.connection.on('open', function() {
-  console.log('Database opened', config.db.uri, ' with options ', config.db.options);
   app.available = true;
+  defer.resolve();
 });
 
 mongoose.connection.on('error', function(err) {
-  console.log('server.js => Database connection error', err);
   app.available = false;
+  defer.reject();
 });
 
 mongoose.connection.on('disconnected', function(err) {
-  console.log('server.js => Database lost connection', err);
   app.available = false;
+  defer.reject();
 });
 
 mongoose.connection.on('connected', function() {
-  console.log('Database regained connection' );
   app.available = true;
+  defer.resolve();
 });
 
 // Connect to database
@@ -71,19 +73,12 @@ var port = Number(process.env.PORT || config.port);
 
 // Start server
 var server = app.listen(port);
+app.defer = defer.promise;
 
-server.cleanup = function() {
+app.cleanup = function() {
   server._connections=0 ;
-  server.close(function () {
-    console.log("Closed out remaining connections.");
-    mongoose.connection.close();
-    process.exit();
-  });
-
-  setTimeout( function () {
-    console.error("Could not close connections in time, forcing shut down");
-    process.exit(1);
-  }, 30*1000);
+  mongoose.connection.close();
+  process.exit();
 };
 
-exports.server = server;
+module.exports = app;

@@ -1,22 +1,34 @@
 'use strict';
-var app  = require(__dirname + '/../../server.js');
-var http = require('http');
-var assert = require('assert');
+
+var should = require('should'),
+    http = require('http'),
+    rootUrl = 'http://localhost:3000';
 
 describe('Server', function () {
- 
-  // beforeEach(function(done){
-  //   db.clear(function(err){
-  //     if (err) return done(err);
-  //     db.save([tobi, loki, jane], done);
-  //   });
-  // });
+  var server;
 
-  // describe('#indexOf()', function(){
-  //   it('should return -1 when the value is not present', function(){
-  //     assert.equal(-1, [1,2,3].indexOf(5));
-  //     assert.equal(-1, [1,2,3].indexOf(0));
-  //   });
-  // });
+  before(function(done){
+    server = require(__dirname + '/../../server.js');
+    server.defer
+    .then( function() {
+      done();
+    })
+    .fail( function() {
+      console.error('Server failed to start');
+    });
+  });
 
+  it("should return 200 from the home page '/'", function(done){
+    http.get(rootUrl+'/', function(res) {
+      should.equal(res.statusCode, 200);
+      done();
+    }).on('error', function(err) {
+      console.log('Got error from server: ', err);
+    });
+  });
+
+  after(function(done) {
+    server.cleanup();
+    done();
+  });
 });
