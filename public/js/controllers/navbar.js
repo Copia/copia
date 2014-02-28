@@ -4,7 +4,13 @@ angular.module('app')
 .controller('NavbarController',  
 function($scope, $location, CookieService, ModifyUser, $rootScope){
 
-  var cookies = CookieService.getCookies();
+  if (!$rootScope.loggedIn){
+    var cookies = CookieService.getCookies();
+    if (cookies.session_token && cookies.user_id){
+      $rootScope.loggedIn = true;
+      $location.path('/dashboard');
+    }
+  }
 
   if ($location.path() !== '/'){
     $rootScope.navbar = true;
