@@ -1,35 +1,42 @@
 <div ng-show='getRequestComplete'>
-  <div class='loanDetails' ng-show='loan !== null'>
-    <div class="row">
-      <div class="col-xs-12 lendingDashTitle">
-        <h2 class="white text-center">Loan Details</h2>
-      </div>
-    </div>
-
-    <div>
-      <p class="h2 white loanDetail">{{loan.borrower_id.user.display_name}}</p>
-      <p class="h3 white loanDetail">Organization:  {{loan.borrower_id.organization}}</p>
-      <p class="h4 white loanDetail">Category:  {{loan.category}}</p>
-      <p class="h4 white loanDetail">Purpose:  {{loan.purpose}}</p>
-
-      <br>
-      <p class="h4 white loanDetail">Amount Requested:  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
-      <p class="h4 white loanDetail">Amount Paid Back:  ${{loan.payback_amount}}.00 within {{loan.payback_days}} of receipt.</p>
-
-      <br>
-      <p class="h4 white loanDetail">Bio:  {{loan.borrower_id.user.about}}</p>
+  <div class='loanDetails row' ng-show='loan !== null'>
+    <div class="col-xs-12 lendingDashTitle">
+      <h2 class="white text-center">Loan Details</h2>
     </div>
   </div>
-  <br>
-  <div class='row'>
-    <div class='col-xs-6'>
-      <button class="btn btn-outline-inverse btn-lg center-block" ng-click='returnToDashboard()'>Back</button>
-    </div>
-    <div class='col-xs-6' >
-      <button class="btn btn-outline-inverse btn-lg center-block" ng-click="openConfirmation()">Fund this Loan</button>
+
+  <div class="row">
+    <div class="col-xs-12 text-center white">
+      <p class="h2 loanDetail"><strong>{{loan.borrower_id.user.display_name}}</strong></p>
+      <p class="h3 loanDetail"><strong>Organization:</strong>  {{loan.borrower_id.organization}}</p>
     </div>
   </div>
-  
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 white">
+      <p class="h4 loanDetail"><strong>Category:</strong>  {{loan.category}}</p>
+      <p class="h4 loanDetail"><strong>Purpose:</strong>  {{loan.purpose}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 white">
+      <p class="h4 loanDetail"><strong>Request:</strong>  ${{loan.principal}}.00 by {{loan.match_deadline}}</p>
+      <p class="h4 loanDetail"><strong>Payback:</strong>  ${{loan.payback_amount}}.00 within {{loan.payback_days}} of receipt.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-22">
+      <p class="h4 white loanDetail"><strong>Bio:</strong>  {{loan.borrower_id.user.about}}</p>
+    </div>
+  </div>
+  <div class='row button-group'>
+    <div class='col-xs-4 col-xs-offset-2'>
+      <button class="btn btn-outline-inverse btn-lg btn-block" ng-click='returnToDashboard()'>Back</button>
+    </div>
+    <div class='col-xs-4' >
+      <button class="btn btn-outline-inverse btn-lg btn-block" ng-click="openConfirmation()">Fund</button>
+    </div>
+  </div>
+
   <!-- Display error message if loan doesn't exist in db -->
   <div class='loanLoadError' ng-show='loan === null'>
     <p>Sorry, <em class='nonexistentLoan'>Loan #{{loanId}}</em> does not exist.</p>
