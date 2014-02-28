@@ -25,6 +25,7 @@ function($scope, $location, CookieService, ModifyUser, $rootScope){
     CookieService.eatCookies();
     $rootScope.navbar = false;
     $scope.isCollapsed = true;
+    $rootScope.loggedIn = false;
     $location.path( "/" );
   };
 
