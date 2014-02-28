@@ -18,25 +18,23 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
     }
     $scope.loan = userObj.loans;
     if ($scope.loan.length > 0){
-      $scope.loanView = $scope.loan[0];
-      if ($scope.loan[0].status === 'pending'){
-        $scope.borrower = true;
-        $scope.pending = true;
-        $scope.borrowStatus = 'Pending';
-        $scope.borrowColor = {'color':'red'};
-      }
-      if ($scope.loan[0].status === 'funded'){
-        $scope.pending = false;
-        $scope.borrower = true;
-        $scope.borrowStatus = 'Funded';
-        $scope.borrowColor = {'color':'black'};
-      }
-      if ($scope.loan[0].status === 'repaid'){
-        $scope.pending = false;
-        $scope.borrower = false;
+      for (var i = 0; i < $scope.loan.length; i++){
+        if ($scope.loan[i].status === 'pending'){
+          $scope.borrower = true;
+          $scope.pending = true;
+          $scope.borrowStatus = 'Pending';
+          $scope.borrowColor = {'color':'red'};
+          $scope.loanView = $scope.loan[i];
+        }
+        if ($scope.loan[i].status === 'funded'){
+          $scope.pending = false;
+          $scope.borrower = true;
+          $scope.borrowStatus = 'Funded';
+          $scope.borrowColor = {'color':'black'};
+          $scope.loanView = $scope.loan[i];
+        } 
       }
     }
-    console.log(userObj);
   });
 
   $scope.cancelLoan = function(){
