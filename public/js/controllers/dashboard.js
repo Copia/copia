@@ -39,6 +39,10 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
     console.log(userObj);
   });
 
+  $scope.cancelLoan = function(){
+    LendRequest.cancelLoan($scope.loan[0]._id, $scope.session_token, $scope.user_id).then(function(){$timeout(function(){$route.reload();},0);});
+  };
+
   $scope.venmoAuth = function(){
     // VenmoAuthentication.authenticate($scope.user_id, $scope.session_token);
     var url = '/venmo_login?session_token=' + $scope.session_token + '&userId=' + $scope.user_id;

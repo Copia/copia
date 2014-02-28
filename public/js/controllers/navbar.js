@@ -4,6 +4,14 @@ angular.module('app')
 .controller('NavbarController',  
 function($scope, $location, CookieService, ModifyUser, $rootScope){
 
+  if (!$rootScope.loggedIn){
+    var cookies = CookieService.getCookies();
+    if (cookies.session_token && cookies.user_id){
+      $rootScope.loggedIn = true;
+      $location.path('/dashboard');
+    }
+  }
+
   if ($location.path() !== '/'){
     $rootScope.navbar = true;
   }
@@ -17,6 +25,7 @@ function($scope, $location, CookieService, ModifyUser, $rootScope){
     CookieService.eatCookies();
     $rootScope.navbar = false;
     $scope.isCollapsed = true;
+    $rootScope.loggedIn = false;
     $location.path( "/" );
   };
 

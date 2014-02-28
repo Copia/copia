@@ -49,6 +49,20 @@ angular.module('app')
         return d.promise;
       },
 
+      cancelLoan : function(loan_id, session_token, user_id) {
+        var d = $q.defer();
+        
+        // /users/:userId/loans/:loanId
+        $http.delete('/users/'+user_id+'/loans/'+loan_id, {session_token: session_token})
+        .success(function(loan, status, headers, config) {
+          d.resolve(loan);
+        })
+        .error(function(data, status, headers, config) {
+          d.reject(data);
+        });
+        return d.promise;
+      },
+
       fundLoan : function(loan_id, session_token, user_id) {
         var d = $q.defer();
         console.log("Funding loan...");
