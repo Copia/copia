@@ -4,6 +4,8 @@ angular.module('app')
 .controller('NavbarController',  
 function($scope, $location, CookieService, ModifyUser, $rootScope){
 
+  var cookies = CookieService.getCookies();
+
   if ($location.path() !== '/'){
     $rootScope.navbar = true;
   }
