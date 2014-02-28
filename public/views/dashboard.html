@@ -10,28 +10,19 @@
     <div class="col-xs-5 userDashPhoto">
       <img src={{user.user.profile_picture_url}} alt="Profile Picture" class="img-circle img-responsive center-block" />
     </div>
-    <div class="col-xs-7">
-      <div class="row">
-        <div class="col-xs-12">
-          <p class="h4 white"><strong>{{user.user.display_name}}</strong></p>
-          <p class="white"><strong>Karma:</strong> {{user.karma}}</p>
-          <p class="white"><strong>Org:</strong> {{user.organization}}</p>
-          <p class="white"><strong>email:</strong> {{user.username}}</p>
-        </div>
-      </div>
+    <div class="col-xs-7 white">
+      <p class="h4"><strong>{{user.user.display_name}}</strong></p>
+      <p><strong>Karma:</strong> {{user.karma}}</p>
+      <p><strong>Org:</strong> {{user.organization}}</p>
+      <p><strong>email:</strong> {{user.username}}</p>
     </div>
-
-    
-
-    <div ng-hide="borrower" class='bottom-button-group'>
-      <div class='row'>
-        <div class='col-xs-4 col-xs-offset-2'>
-          <a href="/#borrow" class="btn btn-outline-inverse btn-lg center-block">Borrow</a>
-        </div>
-        <div class='col-xs-4' >
-          <a href="/#lend" class="btn btn-outline-inverse btn-lg center-block">Lend</a>
-        </div>
-      </div>
+  </div>
+  <div ng-hide="borrower" class="row">
+    <div class='col-xs-4 col-xs-offset-2'>
+      <a href="/#borrow" class="btn btn-outline-inverse btn-lg btn-block">Borrow</a>
+    </div>
+    <div class='col-xs-4' >
+      <a href="/#lend" class="btn btn-outline-inverse btn-lg btn-block">Lend</a>
     </div>
   </div>
 
@@ -55,16 +46,14 @@
   </div>
 
   <div ng-hide="!borrower" class='loanSnippet row'>
-
-      <div class="col-xs-9"> 
-        <p class="h3 loanDetail">Loan Status: <b ng-style="borrowColor">{{borrowStatus}}</b> </p>
-        <p class="h4 white loanDetail">Name:  {{user.user.display_name}}</p>
-        <p class="h4 white loanDetail">Organization:  {{user.organization}}</p>
-        <p class="h5 white loanDetail">Category:  {{loanView.category}}</p>
-        <p class="h5 white loanDetail">Amount Requested:  ${{loanView.principal}}.00 by {{loanView.match_deadline}}</p>
-        <p class="h5 white loanDetail">Amount To Be Paid Back:  ${{loanView.payback_amount}}.00 within {{loanView.payback_days}} days of receipt.</p>
-      </div>
-
+    <div class="col-xs-9"> 
+      <p class="h3 loanDetail">Loan Status: <b ng-style="borrowColor">{{borrowStatus}}</b> </p>
+      <p class="h4 white loanDetail">Name:  {{user.user.display_name}}</p>
+      <p class="h4 white loanDetail">Organization:  {{user.organization}}</p>
+      <p class="h5 white loanDetail">Category:  {{loanView.category}}</p>
+      <p class="h5 white loanDetail">Amount Requested:  ${{loanView.principal}}.00 by {{loanView.match_deadline}}</p>
+      <p class="h5 white loanDetail">Amount To Be Paid Back:  ${{loanView.payback_amount}}.00 within {{loanView.payback_days}} days of receipt.</p>
     </div>
+  </div>
 
 </section>
