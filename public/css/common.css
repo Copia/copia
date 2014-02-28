@@ -27,7 +27,6 @@ body {
 
 #video-background {
   position: absolute;
-  right: 20px;
   bottom: 0px;
   min-width: 100%;
   min-height: 100%;
@@ -208,4 +207,8 @@ footer p {
 
 .confirmButtons {
   height: 80px;
+}
+
+.signin form, .signup form {
+  margin-top: 20px;
 }
