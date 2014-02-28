@@ -24,7 +24,7 @@ exports.create = function(request, response) {
     if( loan.length > 0 ) {
       response.send(401, "Unauthorized: loan already out");
     } else {
-    loans.create(request, response);
+      loans.create(request, response);
     }
   });
 };
@@ -36,7 +36,7 @@ exports.get = function(request, response) {
 
 exports.all = function(request, response) {
   loans.all(request, response);
-}
+};
 
 exports.update = function(request, response) {
   Loan.load(request.params.loanId, function(err, loan) {
@@ -48,14 +48,14 @@ exports.update = function(request, response) {
       User.findById(request.body.lender_id, "access_token", function(err, user) {
         if( err ) { response.send(404, "Error retrieving user"); }
         var data = {
-        "access_token" : user.access_token,
-        "email" : loan.borrower_id.user.email,
-        "note" : loan.purpose,
-        "amount" : loan.principal,
-        "audience" : "public"
+          "access_token" : user.access_token,
+          "email" : loan.borrower_id.user.email,
+          "note" : loan.purpose,
+          "amount" : loan.principal,
+          "audience" : "public"
         };
-        venmo.postPayment(data, function(err, resp, body) {
-          var body = JSON.parse(body);
+        venmo.postPayment(data, function(err, resp, data) {
+          var body = JSON.parse(data);
           if( err || body.error ) {
             console.log("error in transaction in loan_service.update: ",body.error);
             response.send(401, "Venmo transaction failed");

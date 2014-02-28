@@ -6,45 +6,45 @@ var https_service = require('request'),
              User = mongoose.model('User');
 
 exports.oauth2 = function( request, response, next) {
-    var venmoUrl = 'https://api.venmo.com/v1/oauth/access_token';
-    var parsedUrl = url.parse(request.url, true)
+  var venmoUrl = 'https://api.venmo.com/v1/oauth/access_token';
+  var parsedUrl = url.parse(request.url, true);
 
-    console.log( 'authentication.js/oauth2 => REQUEST BODY in OAuth2:', request.body );
-    if (!request.body || !request.body.userId || !request.body.venmoCode) { 
-      console.log('could not find the userId or venmoCode in OAuth2');
-       next(400, 'authentication.js/oauth2 => Need userId and venmoCode in OAuth2 POST');
-    } 
-    var userId = request.body.userId; 
-    var authCode = request.body.venmoCode; 
-    console.log('AuthCode: ', authCode);
-    var data = {
-      "client_id": "1608",
-      "client_secret": "CxVegjzgjB5UteXBqnpMCFZkbKb9dGTc",
-      "code": authCode
-    };
-    https_service({
-      method: "POST",
-      url : venmoUrl, 
-      form :  data
-    }, function(err, resp, body){
-        var body = JSON.parse( body );
-        if(err || body.error || !body.access_token) {
-          console.log('authentication.js/oauth2 => INVALID ACCESS:');
-          response.redirect(301, '/login');
-        } else {
-          console.log("authentication.js/oauth2 => AUTH SUCCESSFUL \n\n\n",body, "\n\n\n\n" );
-          request.body = body;
-          request.userId = userId;
-          next();
-        }
-    });
+  console.log( 'authentication.js/oauth2 => REQUEST BODY in OAuth2:', request.body );
+  if (!request.body || !request.body.userId || !request.body.venmoCode) { 
+    console.log('could not find the userId or venmoCode in OAuth2');
+    next(400, 'authentication.js/oauth2 => Need userId and venmoCode in OAuth2 POST');
+  } 
+  var userId = request.body.userId; 
+  var authCode = request.body.venmoCode; 
+  console.log('AuthCode: ', authCode);
+  var data = {
+    "client_id": "1608",
+    "client_secret": "CxVegjzgjB5UteXBqnpMCFZkbKb9dGTc",
+    "code": authCode
+  };
+  https_service({
+    method: "POST",
+    url : venmoUrl, 
+    form :  data
+  }, function(err, resp, data){
+    var body = JSON.parse( data );
+    if(err || body.error || !body.access_token) {
+      console.log('authentication.js/oauth2 => INVALID ACCESS:');
+      response.redirect(301, '/login');
+    } else {
+      console.log("authentication.js/oauth2 => AUTH SUCCESSFUL \n\n\n",body, "\n\n\n\n" );
+      request.body = body;
+      request.userId = userId;
+      next();
+    }
+  });
 };
 
 exports.router_auth = function(request, response, next) {
   //get id from request, check session_token
   var id = request.params.userId || request.query.userId || request.body.userId;
   if (!id) {
-    console.log('authentication.js/router_auth => error ID not provided. Id: ', id)
+    console.log('authentication.js/router_auth => error ID not provided. Id: ', id);
     next(401, 'authentication.js/router_auth => Invalid user id');
   }
   var token = request.params.session_token || request.query.session_token || request.body.session_token;

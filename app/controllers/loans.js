@@ -12,32 +12,32 @@ var mongoose = require('mongoose'),
  * Find loan by id
  */
 exports.loan = function(req, res, id) {
-    Loan.load(id, function(err, loan) {
-        if ( err || !loan ) {
-          res.send(404, "Loan not found");
-        } else {
-          res.jsonp(loan);
-        }
-    });
+  Loan.load(id, function(err, loan) {
+    if ( err || !loan ) {
+      res.send(404, "Loan not found");
+    } else {
+      res.jsonp(loan);
+    }
+  });
 };
 
 /**
  * Create a loan
  */
 exports.create = function(req, res) {
-    var loan = new Loan(req.body.loan);
-    loan.borrower_id = req.params.userId;
-    loan.save(function(err) {
-        if (err) {
-            return res.send('./public/404.html', {
-                errors: err.errors,
-                loan: loan
-            });
-        } else {
-            console.log("loan created");
-            res.jsonp(loan);
-        }
-    });
+  var loan = new Loan(req.body.loan);
+  loan.borrower_id = req.params.userId;
+  loan.save(function(err) {
+    if (err) {
+      return res.send('./public/404.html', {
+        errors: err.errors,
+        loan: loan
+      });
+    } else {
+      console.log("loan created");
+      res.jsonp(loan);
+    }
+  });
 };
 
 /**
@@ -75,20 +75,20 @@ exports.destroy = function(req, res, id) {
  * Show an loan
  */
 exports.show = function(req, res) {
-    res.jsonp(req.loan);
+  res.jsonp(req.loan);
 };
 
 /**
  * List of loans
  */
 exports.all = function(req, res) {
-    Loan.find().sort('-created').populate('borrower_id lender_id').exec(function(err, loans) {
-        if (err) {
-            res.render('error', {
-                status: 500
-            });
-        } else {
-            res.jsonp(loans);
-        }
-    });
+  Loan.find().sort('-created').populate('borrower_id lender_id').exec(function(err, loans) {
+    if (err) {
+      res.render('error', {
+        status: 500
+      });
+    } else {
+      res.jsonp(loans);
+    }
+  });
 };
