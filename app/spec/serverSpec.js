@@ -4,21 +4,15 @@ var should = require('should'),
     http = require('http'),
     rootUrl = 'http://localhost:3000';
 
-describe('Server', function () {
+describe('Server HTTP Tests:', function () {
   var server;
 
   before(function(done){
     server = require(__dirname + '/../../server.js');
-    server.defer
-    .then( function() {
-      done();
-    })
-    .fail( function() {
-      console.error('Server failed to start');
-    });
+    server.on('ready', function() { console.log('Server Started up'); done(); });
   });
 
-  it("should return 200 from the home page '/'", function(done){
+  it("should return code 200 with GET of '/'", function(done){
     http.get(rootUrl+'/', function(res) {
       should.equal(res.statusCode, 200);
       done();
@@ -28,7 +22,7 @@ describe('Server', function () {
   });
 
   after(function(done) {
+    server.on('out', function() { console.log('Server Shut Down'); done(); });
     server.cleanup();
-    done();
   });
 });
