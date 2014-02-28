@@ -72,7 +72,6 @@ body {
 @media (min-width: 768px) {
   .btn-outline-inverse {
       width: auto;
-      margin: 20px 5px 20px 0;
       padding: 18px 24px;
       font-size: 21px;
   }
@@ -91,10 +90,9 @@ body {
 
 
 .bottom-button-group {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
+ /* position: absolute;
+  bottom: 0;*/
+  margin-top: 40px;
 }
 
 /* views/borrow.html */
