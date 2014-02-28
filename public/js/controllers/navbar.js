@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('app')
-.controller('NavbarController',  
+.controller('NavbarController',
 function($scope, $location, CookieService, ModifyUser, $rootScope){
 
   if (!$rootScope.loggedIn){
     var cookies = CookieService.getCookies();
     if (cookies.session_token && cookies.user_id){
       $rootScope.loggedIn = true;
-      console.log($location.path())
+      console.log($location.path());
       if ($location.path() === ''){
         $location.path('/dashboard');
       }
