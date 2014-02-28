@@ -8,7 +8,10 @@ function($scope, $location, CookieService, ModifyUser, $rootScope){
     var cookies = CookieService.getCookies();
     if (cookies.session_token && cookies.user_id){
       $rootScope.loggedIn = true;
-      $location.path('/dashboard');
+      console.log($location.path())
+      if ($location.path() === ''){
+        $location.path('/dashboard');
+      }
     }
   }
 
