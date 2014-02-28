@@ -232,3 +232,10 @@ footer p {
 .vert-pad {
   padding-top: 10%;
 }
+
+.fundingConfirmation {
+  background-color: rgba(0, 0, 0, 0.28);
+  color: white;
+  border: 1;
+  margin: 0;
+}
