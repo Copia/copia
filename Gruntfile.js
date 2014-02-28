@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     },
     jshint: {
       all: {
-        src: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**'],
+        src: ['package.json', 'gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**'],
         options: {
           jshintrc: true
         }
