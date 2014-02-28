@@ -6,12 +6,10 @@ html {
 
 body {
   background-color: #00b2ba;
-  margin-bottom: 60px;
 }
 
 .content {
-  margin-top: 20px;
-  width: 100%;
+  padding: 20px;
 }
 
 .white {
@@ -223,8 +221,12 @@ footer p {
   background-clip: padding-box;
 }
 
-.profileImg {
-  height: 160px;
+.img-container, .desc-container {
+  display: inline-block;
+}
+
+.desc-container {
+  vertical-align: middle;
 }
 
 .vert-pad {
