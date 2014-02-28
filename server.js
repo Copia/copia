@@ -15,17 +15,6 @@ var app = express();
 // Set up serving up of static resources and server side dynamic views
 var rootPath = path.normalize(__dirname );
 
-//// Error handling middleware
-app.use(function(err, request, response, next) {
-  if(err) {
-    console.log('server.js:errMiddleware => error.', err);
-    response.send(err);
-  } else {
-    console.log('server.js/healthMiddleware => health Ok');
-    next();
-  }
-});
-
 // Set up some standard express middleware
 app.use( express.bodyParser() );
 app.use( app.router );
