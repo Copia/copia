@@ -53,7 +53,7 @@ angular.module('app')
         var d = $q.defer();
         
         // /users/:userId/loans/:loanId
-        $http.delete('/users/'+user_id+'/loans/'+loan_id, {session_token: session_token})
+        $http.delete('/users/'+user_id+'/loans/'+loan_id, {params: {session_token: session_token}})
         .success(function(loan, status, headers, config) {
           d.resolve(loan);
         })
