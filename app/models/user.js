@@ -4,32 +4,33 @@
 * Module dependencies.
 */
 var mongoose = require('mongoose'),
-   Schema = mongoose.Schema,
-   bcrypt = require('bcrypt'),
-   SALT_FACTOR = 10;
+  Schema = mongoose.Schema,
+  bcrypt = require('bcrypt'),
+  SALT_FACTOR = 10;
 
 /**
 * User Schema
 */
-var UserSchema = new Schema({
+var UserSchema = new Schema(
+  {
     access_token: String,
     balance: String,
     expires_in: Number,
     user: {
-        username: String,
-        first_name: String,
-        last_name: String,
-        display_name: String,
-        is_friend: Boolean,
-        friends_count: Number,
-        about: String,
-        email: {
-          type: String
-        },
-        phone: String,
-        profile_picture_url: String,
-        id: String,
-        date_joined: String,
+      username: String,
+      first_name: String,
+      last_name: String,
+      display_name: String,
+      is_friend: Boolean,
+      friends_count: Number,
+      about: String,
+      email: {
+        type: String
+      },
+      phone: String,
+      profile_picture_url: String,
+      id: String,
+      date_joined: String,
     },
     username: {
       type: String,
@@ -52,7 +53,7 @@ var UserSchema = new Schema({
 * Validations
 */
 var validatePresenceOf = function(value) {
-   return value && value.length;
+  return value && value.length;
 };
 
 UserSchema.pre("save" , function(next) {
@@ -69,8 +70,8 @@ UserSchema.pre("save" , function(next) {
     bcrypt.hash(user.password, salt, function(err, hash) {
       if(err) { 
         console.log('models/users.js:UserSchema.pre-save => bcrypt.hash error. ', err);
-        return next(err)
-      };
+        return next(err);
+      }
       user.password = hash;
       next();
     });
@@ -88,20 +89,20 @@ var generateSessionToken = function(cb) {
 */
 
 UserSchema.methods.verifyPassword = function(password, cb) {
-    var user = this;
-    bcrypt.compare(password, this.password, function(err, isMatch) {
-        if (err) {
-          return cb(err);
-        }
-        generateSessionToken(function(err, salt) {
-          if(err) {
-            return cb(err)
-          } 
-          user.session_token = salt;
-          user.save();
-          cb(null, isMatch);
-        });
+  var user = this;
+  bcrypt.compare(password, this.password, function(err, isMatch) {
+    if (err) {
+      return cb(err);
+    }
+    generateSessionToken(function(err, salt) {
+      if(err) {
+        return cb(err);
+      } 
+      user.session_token = salt;
+      user.save();
+      cb(null, isMatch);
     });
+  });
 };
 
 mongoose.model('User', UserSchema);

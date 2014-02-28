@@ -1,3 +1,4 @@
+'use strict';
 var express     = require("express");
 var mongoose    = require("mongoose");
 var config      = require('./package.json').config;

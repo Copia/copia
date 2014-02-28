@@ -7,6 +7,25 @@ User = mongoose.model('User');
 // Transaction service use transactions controller
 var transactions = require('../controllers/transactions');
 
+// TODO: double lookup of same transaction in database ... need to rethink this
+// architecture, but works for now.
+var applyIfOwned = function(request, response, cb) {
+  Transaction.findById( request.params.transactionId, function(err, transaction) {
+    if (err) { 
+      response.send(404, 'Transaction not found');
+    } else {
+      // TODO : Figure out proper cast to remove this '=='
+      if (''+transaction.from_user_id === ''+request.authenticated_user._id) {
+        cb(request, response, request.params.transactionId);
+      } else {
+        console.log('transaction.from_user_id: ', transaction.from_user_id);
+        console.log('request.params.transactionId: ', request.authenticated_user._id);
+        response.send(401, 'Not authorized to delete transaction');
+      }
+    }
+  });
+};
+
 exports.create = function(request, response) {
   Loan.find({_id: request.body.loan_id }, function(err, loan) {
     if (err) {
@@ -14,7 +33,7 @@ exports.create = function(request, response) {
     } 
     if (loan.borrower_id !== request.body.authenticated_user ) {
       var msg = 'User ' + request.authenticated_user + ' is not in borrower_id field of loan ' + request.body.loan_id;
-      return response.send(401, 'transaction_service.js/create/Loan.find => ' + msg)
+      return response.send(401, 'transaction_service.js/create/Loan.find => ' + msg);
     } 
     console.log("transaction_service/create/Loan.find => create transaction against loan ", loan[0], 'loan_id in POST: ', request.body.loan_id);
     User.find( {_id:loan[0].lender_id}, function(err, lender) {
@@ -42,22 +61,3 @@ exports.update = function(request, response) {
 exports.delete = function(request, response) {
   applyIfOwned(request, response, transactions.destroy);
 };
-
-  // TODO: double lookup of same transaction in database ... need to rethink this
-  // architecture, but works for now.
-var applyIfOwned = function(request, response, cb) {
-  Transaction.findById( request.params.transactionId, function(err, transaction) {
-    if (err) { 
-      response.send(404, 'Transaction not found');
-    } else {
-      // TODO : Figure out proper cast to remove this '=='
-      if (''+transaction.from_user_id === ''+request.authenticated_user._id) {
-        cb(request, response, request.params.transactionId);
-      } else {
-        console.log('transaction.from_user_id: ', transaction.from_user_id);
-        console.log('request.params.transactionId: ', request.authenticated_user._id);
-        response.send(401, 'Not authorized to delete transaction');
-      }
-    }
-  });
-}

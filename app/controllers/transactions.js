@@ -13,8 +13,8 @@ var  mongoose = require('mongoose'),
  */
 exports.get = function(req, res, userId, id) {
   console.log('Getting transaction: ', id);
-  var query = {}
-  query.from_user_id = userId
+  var query = {};
+  query.from_user_id = userId;
   if(id) query._id = id;
   
   Transaction
@@ -51,7 +51,7 @@ exports.create = function(req, res, loan, lender) {
     "note" : loan.purpose,
     "amount" : loan.payback_amount,
     "audience" : "public"
-    };
+  };
 
   console.log('transaction.js/create/venmoApi.postPayment => create', venmoPayment);
   venmoAPI.postPayment(venmoPayment, function(err, response, data) {
@@ -118,7 +118,7 @@ exports.update = function(req, res, id) {
  */
 exports.all = function(req, res, userId) {
   var query = userId ? { from_user_id: userId } : undefined;
-  transaction
+  Transaction
   .find(query)
   .sort('-created')
   .populate('from_user_id to_user_id loan_id')

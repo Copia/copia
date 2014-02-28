@@ -26,7 +26,7 @@ exports.get = function(req, res, id) {
 exports.login = function(req, res) {
   console.log('controllers/users.js:login => Finding user: ',req.body);
   if (!req.body || !req.body.username) {
-    console.log('controllers/user.js:login => No username provided')
+    console.log('controllers/user.js:login => No username provided');
     res.send(401, 'controllers/user.js:login => No username provided');
   } else {
     User.findOne({ username: req.body.username }, function(err, user) {
@@ -114,7 +114,7 @@ exports.update = function(req, res, id) {
       res.send(403, 'controllers/user.js:update/User.findByIdAndUpdate => got Error: ' + err.errmsg );
     } else {
       console.log('controllers/user.js:update/User.findByIdAndUpdaate updated User: ', updatedUser);
-       console.log('controllers/user.js:update/User.findByIdAndUpdaate updated fields: ', req.body);
+      console.log('controllers/user.js:update/User.findByIdAndUpdaate updated fields: ', req.body);
       res.jsonp(updatedUser);
     }
   });
