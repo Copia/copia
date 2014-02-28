@@ -61,7 +61,7 @@ exports.get = function(request, response) {
       response.send(400,'controllers/user.js:User.findById => got error ' + err);
     } else {
       Loan.find({ borrower_id: request.params.userId })
-      .where('status').in(["pending", "funded"])
+      //.where('status').in(["pending", "funded"])
       .exec( function(err, loans) {    
         if (err) {
           console.log("user_service.js/get/User.findById/Loan.find => error fetching user loans", err);
