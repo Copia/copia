@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('app')
-.provider('BorrowRequest', function(){
-  //returns today's date in proper <input type="date" /> format
+.provider('BorrowRequest', function() {
+  // returns today's date in proper <input type="date" /> format
   var today = function() {
     var local = new Date();
     local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
@@ -10,21 +10,19 @@ angular.module('app')
   };
 
   this.loan = {
-    amount : {
-      loan : null,
-      payback : null
+    amount: {
+      loan: null,
+      payback: null
     },
-    date : {
-      neededBy : today()
-    },
-    paybackDays : null,
-    category : null,
-    reason : null
+    date: {neededBy: today()},
+    paybackDays: null,
+    category: null,
+    reason: null
   };
 
   this.validLoanAttrs = false; //record whether loan attrs are valid for posting to db
 
-  this.$get = function($http, $location){
+  this.$get = function($http, $location) {
     var self = this;
 
     var service = {
@@ -37,12 +35,12 @@ angular.module('app')
         self.loan.reason = null;
       },
 
-      //update loanAttrs status from borrow.js
+      // update loanAttrs status from borrow.js
       validateLoan : function(status) {
         self.validLoanAttrs = status;
       },
 
-      //update loanAttrs from borrow.js
+      // update loanAttrs from borrow.js
       saveLoan : function(attrs) {
         self.loan = attrs;
       },
@@ -51,7 +49,7 @@ angular.module('app')
         return self.loan;
       },
 
-      redirectInvalidLoan : function(){
+      redirectInvalidLoan : function() {
         if(!self.validLoanAttrs) {
           $location.path( "/borrow" );
         }
@@ -60,7 +58,7 @@ angular.module('app')
       submitBorrowRequest : function(session_token, user_id) {
         console.log('Loan request submitted: ', self.loan);
 
-        //format loan attributes to match up with database;
+        // format loan attributes to match up with database;
         var loan = {};
         loan.principal = self.loan.amount.loan;
         loan.payback_amount = self.loan.amount.payback;
@@ -69,10 +67,10 @@ angular.module('app')
         loan.category = self.loan.category;
         loan.purpose = self.loan.reason;
         loan.matched = false;
-        //TODO: update this field with the actual organization
+        // TODO: update this field with the actual organization
         loan.organization = 'Organization Placeholder';
 
-        //Route to post new loans:  /users/:userId/loans
+        // Route to post new loans:  /users/:userId/loans
         $http.post('/users/'+user_id+'/loans', {session_token : session_token, loan : loan})
         .success(function(data, status, headers, config) {
           console.log('Loan posted to db: ',loan);
