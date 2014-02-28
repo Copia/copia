@@ -34,6 +34,7 @@
     </div>
   </div>
 
+
   <div ng-hide="venmoConnected" class="row">
     <div class="col-xs-12">
       <p class="h4 white text-center">You need to connect with Venmo to begin using Copia!</p>
@@ -45,6 +46,7 @@
     </p>
   </div>
 
+  <br>
   <div ng-hide="!borrower" class='loanSnippet row'>
     <div class="col-xs-9"> 
       <p class="h3 loanDetail">Loan Status: <b ng-style="borrowColor">{{borrowStatus}}</b> </p>
@@ -53,6 +55,14 @@
       <p class="h5 white loanDetail">Category:  {{loanView.category}}</p>
       <p class="h5 white loanDetail">Amount Requested:  ${{loanView.principal}}.00 by {{loanView.match_deadline}}</p>
       <p class="h5 white loanDetail">Amount To Be Paid Back:  ${{loanView.payback_amount}}.00 within {{loanView.payback_days}} days of receipt.</p>
+    </div>
+  </div>
+
+  <div ng-show="borrower && pending" class="bottom-button-group row">
+    <div class="col-xs-12">
+      <p class="text-center">
+        <button  type="button" ng-click="cancelLoan()" class="btn btn-outline-inverse btn-lg center-block">Cancel Loan Request</button>
+      </p>
     </div>
   </div>
 
