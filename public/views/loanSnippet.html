@@ -3,16 +3,18 @@
   <p class='h3 white text-center'>
     <strong>{{loan.borrower_id.user.display_name}}</strong>
   </p>
-  <p class='text-center'>
-    <img ng-src={{enlargePhotoURL(loan.borrower_id.user.profile_picture_url)}} alt="Profile Picture" class="img-circle profileImg" />
-  </p>
+  <div class='text-center'>
+    <div class="img-container">
+      <img ng-src={{enlargePhotoURL(loan.borrower_id.user.profile_picture_url)}} alt="Profile Picture" class="img-circle profileImg img-responsive" />
+    </div>
+  </div>
   <p class='h3 white text-center'>
     <strong>Karma: {{loan.borrower_id.karma}}</strong>
   </p>
 </div>
 
 <div class="col-xs-7 white h4">
-  <div class='vert-pad'>
+  <div class="vert-pad">
     <p><strong>Organization:</strong>  {{loan.borrower_id.organization}}</p>
     <p><strong>Request:</strong> ${{loan.principal}}.00</p>
     <p><strong>Category:</strong> {{loan.category}}</p>
