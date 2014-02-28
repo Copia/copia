@@ -1,6 +1,10 @@
-<section>
+<section class="signup">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 class="white text-center">Sign Up</h2>
+    </div>
+  </div>
   <form class="form-horizontal" role="form" name="signup" novalidate>
-    
     <div class="form-group" ng-class="{ 'has-error' : failedLogin }">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -13,7 +17,6 @@
         </div>
       </div>
     </div>
-    
     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -27,7 +30,6 @@
         </div>
       </div>
     </div>
-
     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -40,7 +42,6 @@
         </div>
       </div>
     </div>
-
 <!--     <div class="form-group">
       <div class="col-xs-12">
         <div class="input-group input-group-lg">
@@ -52,7 +53,6 @@
         </div>
       </div>
     </div> -->
-
     <div class="bottom-button-group row">
         <div class="col-xs-4 col-xs-offset-2">
           <button type="button" class="btn btn-outline-inverse btn-lg btn-block" ng-click="splashPage()">Cancel</a>
@@ -61,7 +61,6 @@
           <button class="btn btn-outline-inverse btn-lg btn-block" ng-click="signUp()">Sign Up</button>
         </div>
     </div>
-
     <div class='help-block row loginError' ng-show='failedLogin'>
       <p class='loginErrorText text-center'>Username is already registered.</p>
     </div>
