@@ -6,6 +6,7 @@ html {
 
 body {
   background-color: #00b2ba;
+  font-family: MissionGothicLight;
 }
 
 .content {
@@ -230,13 +231,11 @@ footer p {
 .splashTitleC {
   font-family: MissionGothicRegular;
   font-size: 120px;
-  /*text-shadow: 5px 5px black;*/
 }
 
 .splashTitle {
   font-family: MissionGothicRegular;
   font-size: 90px;
-  /*text-shadow: 5px 5px black;*/
 }
 
 .splashText {
