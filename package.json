@@ -2,12 +2,12 @@
   "name": "Copia",
   "version": "0.0.1",
   "config": {
-    "host":"copia.ngrok.com",
-  "stubVenmo": true,
+    "host": "copia.ngrok.com",
+    "stubVenmo": true,
     "db": {
-      "uri":"mongodb://heroku_app22242686:do2856rbauaa0nlb1epfqgj61o@ds033569.mongolab.com:33569/heroku_app22242686",
-      "options" : {
-        "keepAlive":1
+      "uri": "mongodb://heroku_app22242686:do2856rbauaa0nlb1epfqgj61o@ds033569.mongolab.com:33569/heroku_app22242686",
+      "options": {
+        "keepAlive": 1
       }
     },
     "port": 3000,
@@ -58,7 +58,8 @@
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-concurrent": "~0.4.3",
-    "grunt-env": "~0.4.1"
+    "grunt-env": "~0.4.1",
+    "jasmine-node": "~1.13.1"
   },
   "scripts": {
     "postinstall": "node node_modules/bower/bin/bower install"
