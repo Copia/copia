@@ -17,7 +17,7 @@
       <p><strong>email:</strong> {{user.username}}</p>
     </div>
   </div>
-  <div ng-hide="borrower" class="row">
+  <div ng-hide="borrower" class="button-group row">
     <div class='col-xs-4 col-xs-offset-2'>
       <a href="/#borrow" class="btn btn-outline-inverse btn-lg btn-block">Borrow</a>
     </div>
@@ -26,35 +26,34 @@
     </div>
   </div>
 
-  <div ng-hide="!borrower || pending" class="bottom-button-group row">
-    <div class="col-xs-12">
-      <p class="text-center">
-        <button  type="button" ng-click="repayLoan()" class="btn btn-outline-inverse btn-lg center-block">Repay Loan</button>
-      </p>
+  <div ng-hide="!borrower || pending" class="button-group row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <button  type="button" ng-click="repayLoan()" class="btn btn-outline-inverse btn-lg btn-block">Repay Loan</button>
     </div>
   </div>
 
-
-  <div ng-hide="venmoConnected" class="row">
-    <div class="col-xs-12">
-      <p class="h4 white text-center">You need to connect with Venmo to begin using Copia!</p>
+  <div ng-hide="venmoConnected">
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="h4 white text-center">You need to connect with Venmo to begin using Copia!</p>
+      </div>
     </div>
-    <p class="text-center">
-      <br>
-      <br>
-      <button class="btn btn-outline-inverse btn-lg" ng-click='venmoAuth()'>Venmo Connect</button>
-    </p>
+    <div class="row button-group">
+      <div class="col-xs-8 col-xs-offset-2">
+        <button class="btn btn-outline-inverse btn-lg btn-block" ng-click='venmoAuth()'>Venmo Connect</button>
+      </div>
+    </div>
   </div>
 
   <br>
   <div ng-hide="!borrower" class='loanSnippet row'>
-    <div class="col-xs-9"> 
+    <div class="col-xs-9 white">
       <p class="h3 loanDetail">Loan Status: <b ng-style="borrowColor">{{borrowStatus}}</b> </p>
-      <p class="h4 white loanDetail">Name:  {{user.user.display_name}}</p>
-      <p class="h4 white loanDetail">Organization:  {{user.organization}}</p>
-      <p class="h5 white loanDetail">Category:  {{loanView.category}}</p>
-      <p class="h5 white loanDetail">Amount Requested:  ${{loanView.principal}}.00 by {{loanView.match_deadline}}</p>
-      <p class="h5 white loanDetail">Amount To Be Paid Back:  ${{loanView.payback_amount}}.00 within {{loanView.payback_days}} days of receipt.</p>
+      <p class="h4 loanDetail">Name:  {{user.user.display_name}}</p>
+      <p class="h4 loanDetail">Organization:  {{user.organization}}</p>
+      <p class="h5 loanDetail">Category:  {{loanView.category}}</p>
+      <p class="h5 loanDetail">Amount Requested:  ${{loanView.principal}}.00 by {{loanView.match_deadline}}</p>
+      <p class="h5 loanDetail">Amount To Be Paid Back:  ${{loanView.payback_amount}}.00 within {{loanView.payback_days}} days of receipt.</p>
     </div>
   </div>
 
