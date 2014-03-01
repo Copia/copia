@@ -1,11 +1,5 @@
 <section ng-cloak class="content">
 
-  <div class="row userDashTitle">
-    <div class="col-xs-12">
-      <h3 class="white text-center">Welcome, {{user.user.display_name}}</h3>
-    </div>
-  </div>
-
   <div ng-hide="!showDashboard"  class="row ng-cloak">
     <div class="col-xs-5 userDashPhoto">
       <img src={{user.user.profile_picture_url}} alt="Profile Picture" class="img-circle img-responsive center-block" />
@@ -15,20 +9,6 @@
       <p><strong>Karma:</strong> {{user.karma}}</p>
       <p><strong>Org:</strong> {{user.organization}}</p>
       <p><strong>email:</strong> {{user.username}}</p>
-    </div>
-  </div>
-  <div ng-hide="borrower" class="button-group row">
-    <div class='col-xs-4 col-xs-offset-2'>
-      <a href="/#borrow" class="btn btn-outline-inverse btn-lg btn-block">Borrow</a>
-    </div>
-    <div class='col-xs-4' >
-      <a href="/#lend" class="btn btn-outline-inverse btn-lg btn-block">Lend</a>
-    </div>
-  </div>
-
-  <div ng-hide="!borrower || pending" class="button-group row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <button  type="button" ng-click="repayLoan()" class="btn btn-outline-inverse btn-lg btn-block">Repay Loan</button>
     </div>
   </div>
 
@@ -42,6 +22,24 @@
       <div class="col-xs-8 col-xs-offset-2">
         <button class="btn btn-outline-inverse btn-lg btn-block" ng-click='venmoAuth()'>Venmo Connect</button>
       </div>
+    </div>
+    <br>
+    <br>
+    <br>
+  </div>
+
+  <div ng-hide="borrower" class="button-group row">
+    <div class='col-xs-4 col-xs-offset-2'>
+      <a href="/#borrow" class="btn btn-outline-inverse btn-lg btn-block">Borrow</a>
+    </div>
+    <div class='col-xs-4' >
+      <a href="/#lend" class="btn btn-outline-inverse btn-lg btn-block">Lend</a>
+    </div>
+  </div>
+
+  <div ng-hide="!borrower || pending" class="button-group row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <button  type="button" ng-click="repayLoan()" class="btn btn-outline-inverse btn-lg btn-block">Repay Loan</button>
     </div>
   </div>
 
