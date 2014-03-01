@@ -21,7 +21,7 @@ function($scope, $location, CookieService, $rootScope, $http){
       $location.path( "/dashboard" );
     })
     .error(function(data, status, headers, config) {
-      console.err('Error: ', data);
+      console.error('Error: ', data);
       $location.path( "/dashboard" );
     });
   };
