@@ -10,16 +10,27 @@
 <section class='splashContent'>
   <div class="row">
     <div class="col-xs-12">
-      <div>
-        <h2 class="white text-center">
-          <span class="splashTitleC">C</span><span class='splashTitle'>opia</span>
-        </h2>
-        <br>
-        <p class="h3 white splashText">Enabling community-based lending. No banks. Just you.</p>
-      </div>
+      <h2 class="white text-center">
+        <span class="splashTitleC">C</span><span class='splashTitle'>opia</span>
+      </h2>
     </div>
   </div>
-
+  <carousel interval="4000" class="white" style="height: 400px">
+    <slide active="slide.active">
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="h3 white">Enabling community-based lending. No banks. Just you.</p>
+        </div>
+      </div>
+    </slide>
+    <slide>
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="h3 white">Enabling community-based lending. No banks. Just you.</p>
+        </div>
+      </div>
+    </slide>
+  </carousel>
   <div class="splash-button-group row">
     <div class="col-xs-4 col-xs-offset-2">
       <button ng-click="signUp()" class="btn btn-outline-inverse btn-lg btn-block">Sign Up</button>
@@ -28,5 +39,4 @@
       <button ng-click="signIn()" class="btn btn-outline-inverse btn-lg btn-block">Sign In</button>
     </div>
   </div>
-
 </section>
