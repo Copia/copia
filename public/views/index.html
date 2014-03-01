@@ -1,6 +1,6 @@
 <div id='video-container'>
   <div class="video-cover"></div>
-  <video id="video-background" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0"> 
+  <video id="video-background" preload="auto" poster="../img/golden_gate_bridge.jpg" autoplay="true" loop="loop" muted="muted" volume="0"> 
     <source src="videos/sanfran.webm" type="video/webm">
     <source src="videos/sanfran.mp4" type="video/mp4">
     Video not supported
@@ -15,22 +15,31 @@
       </h2>
     </div>
   </div>
-  <carousel interval="4000" class="white" style="height: 400px">
-    <slide active="slide.active">
-      <div class="row">
-        <div class="col-xs-12">
-          <p class="h3 white">Enabling community-based lending. No banks. Just you.</p>
+  <div class="splash-carousel">
+    <carousel interval="4000" class="white" style="height: 100px;">
+      <slide active="slide.active">
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="h3 white">Community-based lending. No banks. Just you.</p>
+          </div>
         </div>
-      </div>
-    </slide>
-    <slide>
-      <div class="row">
-        <div class="col-xs-12">
-          <p class="h3 white">Enabling community-based lending. No banks. Just you.</p>
+      </slide>
+      <slide>
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="h3 white">Borrow from people in your community.</p>
+          </div>
         </div>
-      </div>
-    </slide>
-  </carousel>
+      </slide>
+      <slide>
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="h3 white">Get rewards when you pay on time.</p>
+          </div>
+        </div>
+      </slide>
+    </carousel>
+  </div>
   <div class="splash-button-group row">
     <div class="col-xs-4 col-xs-offset-2">
       <button ng-click="signUp()" class="btn btn-outline-inverse btn-lg btn-block">Sign Up</button>
