@@ -12,10 +12,10 @@
   <div class="row">
     <div class="col-xs-12">
       <p class="h4 white">
-        You have requested <strong>{{ loan.principal }}</strong> and need the funding by <strong>{{ loan.match_deadline }}</strong>.
+        You have requested <strong>{{ loan.principal | currency }}</strong> and need the funding by <strong>{{ loan.match_deadline }}</strong>.
       </p>
       <p class="h4 white">
-        If funded, you agree to repay <strong>{{ loan.payback_amount }}.00</strong> within <strong>{{ loan.paybackDays }}</strong> days after receiving the loan.
+        If funded, you agree to repay <strong>{{ loan.payback_amount | currency }}</strong> within <strong>{{ loan.paybackDays }}</strong> days after receiving the loan.
       </p>
       <p class="h4 white">
         You debt falls under the category of <strong>{{ loan.category }}</strong> and the specific reason you need the funding is:
