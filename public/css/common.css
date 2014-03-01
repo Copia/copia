@@ -26,14 +26,20 @@ body {
  * Video Background
 */
 
+#video-container {
+  /*height: 100%;
+  width: 100%;*/
+  overflow: hidden;
+}
+
 #video-background {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
+  z-index: -2;
   min-width: 100%;
   min-height: 100%;
   width: auto;
   height: auto;
-  z-index: -2;
   overflow: hidden;
 }
 
@@ -46,6 +52,10 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+video {
+  width: 600px;
 }
 
 /*
@@ -211,6 +221,10 @@ textarea {
 @font-face {
   font-family: MissionGothicRegular;
   src: url(fonts/MissionGothic/MG_Regular.otf);
+}
+
+.splashContent {
+  margin-top: 30%;
 }
 
 .splashTitleC {

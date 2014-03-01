@@ -1,21 +1,25 @@
-<div>
+<div id='video-container'>
   <div class="video-cover"></div>
   <video id="video-background" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0"> 
     <source src="videos/sanfran.webm" type="video/webm">
+    <source src="videos/sanfran.mp4" type="video/mp4">
     Video not supported
   </video>
 </div>
 
-<section class="content">
+<section class='splashContent'>
   <div class="row">
     <div class="col-xs-12">
       <div>
-        <h2 class="white text-center">Copia.</h2>
+        <h2 class="white text-center">
+          <span class="splashTitleC">C</span><span class='splashTitle'>opia</span>
+        </h2>
         <br>
-        <p class="h3 white">Enabling community-based lending. No banks. Just you.</p>
+        <p class="h3 white splashText">Enabling community-based lending. No banks. Just you.</p>
       </div>
     </div>
   </div>
+
   <div class="splash-button-group row">
     <div class="col-xs-4 col-xs-offset-2">
       <button ng-click="signUp()" class="btn btn-outline-inverse btn-lg btn-block">Sign Up</button>
@@ -23,5 +27,6 @@
     <div class="col-xs-4">
       <button ng-click="signIn()" class="btn btn-outline-inverse btn-lg btn-block">Sign In</button>
     </div>
-  </div>  
+  </div>
+
 </section>
