@@ -9,7 +9,7 @@ describe('Server HTTP Tests:', function () {
 
   before(function(done){
     server = require(__dirname + '/../../server.js');
-    server.on('ready', function() { console.log('Server Started up'); done(); });
+    server.on('ready', done);
   });
 
   it("should return code 200 with GET of '/'", function(done){
@@ -22,7 +22,6 @@ describe('Server HTTP Tests:', function () {
   });
 
   after(function(done) {
-    server.on('out', function() { console.log('Server Shut Down'); done(); });
-    server.cleanup();
+    server.cleanup(done);
   });
 });
