@@ -33,17 +33,17 @@ exports.create = function(request, response) {
     if( err ) {
       response.send(404, "Error retrieving user");
     } else if( !user.user.email ) {
-        response.send(404, "Must link with venmo");
+      response.send(404, "Must link with venmo");
     } else {
-        Loan.find({ borrower_id: request.params.userId, status: "pending" }, function(err, loan) {
-          console.log("LOAN CREATE: ", err, loan);
-          if( loan.length > 0 ) {
-            response.send(401, "Unauthorized: loan already out");
-          } else {
-            loans.create(request, response);
-          }
-        });
-      }
+      Loan.find({ borrower_id: request.params.userId, status: "pending" }, function(err, loan) {
+        console.log("LOAN CREATE: ", err, loan);
+        if( loan.length > 0 ) {
+          response.send(401, "Unauthorized: loan already out");
+        } else {
+          loans.create(request, response);
+        }
+      });
+    }
   });
 };
 
