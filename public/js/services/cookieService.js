@@ -4,8 +4,7 @@ angular.module('app')
 .provider('CookieService', function(){
 
   this.$get = function($cookieStore){
-    var self = this;
-
+    
     var service = {
       storeCookies : function(user) {
         $cookieStore.put('session_token', user.session_token);

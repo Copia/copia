@@ -28,8 +28,6 @@ angular.module('app').directive('loanSnippet', function(){
   return {
     require: 'ngModel',
     restrict: 'A',
-    templateUrl: '/views/loanSnippet.html',
-    link: function($scope, iElm, iAttrs, controller) {
-    }
+    templateUrl: '/views/loanSnippet.html'
   };
 });

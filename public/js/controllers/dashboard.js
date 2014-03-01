@@ -18,12 +18,12 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
     }
     $scope.loan = userObj.loans;
     if ($scope.loan.length > 0){
-      for (var i = 0; i < $scope.loan.length; i++){
-        if ($scope.loan[i].status === 'pending'){
+      for (var i = 0; i < $scope.loan.length; i++) {
+        if ($scope.loan[i].status === 'pending') {
           $scope.borrower = true;
           $scope.pending = true;
           $scope.borrowStatus = 'Pending';
-          $scope.borrowColor = {'color':'red'};
+          $scope.borrowColor = {'color': 'red'};
           $scope.loanView = $scope.loan[i];
         }
         if ($scope.loan[i].status === 'funded'){
@@ -43,7 +43,7 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
         break;
       }
     }
-    LendRequest.cancelLoan($scope.loan[i]._id, $scope.session_token, $scope.user_id).then(function(){$timeout(function(){$route.reload();},0);});
+    LendRequest.cancelLoan($scope.loan[i]._id, $scope.session_token, $scope.user_id).then(function() {$timeout(function() {$route.reload();},0);});
   };
 
   $scope.venmoAuth = function(){
@@ -54,7 +54,7 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   };
 
   $scope.repayLoan = function(){
-    LendRequest.repayLoan($scope.loan[0]._id, $scope.session_token, $scope.user_id).then(function(){$timeout(function(){$route.reload();},0);});
+    LendRequest.repayLoan($scope.loanView._id, $scope.session_token, $scope.user_id).then(function() {$timeout(function() {$route.reload();},0);});
   };
 
 }]);

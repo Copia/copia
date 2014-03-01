@@ -12,7 +12,7 @@ function($scope, CookieService, $http, $location){
   console.log('venmo_code:  ', $scope.venmo_code);
 
   $http.post('/auth', {
-    userId : $scope.user_id, 
+    userId: $scope.user_id, 
     venmoCode: $scope.venmo_code
   })
   .success(function(data, status, headers, config) {
