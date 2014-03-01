@@ -55,8 +55,8 @@ exports.create = function(req, res, loan, lender) {
 
   console.log('transaction.js/create/venmoApi.postPayment => create', venmoPayment);
   venmoAPI.postPayment(venmoPayment, function(err, response, data) {
-
-    if (err) {
+    var body = JSON.parse(data);
+    if (err || body.err) {
       return response.send(400, 'Venmo payment did not go through');
     }
 
