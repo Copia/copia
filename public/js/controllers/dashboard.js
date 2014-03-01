@@ -54,7 +54,7 @@ function($scope, CookieService, VenmoAuthentication, $location, ModifyUser, $roo
   };
 
   $scope.repayLoan = function(){
-    LendRequest.repayLoan($scope.loan[0]._id, $scope.session_token, $scope.user_id).then(function() {$timeout(function() {$route.reload();},0);});
+    LendRequest.repayLoan($scope.loanView._id, $scope.session_token, $scope.user_id).then(function() {$timeout(function() {$route.reload();},0);});
   };
 
 }]);
