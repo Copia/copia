@@ -1,6 +1,6 @@
 <div id='video-container'>
   <div class="video-cover"></div>
-  <video id="video-background" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0"> 
+  <video id="video-background" preload="auto" poster="../img/golden_gate_bridge.jpg" autoplay="true" loop="loop" muted="muted" volume="0"> 
     <source src="videos/sanfran.webm" type="video/webm">
     <source src="videos/sanfran.mp4" type="video/mp4">
     Video not supported
@@ -10,16 +10,36 @@
 <section class='splashContent'>
   <div class="row">
     <div class="col-xs-12">
-      <div>
-        <h2 class="white text-center">
-          <span class="splashTitleC">C</span><span class='splashTitle'>opia</span>
-        </h2>
-        <br>
-        <p class="h3 white splashText">Enabling community-based lending. No banks. Just you.</p>
-      </div>
+      <h2 class="white text-center">
+        <span class="splashTitleC">C</span><span class='splashTitle'>opia</span>
+      </h2>
     </div>
   </div>
-
+  <div class="splash-carousel">
+    <carousel interval="4000" class="white" style="height: 100px;">
+      <slide active="slide.active">
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="h3 white">Community-based lending. No banks. Just you.</p>
+          </div>
+        </div>
+      </slide>
+      <slide>
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="h3 white">Borrow from people in your community.</p>
+          </div>
+        </div>
+      </slide>
+      <slide>
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="h3 white">Get rewards when you pay on time.</p>
+          </div>
+        </div>
+      </slide>
+    </carousel>
+  </div>
   <div class="splash-button-group row">
     <div class="col-xs-4 col-xs-offset-2">
       <button ng-click="signUp()" class="btn btn-outline-inverse btn-lg btn-block">Sign Up</button>
@@ -28,5 +48,4 @@
       <button ng-click="signIn()" class="btn btn-outline-inverse btn-lg btn-block">Sign In</button>
     </div>
   </div>
-
 </section>

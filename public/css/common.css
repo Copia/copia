@@ -95,7 +95,6 @@ video {
 }
 
 .splash-button-group {
-  margin-top: 30%;
 }
 
 /* views/borrow.html */
@@ -223,8 +222,8 @@ textarea {
   src: url(fonts/MissionGothic/MG_Regular.otf);
 }
 
-.splashContent {
-  margin-top: 30%;
+.splash-carousel {
+  margin: 60px 0 60px 0;
 }
 
 .splashTitleC {
