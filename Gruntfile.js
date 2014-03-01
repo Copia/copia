@@ -89,6 +89,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-env');
 
+  grunt.option('force', true);
+
   //Default task(s).
   grunt.registerTask('default', ['jshint:all', 'concurrent']);
   grunt.registerTask('test', ['env:test', 'mochaTest']);

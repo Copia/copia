@@ -50,9 +50,7 @@
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-uglify": "~0.2.2",
     "node-uuid": "~1.4.1",
-    "bcrypt": "~0.7.7",
-    "forever": "~0.10.11",
-    "q": "~1.0.0"
+    "bcrypt": "~0.7.7"
   },
   "devDependencies": {
     "mocha": "~1.17.1",
