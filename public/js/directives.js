@@ -6,13 +6,9 @@ angular.module('app').directive('paybackValidation', function(){
     require: 'ngModel',
     link : function($scope, elm, attrs, ngModel) {
 
-      $scope.$watch('loan.amount', function(amounts){
-        //TODO: make sure that user can't input 10.0000 or 10.053523
-
-        var loanAmt = amounts.loan;
-        var paybackAmt = amounts.payback;
-
-
+      $scope.$watch('loan', function(loan){
+        var loanAmt = loan.principal;
+        var paybackAmt = loan.payback_amount;
         if(loanAmt !== null && loanAmt <= paybackAmt){
           ngModel.$setValidity('paybackThreshold', true);
         } else {

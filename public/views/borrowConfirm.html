@@ -12,9 +12,19 @@
   <div class="row">
     <div class="col-xs-12">
       <p class="h4 white">
-        You requested <strong>${{ loan.amount.loan}}.00</strong> and will payback <strong>${{ loan.amount.payback }}.00</strong> in <strong>{{ loan.paybackDays }}</strong> days after receiving the loan.
-        The category of your debt is <strong>{{ loan.category }}</strong> and the reason you need the funds is: <strong>{{ loan.reason }}</strong>.
-        These terms apply if you receive the loan before <strong>{{ loan.date.neededBy }}</strong>.
+        You have requested <strong>{{ loan.principal }}</strong> and need the funding by <strong>{{ loan.match_deadline }}</strong>.
+      </p>
+      <p class="h4 white">
+        If funded, you agree to repay <strong>{{ loan.payback_amount }}.00</strong> within <strong>{{ loan.paybackDays }}</strong> days after receiving the loan.
+      </p>
+      <p class="h4 white">
+        You debt falls under the category of <strong>{{ loan.category }}</strong> and the specific reason you need the funding is:
+      </p>
+      <p class="h4 white text-center">
+        <em>{{ loan.reason }}</em>
+      </p>
+      <p class="h4 white">
+        Copia's Terms of Service apply if you receive funding.
       </p>
     </div>
   </div>
