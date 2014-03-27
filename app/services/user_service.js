@@ -1,4 +1,5 @@
 'use strict';
+var debug = require('debug')('user_service');
 
 // User service use users controller
 var mongoose = require('mongoose'),
@@ -40,7 +41,7 @@ exports.signup = function(request, response) {
 };
 
 exports.logout = function(request, response) {
-  console.log('GET User: ', request.body.userId, request.authenticated_user._id);
+  debug('GET User: ', request.body.userId, request.authenticated_user._id);
   users.update( {body: { session_token: null } }, response, request.authenticated_user._id);
 };
 
@@ -53,23 +54,23 @@ exports.update = function(request, response) {
 };
 
 exports.get = function(request, response) {
-  console.log('user_service.js/get => GET User: ', request.params.userId);
+  debug('user_service.js/get => GET User: ', request.params.userId);
 //  users.get(request, response, request.params.userId);
   User.findById(request.params.userId, function(err, user) {
     if (err) {
-      console.log('controllers/user.js:User.findById => got error ' + err);
+      debug('controllers/user.js:User.findById => got error ' + err);
       response.send(400,'controllers/user.js:User.findById => got error ' + err);
     } else {
       Loan.find({ borrower_id: request.params.userId })
       //.where('status').in(["pending", "funded"])
       .exec( function(err, loans) {    
         if (err) {
-          console.log("user_service.js/get/User.findById/Loan.find => error fetching user loans", err);
+          debug("user_service.js/get/User.findById/Loan.find => error fetching user loans", err);
           return response.send(400, "user_service.js/get/User.findById/Loan.find => error fetching user loans" + err);
         }
-        console.log('user_service/get/Loan.find => Found loans for user : ', loans);
+        debug('user_service/get/Loan.find => Found loans for user : ', loans);
         user.loans = loans; 
-        console.log('user_service/get/Loan.find => Complete user object : ', user);
+        debug('user_service/get/Loan.find => Complete user object : ', user);
         response.jsonp( {user: user, loans: loans} );
       });
     }

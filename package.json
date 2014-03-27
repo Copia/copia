@@ -62,7 +62,8 @@
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-concurrent": "~0.4.3",
     "grunt-env": "~0.4.1",
-    "grunt-mocha-test": "~0.9.3"
+    "grunt-mocha-test": "~0.9.3",
+    "debug": "^0.7.4"
   },
   "scripts": {
     "postinstall": "node node_modules/bower/bin/bower install"

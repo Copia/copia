@@ -1,4 +1,5 @@
 'use strict';
+var debug = require('debug');
 
 // Loan service use loans controller
 var mongoose = require('mongoose'),
@@ -20,7 +21,7 @@ var applyIfOwned = function(request, response, cb) {
       if (''+loan.borrower_id === ''+request.authenticated_user._id) {
         cb(request, response, loan);
       } else {
-        console.log('loan_service.js/applyIfOwned => loan.borrower_id: ', loan.borrower_id);
+        debug('loan_service.js/applyIfOwned => loan.borrower_id: ', loan.borrower_id);
         response.send(401, 'loan_service.js/applyIfOwned => Not authorized to modify loan with id ' +  loan._id);
       }
     }
@@ -36,7 +37,7 @@ exports.create = function(request, response) {
       response.send(404, "Must link with venmo");
     } else {
       Loan.find({ borrower_id: request.params.userId, status: "pending" }, function(err, loan) {
-        console.log("LOAN CREATE: ", err, loan);
+        debug("LOAN CREATE: ", err, loan);
         if( loan.length > 0 ) {
           response.send(401, "Unauthorized: loan already out");
         } else {
@@ -48,7 +49,7 @@ exports.create = function(request, response) {
 };
 
 exports.get = function(request, response) {
-  console.log("GET to: ",request.url, "-->Get Loan" );
+  debug("GET to: ",request.url, "-->Get Loan" );
   loans.loan(request, response, request.params.loanId);
 };
 
@@ -75,7 +76,7 @@ exports.update = function(request, response) {
         venmo.postPayment(data, function(err, resp, data) {
           var body = JSON.parse(data);
           if( err || body.error ) {
-            console.log("error in transaction in loan_service.update: ",body.error);
+            debug("error in transaction in loan_service.update: ",body.error);
             response.send(401, "Venmo transaction failed");
           } else {
             loans.update(request, response, loan, resp);
@@ -87,7 +88,7 @@ exports.update = function(request, response) {
 };
 
 exports.delete = function(request, response) {
-  console.log(" loan_service.js/delete => Cancelling loan: ",  request.params.loanId);
+  debug(" loan_service.js/delete => Cancelling loan: ",  request.params.loanId);
   applyIfOwned(request, response, function(request, response, loan) {
     if (loan.status === 'pending') {
       loan.status = 'cancelled';
