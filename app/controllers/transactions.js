@@ -1,4 +1,5 @@
 'use strict';
+var debug = require('debug');
 
 /**
  * Module dependencies.
@@ -12,7 +13,7 @@ var  mongoose = require('mongoose'),
  * Find transaction by id
  */
 exports.get = function(req, res, userId, id) {
-  console.log('Getting transaction: ', id);
+  debug('Getting transaction: ', id);
   var query = {};
   query.from_user_id = userId;
   if(id) query._id = id;
@@ -38,10 +39,10 @@ exports.destroy = function(req, res, id) {
  * Create a transaction
  */
 exports.create = function(req, res, loan, lender) {
-  console.log('User ', req.authenticated_user, ' creating transaction ', req.body );
+  debug('User ', req.authenticated_user, ' creating transaction ', req.body );
 
   if (!lender || !lender.user) {
-    console.log('transaction.js/create => Error, lender venmo account not available (loan funded?). Lender:', lender);
+    debug('transaction.js/create => Error, lender venmo account not available (loan funded?). Lender:', lender);
     return res.send(400, 'transaction.js/create => Error, lender venmo account not available (loan funded?). Lender:' + lender);
 
   }
@@ -53,7 +54,7 @@ exports.create = function(req, res, loan, lender) {
     "audience" : "public"
   };
 
-  console.log('transaction.js/create/venmoApi.postPayment => create', venmoPayment);
+  debug('transaction.js/create/venmoApi.postPayment => create', venmoPayment);
   venmoAPI.postPayment(venmoPayment, function(err, response, data) {
     var body = JSON.parse(data);
     if (err || body.err) {
@@ -75,18 +76,18 @@ exports.create = function(req, res, loan, lender) {
       venmo_refund: null
     });
 
-    console.log('transaction.js/create/venmoApi.postPayment => transaction: ', transaction);
-    console.log('transaction.js/create/venmoApi.postPayment => Venmo data: ', data);
+    debug('transaction.js/create/venmoApi.postPayment => transaction: ', transaction);
+    debug('transaction.js/create/venmoApi.postPayment => Venmo data: ', data);
     req.authenticated_user.karma += loan.payback_amount;
     req.authenticated_user.save();
-    console.log("UPDATED USER: ", req.authenticated_user);
+    debug("UPDATED USER: ", req.authenticated_user);
     transaction
     .save(function(err) {
       if (err) {
-        console.log(err.err);
+        debug(err.err);
         res.send(403, err.err);
       } else {
-        console.log("Transaction: ", transaction);
+        debug("Transaction: ", transaction);
         loan.status = "repaid";
         loan.save();
         res.jsonp(transaction);
@@ -100,13 +101,13 @@ exports.create = function(req, res, loan, lender) {
  * Update a transaction, making sure the from_user_id is not modified, or else Admin auth req!
  */
 exports.update = function(req, res, id) {
-  console.log('Transaction Update: ', req.body);
+  debug('Transaction Update: ', req.body);
   Transaction.findByIdAndUpdate(id, {$set: req.body}, function(err, updatedTransaction) {
     if (err) {
-      console.log('Error: ', err.errmsg);
+      debug('Error: ', err.errmsg);
       res.send(403, err.errmsg );
     } else {
-      console.log('Updated User: ', updatedTransaction);
+      debug('Updated User: ', updatedTransaction);
       res.jsonp(updatedTransaction);
     }
   });

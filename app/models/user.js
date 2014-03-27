@@ -63,13 +63,13 @@ UserSchema.pre("save" , function(next) {
 
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
     if(err) {
-      console.log('models/users.js:UserSchema.pre-save => bcrypt.genSalt error. ', err);
+      debug('models/users.js:UserSchema.pre-save => bcrypt.genSalt error. ', err);
       return next(err);
     }
     user.password_salt = salt;
     bcrypt.hash(user.password, salt, function(err, hash) {
       if(err) { 
-        console.log('models/users.js:UserSchema.pre-save => bcrypt.hash error. ', err);
+        debug('models/users.js:UserSchema.pre-save => bcrypt.hash error. ', err);
         return next(err);
       }
       user.password = hash;

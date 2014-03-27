@@ -1,4 +1,5 @@
 'use strict';
+var debug = require('debug');
 
 var should = require('should'),
     http = require('http'),
@@ -17,7 +18,7 @@ describe('Server HTTP Tests:', function () {
       should.equal(res.statusCode, 200);
       done();
     }).on('error', function(err) {
-      console.log('Got error from server: ', err);
+      debug('Got error from server: ', err);
     });
   });
 
