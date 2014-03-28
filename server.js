@@ -8,6 +8,7 @@ var transactions = require("./app/models/transaction");
 var path         = require("path");
 var db           = require("./app/db/init");
 var _            = require("lodash");
+var debug        = require("debug");
 
 // instantiate expressjs app
 var app = express();
@@ -36,7 +37,7 @@ var port = Number(process.env.PORT || config.port);
 var server = app.listen(port);
 
 server.on('close', function() {
-  console.log('Server closed!');
+  debug('Server closed!');
   server._connections=0 ;
   mongoose.connection.close();
   server.emit('out');
@@ -44,9 +45,9 @@ server.on('close', function() {
 });
 
 app.cleanup = function(cb) {
-  console.log('Server received SIGINT ... shutting down.');
+  debug('Server received SIGINT ... shutting down.');
   server.close( function() {
-    console.log('Server closed!');
+    debug('Server closed!');
     server._connections=0 ;
     mongoose.connection.close();
     if (typeof cb === 'function') {
@@ -62,7 +63,7 @@ app.cleanup = function(cb) {
   }, 2000 );
 };
 
-console.log('Process ID: ', process.pid);
+debug('Process ID: ', process.pid);
 
 process.on('SIGINT', app.cleanup);
 process.on('SIGTERM', app.cleanup);

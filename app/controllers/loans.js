@@ -1,5 +1,5 @@
 'use strict';
-
+var debug = require('debug');
 /**
  * Module dependencies.
  */
@@ -34,7 +34,7 @@ exports.create = function(req, res) {
         loan: loan
       });
     } else {
-      console.log("loan created");
+      debug("loan created");
       res.jsonp(loan);
     }
   });
@@ -44,7 +44,7 @@ exports.create = function(req, res) {
  * Update a loan
  */
 exports.update = function(req, res, loan, venmoResponse) {
-  //console.log("IN LOAN CNTRLR: ", loan, venmoResponse.body);
+  //debug("IN LOAN CNTRLR: ", loan, venmoResponse.body);
   var addedKarma = loan.principal;
 
   loan.status = "funded";
@@ -58,7 +58,7 @@ exports.update = function(req, res, loan, venmoResponse) {
     }
   });
   loan.save();
-  console.log("UPDATED LOAN: ",loan);
+  debug("UPDATED LOAN: ",loan);
   res.jsonp(loan);   
 };
 

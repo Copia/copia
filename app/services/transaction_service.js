@@ -1,4 +1,6 @@
 'use strict';
+var debug = require('debug');
+
 var mongoose = require('mongoose'),
 Transaction = mongoose.model('Transaction'),
 Loan = mongoose.model('Loan'),
@@ -18,8 +20,8 @@ var applyIfOwned = function(request, response, cb) {
       if (''+transaction.from_user_id === ''+request.authenticated_user._id) {
         cb(request, response, request.params.transactionId);
       } else {
-        console.log('transaction.from_user_id: ', transaction.from_user_id);
-        console.log('request.params.transactionId: ', request.authenticated_user._id);
+        debug('transaction.from_user_id: ', transaction.from_user_id);
+        debug('request.params.transactionId: ', request.authenticated_user._id);
         response.send(401, 'Not authorized to delete transaction');
       }
     }
@@ -35,12 +37,12 @@ exports.create = function(request, response) {
       var msg = 'User ' + request.authenticated_user + ' is not in borrower_id field of loan ' + request.body.loan_id;
       return response.send(401, 'transaction_service.js/create/Loan.find => ' + msg);
     } 
-    console.log("transaction_service/create/Loan.find => create transaction against loan ", loan[0], 'loan_id in POST: ', request.body.loan_id);
+    debug("transaction_service/create/Loan.find => create transaction against loan ", loan[0], 'loan_id in POST: ', request.body.loan_id);
     User.find( {_id:loan[0].lender_id}, function(err, lender) {
       if (err) {
         return response.send(401, 'transaction_service.js/create/Loan.find => could not find the lender with lender Id' + loan[0].lender_id);
       }
-      console.log("transaction_service/create/Loan.find => paying lender: ", lender[0]);
+      debug("transaction_service/create/Loan.find => paying lender: ", lender[0]);
       transactions.create(request, response, loan[0], lender[0]);  
     });
   });
