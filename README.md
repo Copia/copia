@@ -17,7 +17,7 @@ Copia was built on a MEAN stack (MongoDB, ExpressJS, AngularJS, Node.js), with t
 [Brendon Verissimo](https://github.com/brendonv)
 [Walid Hosseini](https://github.com/caasjj)
 [Will Gester](https://github.com/wgester)
-[Arkady Prevzner](https://github.com/arkadyp)
+[Arkady Pevzner](https://github.com/arkadyp)
 [Juan Marin](https://github.com/juanmarinbear)
 
 ### Disclaimer
