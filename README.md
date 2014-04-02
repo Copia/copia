@@ -6,7 +6,7 @@ Easily request and make loans with Copia. Transactions by Venmo: simply link you
 
 ## Stack and APIs
 
-Copia was built on a MEAN stack (MongoDB, ExpressJS, AngularJS, Node.js), with the MongooseJS ODM on the backend. All transactions are handled via Venmo's awesome REST API. The front end 
+Copia was built on a MEAN stack (MongoDB, ExpressJS, AngularJS, Node.js), with the MongooseJS ODM on the backend. All transactions are handled via Venmo's awesome REST API. 
 
 ## Deployment
 
